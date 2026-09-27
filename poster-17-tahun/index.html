@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<title>Tujuh Layar Penggerak Ekspor Nasional</title>
+<style>
+@font-face{font-family:"PJS";src:url("fonts/plus-jakarta-sans-latin-400-normal.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"PJS";src:url("fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"PJS";src:url("fonts/plus-jakarta-sans-latin-500-italic.woff2") format("woff2");font-weight:500;font-style:italic}
+@font-face{font-family:"PJS";src:url("fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2");font-weight:600}
+@font-face{font-family:"PJS";src:url("fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"PJS";src:url("fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2");font-weight:800}
+@font-face{font-family:"Fraunces";src:url("fonts/fraunces-latin-600-italic.woff2") format("woff2");font-weight:600;font-style:italic}
+@font-face{font-family:"Fraunces";src:url("fonts/fraunces-latin-700-italic.woff2") format("woff2");font-weight:700;font-style:italic}
+@font-face{font-family:"Fraunces";src:url("fonts/fraunces-latin-600-normal.woff2") format("woff2");font-weight:600}
+@font-face{font-family:"Fraunces";src:url("fonts/fraunces-latin-700-normal.woff2") format("woff2");font-weight:700}
+
+:root{
+  /* diambil langsung dari logo Indonesia Eximbank & logo 17 tahun */
+  --exim-blue:#024595; --exim-sky:#4995C6;
+  --navy:#272A67; --navy-2:#1D296C; --navy-deep:#0D1545;
+  --steel:#5586B3; --cyan:#1D98C1;
+  --gold-1:#F4EAD3; --gold-2:#E3CD9A; --gold:#CDAC65; --gold-3:#B18345; --gold-ink:#8E6531;
+  --cream:#FBF7EE; --ink:#1B2150; --ink-2:#434B7C;
+  --siapkan:#B18345; --biayai:#1C83BC; --lindungi:#272A67;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#c9ccd6}
+#poster{position:relative;width:1200px;height:1697px;overflow:hidden;background:var(--cream);
+  font-family:"PJS",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+#art{position:absolute;inset:0;width:1200px;height:1697px}
+.abs{position:absolute}
+
+/* ---------- HEADER ---------- */
+.logo-exim{left:56px;top:50px;height:60px}
+.logo-17{right:56px;top:32px;height:128px}
+.kicker{left:56px;top:150px;display:flex;align-items:center;gap:12px;
+  font:800 13px/1 "PJS";letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink)}
+.kicker i{display:block;width:34px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--gold-2),var(--gold-3))}
+h1{position:absolute;left:52px;top:170px;margin:0;font-weight:400}
+h1 .l1{display:block;font:italic 700 104px/1 "Fraunces";letter-spacing:-.01em;
+  background:linear-gradient(95deg,#8E6531 0%,#B8894A 38%,#C9A45C 58%,#8E6531 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;padding:0 8px 6px 4px}
+h1 .l2{display:block;font:800 52px/1.02 "PJS";letter-spacing:-.025em;color:var(--navy);margin-top:-4px;padding-left:4px}
+.lede{left:56px;top:350px;width:694px;margin:0;font:500 16.5px/1.55 "PJS";color:var(--ink-2)}
+.lede b{color:var(--navy);font-weight:800}
+.lede em{font-style:italic;font-weight:700;color:var(--exim-blue)}
+.chips{left:56px;top:446px;display:flex;gap:8px}
+.chip{display:flex;align-items:center;gap:7px;padding:7px 12px 7px 10px;border-radius:999px;background:#fff;
+  border:1px solid rgba(39,42,103,.14);font:700 12px/1 "PJS";color:var(--navy);box-shadow:0 1px 0 rgba(39,42,103,.05)}
+.chip svg{width:15px;height:15px;stroke:var(--gold-3);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.sec-label{font:800 11.5px/1 "PJS";letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);
+  display:flex;align-items:center;gap:10px;margin:0 0 9px}
+.sec-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(177,131,69,.5),rgba(177,131,69,0))}
+.sec-label.light{color:var(--gold-2)}
+.sec-label.light::after{background:linear-gradient(90deg,rgba(227,205,154,.55),rgba(227,205,154,0))}
+
+/* ---------- CELAH PASAR (kolom kanan header) ---------- */
+.gap{left:764px;top:174px;width:380px;padding:15px 16px 13px;border-radius:20px;background:rgba(255,255,255,.82);
+  border:1px solid rgba(39,42,103,.10);box-shadow:0 18px 40px -28px rgba(29,41,108,.55)}
+.gap h2{margin:0 0 6px;font:800 23px/1.1 "PJS";letter-spacing:-.02em;color:var(--navy)}
+.gap .intro{margin:0 0 10px;font:500 12.8px/1.48 "PJS";color:var(--ink-2)}
+.gap .intro b{color:var(--navy)}
+.gap ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.gap li{display:grid;grid-template-columns:34px 1fr;gap:11px;align-items:center}
+.gap .ic{width:34px;height:34px;border-radius:10px;background:linear-gradient(160deg,#EAF3F9,#D3E6F2);display:grid;place-items:center}
+.gap .ic svg{width:22px;height:22px;stroke:var(--exim-blue);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.gap li b{display:block;font:800 13.2px/1.25 "PJS";color:var(--navy)}
+.gap li span{display:block;font:500 11.6px/1.38 "PJS";color:var(--ink-2)}
+
+/* ---------- MENGAPA PINISI (caption di langit) ---------- */
+.why-pinisi{left:56px;top:520px;width:300px}
+.why-pinisi p{margin:0;font:500 12.4px/1.5 "PJS";color:var(--ink-2)}
+.why-pinisi p b{color:var(--navy)}
+
+/* ---------- 7 LAYAR (legenda di samping kapal) ---------- */
+.sails{left:752px;top:494px;width:392px}
+.sails h2{margin:0 0 4px;font:800 25px/1.08 "PJS";letter-spacing:-.02em;color:var(--navy)}
+.sails .sub{margin:0 0 10px;font:500 12.6px/1.45 "PJS";color:var(--ink-2)}
+.sails .sub b{color:var(--navy)}
+.col{background:#fff;border-radius:16px;padding:9px 14px 3px 16px;margin-bottom:8px;position:relative;overflow:hidden;
+  border:1px solid rgba(39,42,103,.08);box-shadow:0 14px 28px -22px rgba(13,21,69,.7)}
+.col::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+.col .g{display:flex;align-items:baseline;gap:8px;margin:0 0 2px}
+.col .g b{font:800 12.5px/1 "PJS";letter-spacing:.16em;color:var(--c)}
+.col .g span{font:600 11.5px/1 "PJS";color:var(--ink-2)}
+.item{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:6px 0 7px;border-top:1px dashed rgba(39,42,103,.13)}
+.col .g + .item{border-top:0}
+.num{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:800 13px/1 "PJS";color:#fff;background:var(--c);margin-top:1px}
+.item h3{margin:0;font:800 14px/1.2 "PJS";color:var(--navy);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tag{white-space:nowrap;font:700 9px/1 "PJS";letter-spacing:.07em;text-transform:uppercase;padding:3px 5px;border-radius:4px;color:var(--c);
+  background:color-mix(in srgb,var(--c) 12%,#fff)}
+.item p{margin:2px 0 0;font:500 11.8px/1.4 "PJS";color:var(--ink-2)}
+.item p i{font-style:italic;color:var(--ink)}
+.sails-head{display:flex;align-items:flex-end;justify-content:space-between;margin:0 0 4px}
+.sails-head h2{margin:0}
+.legend-note{margin:0 0 1px;font:500 10.8px/1.45 "PJS";color:var(--ink-2);text-align:right}
+.col:last-of-type{margin-bottom:0}
+.legend-note b{color:var(--navy)}
+
+/* ---------- JEJAK 17 TAHUN ---------- */
+.journey{left:56px;top:1104px;width:1088px}
+.sec-head{display:flex;align-items:baseline;gap:16px}
+.sec-head .sec-label{margin:0;flex:none}
+.sec-head .sec-label::after{display:none}
+.journey h2,.impact h2{margin:0;font:800 26px/1.1 "PJS";letter-spacing:-.02em;color:#fff}
+.journey h2 em,.impact h2 em{font:italic 700 28px/1 "Fraunces";color:var(--gold-2)}
+.stops{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:14px}
+.stop{position:relative;padding-top:40px}
+.stop .yr{position:absolute;top:0;left:0;font:800 24px/1 "PJS";color:var(--gold-2);letter-spacing:-.01em}
+.stop .dot{position:absolute;top:31px;left:0;width:13px;height:13px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 0 4px rgba(227,205,154,.22)}
+.stop p{margin:14px 0 0;font:500 12.2px/1.45 "PJS";color:#D8E4F3}
+.stop p b{color:#fff;font-weight:700}
+
+/* ---------- DAMPAK ---------- */
+.impact{left:56px;top:1290px;width:1088px}
+.impact .row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.stat{border-radius:18px;padding:15px 16px 14px;background:linear-gradient(170deg,rgba(255,255,255,.11),rgba(255,255,255,.03));
+  border:1px solid rgba(227,205,154,.30)}
+.stat .top{display:flex;align-items:flex-start;justify-content:space-between}
+.stat .big{font:700 46px/1 "Fraunces";letter-spacing:-.01em;color:#F2DDA8;font-variant-numeric:lining-nums;white-space:nowrap}
+.stat .big small{font:700 22px/1 "Fraunces";margin:0 1px}
+.stat .big small.x{font:600 30px/1 "PJS";margin-left:3px;vertical-align:.06em}
+.stat svg{width:30px;height:30px;stroke:var(--gold-2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.stat h3{margin:10px 0 4px;font:800 14px/1.3 "PJS";color:#fff}
+.stat p{margin:0;font:500 11.8px/1.42 "PJS";color:#C3D3E9}
+
+/* ---------- PENUTUP ---------- */
+.closing{left:56px;top:1508px;width:1088px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.closing blockquote{margin:0;font:italic 600 29px/1.16 "Fraunces";color:#F6E9C9}
+.closing blockquote cite{display:block;margin-top:8px;font:700 10.5px/1 "PJS";font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:#9FB6D6}
+.closing p{margin:0;font:500 15px/1.5 "PJS";color:#D8E4F3;border-left:2px solid rgba(227,205,154,.5);padding-left:20px}
+.closing p b{color:#fff}
+.sources{left:56px;top:1612px;width:1088px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font:500 9.8px/1.5 "PJS";color:#93A8C9}
+.sources b{color:#C9D7EC;font-weight:700}
+</style>
+</head>
+<body>
+<div id="poster">
+
+<!-- ================= ILUSTRASI (latar, Pinisi, laut) ================= -->
+<svg id="art" viewBox="0 0 1200 1697" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF7EE"/>
+      <stop offset=".5" stop-color="#F8F3E8"/>
+      <stop offset="1" stop-color="#D6E8F1"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FBF1DA"/>
+      <stop offset=".55" stop-color="#F1DDAE"/>
+      <stop offset="1" stop-color="#E4C688"/>
+    </radialGradient>
+    <linearGradient id="sea" gradientUnits="userSpaceOnUse" x1="0" y1="1065" x2="0" y2="1697">
+      <stop offset="0" stop-color="#2BA4CD"/>
+      <stop offset=".06" stop-color="#1B80B8"/>
+      <stop offset=".25" stop-color="#134F8F"/>
+      <stop offset=".55" stop-color="#15286A"/>
+      <stop offset="1" stop-color="#0B123C"/>
+    </linearGradient>
+    <linearGradient id="seaBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7CC0DE"/>
+      <stop offset="1" stop-color="#3FA7D0"/>
+    </linearGradient>
+    <linearGradient id="hullG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#303880"/>
+      <stop offset="1" stop-color="#141A4B"/>
+    </linearGradient>
+    <linearGradient id="goldStripe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#EFE2C7"/><stop offset=".5" stop-color="#CDAC65"/><stop offset="1" stop-color="#A6763C"/>
+    </linearGradient>
+    <!-- layar: warna diturunkan dari gradasi logo 17 tahun -->
+    <linearGradient id="jib1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6EAC9"/><stop offset="1" stop-color="#DDBE7E"/></linearGradient>
+    <linearGradient id="jib2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EBD39C"/><stop offset="1" stop-color="#C9A25A"/></linearGradient>
+    <linearGradient id="jib3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9B878"/><stop offset="1" stop-color="#A9793F"/></linearGradient>
+    <linearGradient id="main1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A8CC0"/><stop offset="1" stop-color="#1D98C1"/></linearGradient>
+    <linearGradient id="main2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4D78AE"/><stop offset="1" stop-color="#1C7FB5"/></linearGradient>
+    <linearGradient id="top1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B4C98"/><stop offset="1" stop-color="#272A67"/></linearGradient>
+    <linearGradient id="top2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34438A"/><stop offset="1" stop-color="#232660"/></linearGradient>
+    <pattern id="seams" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-8)">
+      <rect width="14" height="1.1" fill="rgba(255,255,255,.18)"/>
+    </pattern>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- awan mega mendung (Cirebon) -->
+    <path id="cloud" d="M8 62 C-4 62,-2 44,14 43 C10 27,30 18,44 27 C50 9,80 3,95 18 C107 3,141 5,146 27 C162 19,188 30,181 46 C198 47,199 62,186 62 Z"/>
+    <symbol id="megamendung" viewBox="-6 -2 212 70" overflow="visible">
+      <use href="#cloud" fill="#A9CBE2"/>
+      <use href="#cloud" fill="#C4DCEC" transform="translate(16 10) scale(.84)"/>
+      <use href="#cloud" fill="#DAE9F3" transform="translate(32 20) scale(.68)"/>
+      <use href="#cloud" fill="#ECF4F8" transform="translate(48 30) scale(.52)"/>
+    </symbol>
+    <clipPath id="hullClip"><path d="M26 300 C60 304,90 318,140 328 C260 350,420 350,556 322 C548 356,528 392,486 418 L118 420 C70 400,36 350,26 300 Z"/></clipPath>
+  </defs>
+
+  <!-- langit -->
+  <rect width="1200" height="1100" fill="url(#sky)"/>
+  <!-- matahari keemasan + halo -->
+  <g transform="translate(598 752)">
+    <circle r="164" fill="none" stroke="#D9BE85" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="2 7"/>
+    <circle r="134" fill="none" stroke="#D9BE85" stroke-opacity=".55" stroke-width="1.3"/>
+    <circle r="106" fill="url(#sun)"/>
+  </g>
+  <!-- awan -->
+  <use href="#megamendung" x="560" y="800" width="170" height="56" opacity=".95"/>
+  <use href="#megamendung" x="-30" y="690" width="140" height="46" opacity=".85"/>
+  <!-- burung -->
+  <g fill="none" stroke="#272A67" stroke-width="2" stroke-linecap="round" opacity=".7">
+    <path d="M452 640 q7 -7 14 0 q7 -7 14 0"/>
+    <path d="M488 620 q5 -5 10 0 q5 -5 10 0"/>
+    <path d="M352 640 q6 -6 12 0 q6 -6 12 0"/>
+  </g>
+
+  <!-- panah dari keterangan "Mengapa Pinisi?" ke kapal -->
+  <g fill="none" stroke="#B18345" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M110 646 C112 680,140 702,178 712" stroke-dasharray="1 6"/>
+    <path d="M168 704 L180 713 L166 719"/>
+  </g>
+
+  <!-- laut belakang (cakrawala) -->
+  <path id="waveBack" fill="url(#seaBack)"/>
+
+  <!-- ============ PINISI ============ -->
+  <g id="ship" transform="translate(16 656.0) scale(1.08)">
+    <!-- tali-temali -->
+    <g stroke="#272A67" stroke-width="1" fill="none" opacity=".55">
+      <path d="M372 26 L664 296"/>
+      <path d="M372 26 L198 70"/>
+      <path d="M198 70 L30 304"/>
+      <path d="M372 26 L300 346 M372 26 L430 342"/>
+      <path d="M198 70 L150 334 M198 70 L240 344"/>
+    </g>
+    <!-- tiang -->
+    <rect x="368.5" y="20" width="7" height="332" rx="2.5" fill="#23285F"/>
+    <rect x="195" y="62" width="6.5" height="286" rx="2.5" fill="#23285F"/>
+    <!-- bendera merah putih -->
+    <path d="M375 8 C386 4,396 12,410 8 L410 16 C396 20,386 12,375 16 Z" fill="#D7272F"/>
+    <path d="M375 16 C386 12,396 20,410 16 L410 24 C396 28,386 20,375 24 Z" fill="#fff" stroke="#D9D2C3" stroke-width=".6"/>
+    <rect x="370.5" y="4" width="3.2" height="20" fill="#23285F"/>
+    <!-- cucur (bowsprit) -->
+    <path d="M536 334 L666 294" stroke="#23285F" stroke-width="6" stroke-linecap="round"/>
+
+    <g stroke="#FBF7EE" stroke-width="3.2" stroke-linejoin="round">
+      <!-- 7 Asuransi: layar puncak belakang -->
+      <path d="M198 72 L198 154 L92 129 Q138 92 198 72 Z" fill="url(#top2)"/>
+      <!-- 6 Penjaminan: layar puncak depan -->
+      <path d="M372 28 L372 128 L242 97 Q300 50 372 28 Z" fill="url(#top1)"/>
+      <!-- 5 PKE: layar utama belakang -->
+      <path d="M198 160 L88 133 Q62 220 70 304 Q132 312 196 332 Z" fill="url(#main2)"/>
+      <!-- 4 Pembiayaan: layar utama depan -->
+      <path d="M372 134 L236 101 Q206 220 220 334 Q296 330 370 338 Z" fill="url(#main1)"/>
+      <!-- 3 CPNE: layar haluan terluar -->
+      <path d="M377 38 L662 298 Q560 296 472 306 Q430 170 377 38 Z" fill="url(#jib3)"/>
+      <!-- 2 Desa Devisa: layar haluan tengah -->
+      <path d="M377 104 L606 316 Q520 312 436 320 Q414 212 377 104 Z" fill="url(#jib2)"/>
+      <!-- 1 Jasa Konsultasi: layar haluan dalam -->
+      <path d="M377 172 L550 332 Q476 326 404 332 Q398 250 377 172 Z" fill="url(#jib1)"/>
+    </g>
+    <!-- jahitan layar -->
+    <g fill="url(#seams)" opacity=".9">
+      <path d="M198 160 L88 133 Q62 220 70 304 Q132 312 196 332 Z"/>
+      <path d="M372 134 L236 101 Q206 220 220 334 Q296 330 370 338 Z"/>
+    </g>
+    <!-- gik & boom -->
+    <g stroke="#23285F" stroke-width="3.2" stroke-linecap="round">
+      <path d="M372 132 L234 99"/><path d="M372 336 L218 334"/>
+      <path d="M198 158 L86 131"/><path d="M196 330 L68 304"/>
+    </g>
+
+    <!-- kabin buritan -->
+    <path d="M50 320 L52 280 Q100 273 156 283 L156 340 Z" fill="#F4EAD3"/>
+    <path d="M44 283 Q100 270 162 281 L162 288 Q100 278 44 290 Z" fill="#23285F"/>
+    <g fill="#272A67"><rect x="66" y="292" width="12" height="12" rx="2"/><rect x="88" y="291" width="12" height="12" rx="2"/><rect x="110" y="292" width="12" height="12" rx="2"/><rect x="132" y="294" width="12" height="12" rx="2"/></g>
+    <!-- lambung -->
+    <path d="M26 300 C60 304,90 318,140 328 C260 350,420 350,556 322 C548 356,528 392,486 418 L118 420 C70 400,36 350,26 300 Z" fill="url(#hullG)"/>
+    <g clip-path="url(#hullClip)" fill="none">
+      <path d="M20 316 C70 330,110 340,160 347 C290 366,440 362,560 336" stroke="url(#goldStripe)" stroke-width="7"/>
+      <path d="M20 330 C70 344,110 354,160 361 C290 380,440 376,560 350" stroke="#CDAC65" stroke-width="2" opacity=".8"/>
+      <path d="M40 360 C150 392,380 392,540 360" stroke="#fff" stroke-opacity=".07" stroke-width="22"/>
+    </g>
+    <!-- pagar geladak -->
+    <path d="M150 318 C260 338,420 338,550 310" fill="none" stroke="#FBF7EE" stroke-width="2"/>
+    <path d="M150 318 C260 338,420 338,550 310" fill="none" stroke="#FBF7EE" stroke-width="9" stroke-dasharray="1.6 16" opacity=".9" transform="translate(0 5)"/>
+
+    <!-- nomor layar -->
+    <g font-family="PJS" font-weight="800" font-size="15" text-anchor="middle">
+      <g transform="translate(446 284)"><circle r="14" fill="#fff" stroke="#B18345" stroke-width="3"/><text y="5.2" fill="#272A67">1</text></g>
+      <g transform="translate(482 234)"><circle r="14" fill="#fff" stroke="#B18345" stroke-width="3"/><text y="5.2" fill="#272A67">2</text></g>
+      <g transform="translate(536 214)"><circle r="14" fill="#fff" stroke="#B18345" stroke-width="3"/><text y="5.2" fill="#272A67">3</text></g>
+      <g transform="translate(300 228)"><circle r="14" fill="#fff" stroke="#1C83BC" stroke-width="3"/><text y="5.2" fill="#272A67">4</text></g>
+      <g transform="translate(136 232)"><circle r="14" fill="#fff" stroke="#1C83BC" stroke-width="3"/><text y="5.2" fill="#272A67">5</text></g>
+      <g transform="translate(328 84)"><circle r="14" fill="#fff" stroke="#272A67" stroke-width="3"/><text y="5.2" fill="#272A67">6</text></g>
+      <g transform="translate(160 118)"><circle r="14" fill="#fff" stroke="#272A67" stroke-width="3"/><text y="5.2" fill="#272A67">7</text></g>
+    </g>
+  </g>
+
+  <!-- laut depan -->
+  <rect x="0" y="1095" width="1200" height="602" fill="url(#sea)"/>
+  <path id="waveFront" fill="url(#sea)"/>
+  <g id="foam" fill="none" stroke="#fff" stroke-linecap="round"></g>
+  <!-- buih haluan -->
+  <g fill="none" stroke="#fff" stroke-linecap="round" opacity=".85">
+    <path d="M545 1076 q24 -10 52 2" stroke-width="2.4"/>
+    <path d="M562 1086 q30 -8 60 4" stroke-width="2" opacity=".7"/>
+    <path d="M150 1083 q-26 -6 -52 4" stroke-width="2" opacity=".7"/>
+  </g>
+  <!-- berkas cahaya bawah laut -->
+  <g fill="url(#ray)">
+    <path d="M140 1095 L220 1095 L120 1560 L10 1560 Z"/>
+    <path d="M520 1095 L570 1095 L470 1480 L390 1480 Z"/>
+    <path d="M880 1095 L960 1095 L900 1520 L790 1520 Z"/>
+  </g>
+  <!-- jalur pelayaran (garis waktu) -->
+  <path id="lane" fill="none" stroke="#E3CD9A" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round" opacity=".9"/>
+  <!-- motif ombak di dasar -->
+  <g id="deepWaves" fill="none" stroke="#fff" stroke-opacity=".05" stroke-width="1.4"></g>
+</svg>
+
+<!-- ================= KONTEN ================= -->
+<img class="abs logo-exim" src="assets/logo-indonesia-eximbank.png" alt="Indonesia Eximbank">
+<img class="abs logo-17" src="assets/logo-17-tahun.png" alt="17 Tahun Indonesia Eximbank — Berkarya, Bermakna">
+
+<div class="abs kicker"><i></i>17 Tahun Indonesia Eximbank · Berkarya, Bermakna</div>
+<h1><span class="l1">Tujuh Layar</span><span class="l2">Penggerak Ekspor Nasional</span></h1>
+<p class="abs lede">Sebagai <em>policy bank</em>—lembaga pembiayaan milik negara yang menjalankan kebijakan pemerintah—<b>Indonesia Eximbank (LPEI)</b> hadir di celah yang belum terjangkau lembaga keuangan komersial, agar produk Indonesia sanggup mengarungi tujuh samudra.</p>
+<div class="abs chips">
+  <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0zM8 21h8"/></svg>UU No. 2 Tahun 2009</span>
+  <span class="chip"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Beroperasi sejak 1 September 2009</span>
+  <span class="chip"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6M5 10v9M9.5 10v9M14.5 10v9M19 10v9M3 21h18"/></svg><i style="font-style:italic">Special Mission Vehicle</i>&nbsp;Kemenkeu</span>
+</div>
+
+<!-- Celah pasar -->
+<section class="abs gap">
+  <div class="sec-label">Mengapa perlu policy bank?</div>
+  <h2>Mengisi celah pasar</h2>
+  <p class="intro">Sebagian transaksi ekspor <b>terlalu berisiko, terlalu baru, atau terlalu besar</b> bagi lembaga keuangan komersial. Di celah inilah LPEI hadir:</p>
+  <ul>
+    <li><div class="ic"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3.4 3 5 7 5 11s-1.6 8-5 11c-3.4-3-5-7-5-11s1.6-8 5-11z"/></svg></div>
+      <div><b>Pasar nontradisional</b><span>Afrika, Asia Selatan, Timur Tengah, Amerika Latin</span></div></li>
+    <li><div class="ic"><svg viewBox="0 0 32 32"><rect x="9" y="4.5" width="14" height="17.5" rx="4"/><rect x="11.5" y="8" width="9" height="6" rx="1.5"/><path d="M12.5 18.2h.01M19.5 18.2h.01M11.5 22l-3 5.5M20.5 22l3 5.5M9.8 25h12.4"/></svg></div>
+      <div><b>Industri strategis</b><span>Pesawat, kereta api, farmasi &amp; alat kesehatan</span></div></li>
+    <li><div class="ic"><svg viewBox="0 0 32 32"><path d="M16 27V15M16 18c0-4.4-3.2-7.5-8-7.5 0 4.4 3.2 7.5 8 7.5zM16 15c0-4.4 3.2-7.5 8-7.5 0 4.4-3.2 7.5-8 7.5zM8 27h16"/></svg></div>
+      <div><b>UKM, desa &amp; eksportir baru</b><span>Potensinya besar, tetapi belum <i>bankable</i></span></div></li>
+    <li><div class="ic"><svg viewBox="0 0 32 32"><path d="M4 27V15l7 4v-4l7 4v-4l6 3.5V6h4v21z"/><path d="M9 23h2M15 23h2M21 23h2"/></svg></div>
+      <div><b>Industri padat karya</b><span>Tekstil, alas kaki, furnitur &amp; baja (arahan Menkeu)</span></div></li>
+  </ul>
+</section>
+
+<!-- Mengapa Pinisi -->
+<div class="abs why-pinisi">
+  <div class="sec-label">Mengapa Pinisi?</div>
+  <p>Kapal warisan Bugis-Makassar ini berlayar dengan <b>dua tiang dan tujuh layar</b>—lambang tekad mengarungi tujuh samudra. Seni pembuatannya diakui UNESCO sebagai Warisan Budaya Takbenda (2017).</p>
+</div>
+
+<!-- 7 layar -->
+<section class="abs sails">
+  <div class="sec-label">Peran policy bank dalam mendorong ekspor</div>
+  <div class="sails-head"><h2>Tujuh layar LPEI</h2><p class="legend-note"><span class="tag" style="--c:var(--navy)">Mandat UU</span> = empat mandat<br>dalam UU No. 2/2009</p></div>
+  <p class="sub">Tiap layar mewakili satu instrumen untuk <b>menyiapkan</b>, <b>membiayai</b>, dan <b>melindungi</b> eksportir Indonesia.</p>
+  <div class="col" style="--c:var(--siapkan)">
+    <div class="g"><b>SIAPKAN</b><span>membangun kapasitas</span></div>
+    <div class="item"><div class="num">1</div><div><h3>Jasa Konsultasi <span class="tag">Mandat UU</span></h3><p>Pelatihan &amp; pendampingan agar usaha siap ekspor.</p></div></div>
+    <div class="item"><div class="num">2</div><div><h3>Desa Devisa <span class="tag">Program</span></h3><p>Pemberdayaan desa berbasis produk unggulan ekspor.</p></div></div>
+    <div class="item"><div class="num">3</div><div><h3>CPNE <span class="tag">Program</span></h3><p><i>Coaching Program for New Exporters</i>: pembinaan menuju ekspor perdana.</p></div></div>
+  </div>
+  <div class="col" style="--c:var(--biayai)">
+    <div class="g"><b>BIAYAI</b><span>menggerakkan transaksi</span></div>
+    <div class="item"><div class="num">4</div><div><h3>Pembiayaan Ekspor <span class="tag">Mandat UU</span></h3><p>Modal kerja &amp; investasi bagi eksportir.</p></div></div>
+    <div class="item"><div class="num">5</div><div><h3>Penugasan Khusus Ekspor <span class="tag">Penugasan</span></h3><p>Transaksi yang sulit secara komersial, tetapi penting bagi negara. <i>Contoh: pesawat CN-235 ke Senegal.</i></p></div></div>
+  </div>
+  <div class="col" style="--c:var(--lindungi)">
+    <div class="g"><b>LINDUNGI</b><span>mengelola risiko</span></div>
+    <div class="item"><div class="num">6</div><div><h3>Penjaminan <span class="tag">Mandat UU</span></h3><p>Membuka akses ke pembiayaan &amp; kontrak dagang.</p></div></div>
+    <div class="item"><div class="num">7</div><div><h3>Asuransi <span class="tag">Mandat UU</span></h3><p>Proteksi risiko gagal bayar pembeli luar negeri.</p></div></div>
+  </div>
+</section>
+
+<!-- Jejak 17 tahun -->
+<section class="abs journey">
+  <div class="sec-head"><div class="sec-label light">Jejak 17 tahun</div><h2>Dari satu dermaga <em>ke tujuh samudra</em></h2></div>
+  <div class="stops">
+    <div class="stop"><div class="yr">1999</div><div class="dot"></div><p><b>PT Bank Ekspor Indonesia</b> (Persero) berdiri—cikal bakal LPEI.</p></div>
+    <div class="stop"><div class="yr">2009</div><div class="dot"></div><p><b>1 September:</b> Indonesia Eximbank resmi beroperasi berdasarkan UU No. 2/2009.</p></div>
+    <div class="stop"><div class="yr">2015</div><div class="dot"></div><p><b>Penugasan Khusus Ekspor</b> dimulai (PMK 134/2015); CPNE mulai digelar.</p></div>
+    <div class="stop"><div class="yr">2019</div><div class="dot"></div><p><b>Desa Devisa pertama:</b> Kakao Jembrana, Bali—kini tembus Eropa &amp; Jepang.</p></div>
+    <div class="stop"><div class="yr">2025</div><div class="dot"></div><p><b>Tata kelola diperkuat:</b> SNI ISO 37001 antipenyuapan &amp; predikat Baik dari BPKP.</p></div>
+    <div class="stop"><div class="yr">2026</div><div class="dot"></div><p><b>17 tahun:</b> peran <i>policy bank</i> dipertegas, termasuk menopang industri padat karya.</p></div>
+  </div>
+</section>
+
+<!-- Dampak -->
+<section class="abs impact">
+  <div class="sec-head"><div class="sec-label light">Dampak terukur</div><h2>Karya yang <em>bermakna</em></h2></div>
+  <div class="row">
+    <div class="stat"><div class="top"><div class="big">2.618</div><svg viewBox="0 0 32 32"><path d="M4 15 16 6l12 9M7 13v14h18V13M13 27v-7h6v7"/></svg></div>
+      <h3>Desa Devisa di berbagai daerah</h3><p>Didampingi sejak 2019 hingga Juli 2026.</p></div>
+    <div class="stat"><div class="top"><div class="big">1.983</div><svg viewBox="0 0 32 32"><path d="M3 12l13-6 13 6-13 6z"/><path d="M9 15v6c0 2 3 4 7 4s7-2 7-4v-6M29 12v7"/></svg></div>
+      <h3>Capaian eksportir baru lewat CPNE</h3><p>Termasuk negara tujuan &amp; pembeli baru, 2019–Juli 2026.</p></div>
+    <div class="stat"><div class="top"><div class="big"><small>Rp</small>13,7<small>&thinsp;T</small></div><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3.4 3 5 7 5 11s-1.6 8-5 11c-3.4-3-5-7-5-11s1.6-8 5-11z"/></svg></div>
+      <h3>Realisasi Penugasan Khusus Ekspor</h3><p>Pemanfaatnya menjangkau 90+ negara tujuan (April 2026).</p></div>
+    <div class="stat"><div class="top"><div class="big">3,49<small class="x">×</small></div><svg viewBox="0 0 32 32"><path d="M4 24l8-8 5 5 11-11M20 10h8v8"/></svg></div>
+      <h3>Dampak per Rp1 pembiayaan</h3><p>Nilai sosial-ekonomi: pengentasan kemiskinan, pemberdayaan perempuan &amp; kerja layak (Juni 2026).</p></div>
+  </div>
+</section>
+
+<!-- Penutup -->
+<section class="abs closing">
+  <blockquote>“Sekali layar terkembang, surut kita berpantang.”<cite>Pepatah pelaut Bugis-Makassar</cite></blockquote>
+  <p>Tujuh belas tahun <b>berkarya</b>, Indonesia Eximbank terus mengisi celah dan membuka jalur—agar setiap potensi Indonesia <b>bermakna</b> di pasar dunia.</p>
+</section>
+<div class="abs sources"><b>Sumber data:</b> UU No. 2 Tahun 2009 tentang LPEI · indonesiaeximbank.go.id · Investortrust.id, “17 Tahun Mengabdi, LPEI Dampingi 2.618 Desa Devisa dan Cetak Ribuan Eksportir Baru” (Sept 2026) · CNBC Indonesia, “17 Tahun Indonesia Eximbank (LPEI) Dorong Ekspor Nasional” (13/9/2026) · Katadata, “Realisasi Penugasan Khusus Ekspor Capai Rp13,7 T” (Apr 2026) · Bisnis.com &amp; Kompas.com (13–14/9/2026) · Antara (CPNE) · Pemkab Jembrana (Desa Devisa Kakao) · UNESCO (2017), <i>Pinisi, art of boatbuilding in South Sulawesi</i>.</div>
+
+</div>
+
+<script>
+(function(){
+  const W = 1200;
+  function wave(y0, parts, yEnd){
+    let d = `M0 ${yEnd} L0 ${y0}`;
+    for (let x = 0; x <= W; x += 6){
+      let y = y0;
+      for (const [a, len, ph] of parts) y += a * Math.sin((x / len) * Math.PI * 2 + ph);
+      d += ` L${x} ${y.toFixed(2)}`;
+    }
+    return d + ` L${W} ${yEnd} Z`;
+  }
+  document.getElementById('waveBack').setAttribute('d', wave(1061, [[3.2,170,0.4],[1.6,61,1.2]], 1105));
+  document.getElementById('waveFront').setAttribute('d', wave(1079, [[5,210,2.1],[2.2,77,0.3]], 1115));
+
+  // buih di puncak ombak depan
+  const foam = document.getElementById('foam');
+  for (let x = 20; x < W; x += 92){
+    const len = 26 + (x * 7 % 30);
+    let d = '';
+    for (let i = 0; i <= len; i += 3){
+      const xx = x + i;
+      const y = 1079 + 5*Math.sin((xx/210)*Math.PI*2+2.1) + 2.2*Math.sin((xx/77)*Math.PI*2+0.3) + 3;
+      d += (i ? ' L' : 'M') + xx + ' ' + y.toFixed(2);
+    }
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', d); p.setAttribute('stroke-width', 2); p.setAttribute('opacity', .55);
+    foam.appendChild(p);
+  }
+
+  // motif ombak (batik) samar di dasar laut
+  const deep = document.getElementById('deepWaves');
+  for (let row = 0; row < 7; row++){
+    const y = 1470 + row * 46;
+    let d = '';
+    for (let x = -40 + (row % 2) * 40; x < W + 80; x += 80){
+      d += `M${x} ${y} a40 40 0 0 1 80 0 M${x+14} ${y} a26 26 0 0 1 52 0 M${x+28} ${y} a12 12 0 0 1 24 0 `;
+    }
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', d); deep.appendChild(p);
+  }
+
+  // jalur pelayaran = garis waktu (mengikuti titik-titik tahun)
+  function drawLane(){
+    const poster = document.getElementById('poster').getBoundingClientRect();
+    const dots = [...document.querySelectorAll('.stop .dot')].map(el => {
+      const r = el.getBoundingClientRect();
+      return [r.left - poster.left + r.width/2, r.top - poster.top + r.height/2];
+    });
+    if (!dots.length) return;
+    const [x0, y0] = dots[0], [x1] = dots[dots.length-1];
+    let d = `M${x0} ${y0}`;
+    for (let x = x0; x <= x1 + 150; x += 4){
+      d += ` L${x} ${(y0 + 3*Math.sin((x - x0)/34)).toFixed(2)}`;
+    }
+    document.getElementById('lane').setAttribute('d', d);
+  }
+  document.fonts.ready.then(() => { drawLane(); window.__posterReady = true; });
+})();
+</script>
+</body>
+</html>
