@@ -1,0 +1,11 @@
+{
+  "name": "poster-50-tahun-tools",
+  "private": true,
+  "description": "Regenerates poster-art.svg for the 50 Tahun Tirta Mangutama poster",
+  "scripts": {
+    "build": "node build-art.js"
+  },
+  "dependencies": {
+    "opentype.js": "1.3.4"
+  }
+}
