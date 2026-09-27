@@ -1,4 +1,5 @@
-"""Ubah render mentah menjadi file lomba: A4 300 dpi (2480 x 3508 px), JPG & PNG, masing-masing < 5 MB."""
+"""Ubah render mentah menjadi file lomba A4 300 dpi (2480 x 3508 px, JPG & PNG, masing-masing < 5 MB)
+dan versi Instagram 4:5 (1080 x 1350 px)."""
 import os
 from PIL import Image
 
@@ -22,3 +23,11 @@ for f in (jpg, png):
     size = os.path.getsize(f)
     print(f"{os.path.basename(f)}: {Image.open(f).size} px, {size/1e6:.2f} MB", "OK" if size < LIMIT else "MELEBIHI 5 MB!")
     assert size < LIMIT
+
+raw_ig = os.path.join(OUT, "_raw-ig.png")
+if os.path.exists(raw_ig):
+    ig_path = os.path.join(OUT, "instagram-4x5.jpg")
+    Image.open(raw_ig).convert("RGB").resize((1080, 1350), Image.LANCZOS).save(
+        ig_path, "JPEG", quality=95, subsampling=0, optimize=True)
+    os.remove(raw_ig)
+    print(f"instagram-4x5.jpg: {Image.open(ig_path).size} px, {os.path.getsize(ig_path)/1e6:.2f} MB")

@@ -31,4 +31,17 @@ async function shot(scale, file) {
 }
 
 await shot(preview ? 1 : A4_300DPI_W / W, preview ? 'preview.png' : '_raw-a4.png');
+
+// Versi Instagram 4:5: bidang 1357,94 x 1697,42 px desain (poster A4 utuh di tengah, latar diperlebar),
+// dirender 2160 x 2700 px lalu diperkecil ke 1080 x 1350 px oleh finalize.py.
+if (!preview) {
+  const FH = 1697.42, FW = FH * 4 / 5;
+  const page = await browser.newPage({ viewport: { width: Math.ceil(FW), height: Math.ceil(FH) }, deviceScaleFactor: 2160 / FW });
+  await page.goto(url + '?ig');
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForFunction(() => window.__posterReady === true);
+  await page.screenshot({ path: path.join(out, '_raw-ig.png'), clip: { x: 0, y: 0, width: FW, height: FH } });
+  await page.close();
+  console.log('wrote _raw-ig.png');
+}
 await browser.close();

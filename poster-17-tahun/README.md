@@ -7,7 +7,8 @@ Sub-tema: **Peran Indonesia Eximbank sebagai *Policy Bank* dalam Mendorong Ekspo
 |---|---|
 | `output/poster-17-tahun-eximbank-A4.jpg` | **Versi akhir untuk dikirim.** A4 potret, 2480 × 3508 px (300 dpi), ±2,6 MB |
 | `output/poster-17-tahun-eximbank-A4.png` | Alternatif PNG, A4 2480 × 3508 px (300 dpi), ±3,0 MB |
-| `index.html` | Sumber desain (HTML + ilustrasi SVG buatan tangan), bisa diedit |
+| `output/instagram-4x5.jpg` | Versi Instagram 1080 × 1350 px (4:5): poster utuh di tengah, latar diperlebar. Caption ada di `caption-instagram.md` |
+| `index.html` | Sumber desain (HTML + ilustrasi SVG buatan tangan), bisa diedit. Tambahkan `?ig` di URL untuk mode Instagram |
 | `render.mjs`, `finalize.py` | Skrip ekspor: Playwright (Chromium) lalu Pillow (ukuran A4 persis, metadata 300 dpi, cek < 5 MB) |
 
 ### Kesesuaian dengan ketentuan lomba
@@ -89,7 +90,7 @@ dengan keputusan desain dari peserta.
 cd poster-17-tahun
 npm install            # memasang Playwright (browser Chromium sudah tersedia di environment)
 npm run preview        # output/preview.png, 1200 × 1697 px, untuk cek cepat
-npm run render         # JPG & PNG A4 300 dpi (butuh Python + Pillow)
+npm run render         # JPG & PNG A4 300 dpi + versi Instagram 4:5 (butuh Python + Pillow)
 ```
 
 Teks bisa diubah langsung di `index.html`. Ilustrasi Pinisi ada di elemen `<g id="ship">`.

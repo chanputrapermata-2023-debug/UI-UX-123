@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="id">
 <head>
+<script>if (new URLSearchParams(location.search).has("ig")) document.documentElement.classList.add("ig");</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=1200">
 <title>Tujuh Layar Penggerak Ekspor Nasional</title>
@@ -27,10 +28,12 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:#0B123C}
+/* mode Instagram 4:5 — poster A4 utuh di tengah, latar ilustrasi diperlebar ke kiri-kanan */
+html.ig #poster{margin-left:78.97px;overflow:visible}
 #poster{position:relative;width:1200px;height:1697.42px;overflow:hidden;background:#0B123C; /* 1200 x 1697,42 = rasio A4 (210 x 297 mm) */
   
   font-family:"PJS",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
-#art{position:absolute;inset:0;width:1200px;height:1697px}
+#art{position:absolute;inset:0;width:1200px;height:1697px;overflow:visible}
 .abs{position:absolute}
 
 /* ---------- HEADER ---------- */
@@ -202,7 +205,7 @@ h1 .l2{display:block;font:800 52px/1.02 "PJS";letter-spacing:-.025em;color:var(-
   </defs>
 
   <!-- langit -->
-  <rect width="1200" height="1100" fill="url(#sky)"/>
+  <rect x="-204" width="1608" height="1100" fill="url(#sky)"/>
   <!-- matahari keemasan + halo -->
   <g transform="translate(598 752)">
     <circle r="164" fill="none" stroke="#D9BE85" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="2 7"/>
@@ -303,7 +306,7 @@ h1 .l2{display:block;font:800 52px/1.02 "PJS";letter-spacing:-.025em;color:var(-
   </g>
 
   <!-- laut depan -->
-  <rect x="0" y="1095" width="1200" height="602" fill="url(#sea)"/>
+  <rect x="-204" y="1095" width="1608" height="603" fill="url(#sea)"/>
   <path id="waveFront" fill="url(#sea)"/>
   <g id="foam" fill="none" stroke="#fff" stroke-linecap="round"></g>
   <!-- buih haluan -->
@@ -423,23 +426,23 @@ h1 .l2{display:block;font:800 52px/1.02 "PJS";letter-spacing:-.025em;color:var(-
 
 <script>
 (function(){
-  const W = 1200;
+  const W = 1200, X0 = -204, X1 = 1404;   // di luar 0..1200 hanya terlihat pada mode Instagram
   function wave(y0, parts, yEnd){
-    let d = `M0 ${yEnd} L0 ${y0}`;
-    for (let x = 0; x <= W; x += 6){
+    let d = `M${X0} ${yEnd} L${X0} ${y0}`;
+    for (let x = X0; x <= X1; x += 6){
       let y = y0;
       for (const [a, len, ph] of parts) y += a * Math.sin((x / len) * Math.PI * 2 + ph);
       d += ` L${x} ${y.toFixed(2)}`;
     }
-    return d + ` L${W} ${yEnd} Z`;
+    return d + ` L${X1} ${yEnd} Z`;
   }
   document.getElementById('waveBack').setAttribute('d', wave(1061, [[3.2,170,0.4],[1.6,61,1.2]], 1105));
   document.getElementById('waveFront').setAttribute('d', wave(1079, [[5,210,2.1],[2.2,77,0.3]], 1115));
 
   // buih di puncak ombak depan
   const foam = document.getElementById('foam');
-  for (let x = 20; x < W; x += 92){
-    const len = 26 + (x * 7 % 30);
+  for (let x = 20 - 92*3; x < W + 92*2; x += 92){
+    const len = 26 + (((x * 7) % 30) + 30) % 30;
     let d = '';
     for (let i = 0; i <= len; i += 3){
       const xx = x + i;
@@ -456,7 +459,7 @@ h1 .l2{display:block;font:800 52px/1.02 "PJS";letter-spacing:-.025em;color:var(-
   for (let row = 0; row < 7; row++){
     const y = 1470 + row * 46;
     let d = '';
-    for (let x = -40 + (row % 2) * 40; x < W + 80; x += 80){
+    for (let x = -200 + (row % 2) * 40; x < W + 240; x += 80){
       d += `M${x} ${y} a40 40 0 0 1 80 0 M${x+14} ${y} a26 26 0 0 1 52 0 M${x+28} ${y} a12 12 0 0 1 24 0 `;
     }
     const p = document.createElementNS('http://www.w3.org/2000/svg','path');
