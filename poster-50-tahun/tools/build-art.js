@@ -614,11 +614,12 @@ add(`<circle cx="${DROP.cx}" cy="${DROP.tip - 2}" r="14" fill="#FFF1C4" opacity=
 }
 
 // ================================================================ HANDS
-// Pose after the user's grip references: a fist around the pipe seen from the front (knuckles on top, fingers wrapped
-// toward the viewer in three segments, joint lines following the curve of the fingers, thumb tucked under the pipe),
-// forearm dropping behind the pipe. Worn tan leather work gloves and a grimy uniform sleeve.
-// Defined for the hand right of the coupling (thumb toward -x); the left one is mirrored, with its own dirt.
-const HAND = { hx: 152, hs: 1.4 };
+// POV grip, so forearm, wrist and hand read as one limb: the sleeve comes up from the bottom edge, the gloved hand
+// leaves the sleeve at the wrist, the back of the hand faces the viewer, the fingers curl over the top of the pipe
+// (knuckles, finger backs, rounded middle knuckles) and the thumb runs along the pipe toward the coupling.
+// Worn tan leather work gloves, grimy uniform sleeve. Defined for the hand right of the coupling (thumb toward -x);
+// the left one is mirrored with its own dirt.
+const HAND = { hx: 160, hs: 1.55 };
 const LTH = { hi: '#F2DEB8', light: '#E1C18E', mid: '#C99D64', dark: '#9C7143', deep: '#6F4D2A', ink: '#553718', grime: '#5A4330' };
 function blobPath(cx, cy, rx, ry, rnd, k = 9, jit = 0.55, rot = 0) {
   const P = [];
@@ -635,133 +636,123 @@ function blobPath(cx, cy, rx, ry, rnd, k = 9, jit = 0.55, rot = 0) {
   return d + ' Z';
 }
 const PR = PIPE.r / HAND.hs; // pipe edges in the hand's local units
-const SLEEVE_D = 'M-15,28 L79,21 L116,124 L4,132 Z';
-const THUMB_D = `M-28,${n(PR - 8)} C-40,${n(PR - 11)} -53,${n(PR - 10)} -62,${n(PR - 6)} C-70,${n(PR - 2)} -71,${n(PR + 8)} -64,${n(PR + 11)} C-55,${n(PR + 15)} -40,${n(PR + 15)} -28,${n(PR + 11)} Z`;
-const DOME_D = 'M-54,-24 C-56,-37 -44,-49 -18,-52 C8,-55 38,-49 52,-37 C60,-29 60,-13 56,-3 L44,-3 Z';
+// finger backs rising from the knuckles and curling over the pipe: [base x, width, base y, middle-knuckle top y, tilt°]
 const FINGERS = [
-  // cx, width, knuckle top, PIP (top/front edge of the pipe), DIP, tip (tucked under the pipe)
-  [40, 23, -PR - 13, -PR + 3.5, PR - 8, PR + 5],   // pinky
-  [15, 27, -PR - 16, -PR + 1.5, PR - 5, PR + 10],  // ring
-  [-12, 28, -PR - 17, -PR + 1, PR - 4, PR + 12],   // middle
-  [-39, 27, -PR - 15, -PR + 2, PR - 6, PR + 9],    // index
+  [-25, 18.5, -8, -27.5, -5],     // index
+  [-7.5, 19.5, -10, -29.5, -1.5], // middle
+  [10.5, 18.5, -9, -28.5, 2.5],   // ring
+  [26, 15.5, -6, -24.5, 7],       // pinky
 ];
-function fingerPath([cx, w, top, pip, dip, tip]) {
-  const hw = w / 2, tw = hw - 1.2, rt = hw * 0.8, rb = tw * 0.9;
-  return `M${n(cx - hw)},${n(top + rt)} C${n(cx - hw)},${n(top + 2)} ${n(cx - hw + 5)},${n(top)} ${n(cx)},${n(top)} C${n(cx + hw - 5)},${n(top)} ${n(cx + hw)},${n(top + 2)} ${n(cx + hw)},${n(top + rt)} ` +
-    `L${n(cx + hw + 0.8)},${n(pip)} L${n(cx + tw)},${n(dip)} L${n(cx + tw)},${n(tip - rb)} ` +
-    `C${n(cx + tw)},${n(tip - 1)} ${n(cx + tw - 5)},${n(tip)} ${n(cx)},${n(tip)} C${n(cx - tw + 5)},${n(tip)} ${n(cx - tw)},${n(tip - 1)} ${n(cx - tw)},${n(tip - rb)} ` +
-    `L${n(cx - tw)},${n(dip)} L${n(cx - hw - 0.8)},${n(pip)} Z`;
+function fingerD([bx, w, by, top]) {
+  const r = w / 2;
+  return `M${n(bx - r)},${n(by)} L${n(bx - r - 0.6)},${n(top + r)} C${n(bx - r - 0.6)},${n(top + 2)} ${n(bx - r + 4)},${n(top)} ${n(bx)},${n(top)} ` +
+    `C${n(bx + r - 4)},${n(top)} ${n(bx + r + 0.6)},${n(top + 2)} ${n(bx + r + 0.6)},${n(top + r)} L${n(bx + r)},${n(by)} Z`;
 }
+const fingerT = (fg) => `rotate(${fg[4]} ${fg[0]} ${fg[2]})`;
+// back of the hand: knuckle bumps on top, tapering to the wrist, which is set a little outward to meet the forearm
+const BACK_D = 'M-35,-3 C-35,-9 -31,-14 -25,-14 C-20,-14 -17,-11 -16,-9 C-15,-14 -11,-17 -7,-17 C-2,-17 1,-14 2,-11 ' +
+  'C3,-15 7,-17 11,-17 C15,-17 18,-14 19,-10 C20,-13 23,-14 26,-14 C31,-14 34,-9 34,-3 ' +
+  'C38,8 38,24 36,44 L-20,46 C-27,33 -34,16 -35.5,4 C-35.8,1 -35.6,-1 -35,-3 Z';
+const THUMB_D = 'M-31,4 C-41,1.5 -52,1 -60,3.5 C-67,6 -67.5,15 -61,17 C-52,19.5 -40,24 -27,27 C-23,19 -24,10 -31,4 Z';
+// sleeve: frayed hem across the wrist, running down and out along the forearm
+const SLEEVE_D = 'M-25,41 C-8,37 20,31 39,28 C47,52 64,98 84,150 L8,158 C-6,120 -18,74 -25,41 Z';
 defs.push(`<clipPath id="cSleeveL"><path d="${SLEEVE_D}"/></clipPath>`);
-defs.push(`<clipPath id="cFistL"><path d="${DOME_D}"/><path d="${THUMB_D}"/>${FINGERS.map((fg) => `<path d="${fingerPath(fg)}"/>`).join('')}</clipPath>`);
+defs.push(`<clipPath id="cGloveL"><path d="${BACK_D}"/><path d="${THUMB_D}"/>${FINGERS.map((fg) => `<path d="${fingerD(fg)}" transform="${fingerT(fg)}"/>`).join('')}</clipPath>`);
 
 function handParts() {
-  const ink = LTH.ink;
-  // ---- leather glove cuff and the uniform sleeve (behind the pipe)
-  lg('gGloveCuff', [[0, LTH.mid], [1, LTH.dark]], 0, 0, 1, 0);
-  lg('gSleeve', [[0, '#4270AD'], [0.55, '#305A96'], [1, '#213F72']], 0, 0, 1, 0.3);
-  let arm = `<path d="M-6,12 L70,8 L73,34 L-4,38 Z" fill="url(#gGloveCuff)"/>`;
-  arm += `<path d="M-4,30 L71,26" fill="none" stroke="${LTH.deep}" stroke-width="1" stroke-dasharray="2.6 2.2" opacity="0.8"/>`;
-  arm += `<path d="${SLEEVE_D}" fill="url(#gSleeve)"/>`;
-  // fabric folds
-  arm += `<g fill="none" stroke-linecap="round"><path d="M6,40 C22,46 30,58 34,74" stroke="#172F55" stroke-width="2.2" opacity="0.45"/><path d="M52,34 C60,44 66,56 70,74" stroke="#172F55" stroke-width="2" opacity="0.4"/><path d="M10,38 C24,44 32,54 37,68" stroke="#6A8CC0" stroke-width="1.6" opacity="0.35"/></g>`;
-  // dulled reflective band
-  arm += `<path d="M-7,56 L88,48 L91,58 L-5,67 Z" fill="#C4C0AF"/><path d="M-6,61.5 L89.5,53" stroke="#DEDBCD" stroke-width="2"/><path d="M-7,56 L88,48 M-5,67 L91,58" stroke="#8F8B7E" stroke-width="1.1"/>`;
-  // worn, darker hem with loose threads
-  arm += `<path d="M-15,28 L79,21 L79.6,26.5 L-14.4,33.5 Z" fill="#162C50" opacity="0.85"/>`;
+  const ink = LTH.ink, g = [];
+  defs.push(`<linearGradient id="gBackHand" gradientUnits="userSpaceOnUse" x1="-34" y1="-16" x2="30" y2="44"><stop offset="0" stop-color="#EDD3A6"/><stop offset="0.45" stop-color="#D1A871"/><stop offset="0.8" stop-color="#B78956"/><stop offset="1" stop-color="#94693D"/></linearGradient>`);
+  defs.push(`<linearGradient id="gFingerBack" gradientUnits="userSpaceOnUse" x1="0" y1="-36" x2="0" y2="-6"><stop offset="0" stop-color="#F3DFBA"/><stop offset="0.35" stop-color="#E0BF8B"/><stop offset="1" stop-color="#C39862"/></linearGradient>`);
+  defs.push(`<linearGradient id="gThumbB" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="28"><stop offset="0" stop-color="#E8CA98"/><stop offset="0.55" stop-color="#C99D64"/><stop offset="1" stop-color="#94693D"/></linearGradient>`);
+  lg('gSleeve', [[0, '#4673B0'], [0.5, '#325C98'], [1, '#203F72']], 0, 0, 1, 0.25);
 
-  // ---- fist (in front of the pipe)
-  const f = [];
-  defs.push(`<linearGradient id="gDome" gradientUnits="userSpaceOnUse" x1="0" y1="-52" x2="0" y2="-26"><stop offset="0" stop-color="${LTH.hi}"/><stop offset="0.55" stop-color="#D9B77F"/><stop offset="1" stop-color="#C0925B"/></linearGradient>`);
-  defs.push(`<linearGradient id="gThumbF" gradientUnits="userSpaceOnUse" x1="0" y1="${n(PR - 10)}" x2="0" y2="${n(PR + 16)}"><stop offset="0" stop-color="#E3C491"/><stop offset="0.55" stop-color="#C39760"/><stop offset="1" stop-color="#8A6038"/></linearGradient>`);
-  f.push(`<path d="${DOME_D}" fill="url(#gDome)" stroke="${ink}" stroke-width="1.5" stroke-linejoin="round"/>`);
-  f.push(`<path d="M-44,-38 C-26,-49 20,-50 44,-38" fill="none" stroke="${LTH.deep}" stroke-width="1.1" stroke-dasharray="3.5 2.8" opacity="0.8"/>`);
-  f.push(`<path d="M52,-30 C56,-22 56,-14 54,-8" fill="none" stroke="${LTH.deep}" stroke-width="3" stroke-linecap="round" opacity="0.35"/>`);
-  // thumb tucked under the pipe; its tip shows below the index finger, pointing at the coupling
-  const ty = PR;
-  f.push(`<path d="${THUMB_D}" fill="url(#gThumbF)" stroke="${ink}" stroke-width="1.5" stroke-linejoin="round"/>`);
-  f.push(`<path d="M-30,${n(ty - 7)} C-34,${n(ty - 2)} -34,${n(ty + 6)} -30,${n(ty + 10)}" fill="none" stroke="${LTH.deep}" stroke-width="5" stroke-linecap="round" opacity="0.35"/>`);
-  f.push(`<path d="M-47,${n(ty - 10)} C-50,${n(ty - 4)} -50,${n(ty + 7)} -47,${n(ty + 14)}" fill="none" stroke="${ink}" stroke-width="1.2" stroke-linecap="round"/>`);
-  f.push(`<path d="M-58,${n(ty - 7)} C-62,${n(ty - 2)} -62,${n(ty + 7)} -58,${n(ty + 12)}" fill="none" stroke="${LTH.deep}" stroke-width="1" stroke-dasharray="2.4 2" opacity="0.8"/>`);
-  f.push(`<path d="M-34,${n(ty - 8)} C-45,${n(ty - 10)} -56,${n(ty - 9)} -64,${n(ty - 4)}" fill="none" stroke="#FBEBCB" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>`);
-  // fingers: top segment over the pipe, middle segment on its face, tip curling under (grimiest)
+  // fingers (drawn first; the knuckles of the hand overlap their bases)
   FINGERS.forEach((fg, i) => {
-    const [cx, w, top, pip, dip, tip] = fg;
-    const id = 'gFg' + i;
-    const t = (y) => n((y - top) / (tip - top));
-    defs.push(`<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" y1="${top}" x2="0" y2="${tip}">` +
-      `<stop offset="0" stop-color="#F3DFBA"/><stop offset="${t(pip - 1.5)}" stop-color="#E0C08C"/>` +
-      `<stop offset="${t(pip + 1)}" stop-color="#CDA26A"/><stop offset="${t(dip - 1.5)}" stop-color="#BE915A"/>` +
-      `<stop offset="${t(dip + 1)}" stop-color="#9E7447"/><stop offset="1" stop-color="#6E4D2C"/></linearGradient>`);
-    const hw = w / 2, tw = hw - 1.2, rt = hw * 0.8;
-    f.push(`<path d="${fingerPath(fg)}" fill="url(#${id})" stroke="${ink}" stroke-width="1.5" stroke-linejoin="round"/>`);
-    // joint creases follow each finger's curve, so across the fist they form an arc rather than parallel lines
-    f.push(`<path d="M${n(cx - hw + 2)},${n(pip - 2)} Q${n(cx)},${n(pip + 3)} ${n(cx + hw - 2)},${n(pip - 2)}" fill="none" stroke="${ink}" stroke-width="1.4" stroke-linecap="round"/>`);
-    f.push(`<path d="M${n(cx - hw + 4)},${n(pip + 3.5)} Q${n(cx)},${n(pip + 7)} ${n(cx + hw - 4)},${n(pip + 3.5)}" fill="none" stroke="${LTH.deep}" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>`);
-    f.push(`<path d="M${n(cx - tw + 3)},${n(dip - 1)} Q${n(cx)},${n(dip + 2.5)} ${n(cx + tw - 3)},${n(dip - 1)}" fill="none" stroke="${ink}" stroke-width="1.2" stroke-linecap="round" opacity="0.85"/>`);
-    // leather sheen on the knuckle (matte, so softer than before) and a fingertip seam
-    f.push(`<path d="M${n(cx - hw + 3.5)},${n(top + rt + 1)} C${n(cx - hw + 3.5)},${n(top + 4)} ${n(cx - 3)},${n(top + 2.8)} ${n(cx + 2)},${n(top + 2.8)}" fill="none" stroke="#FFF4DC" stroke-width="2.2" stroke-linecap="round" opacity="0.6"/>`);
-    f.push(`<path d="M${n(cx - tw + 3.5)},${n(tip - tw * 0.9 - 1)} A${n(tw - 3.5)},${n(tw - 3.5)} 0 0 0 ${n(cx + tw - 3.5)},${n(tip - tw * 0.9 - 1)}" fill="none" stroke="#4A3016" stroke-width="1" stroke-dasharray="2.4 2" opacity="0.75"/>`);
+    const [bx, w, by, top] = fg, r = w / 2;
+    const t = (y) => n((y - top) / (by - top));
+    defs.push(`<linearGradient id="gFb${i}" gradientUnits="userSpaceOnUse" x1="0" y1="${top}" x2="0" y2="${by}"><stop offset="0" stop-color="#A97D4B"/><stop offset="${t(top + 3)}" stop-color="#D9B780"/><stop offset="${t(top + 6)}" stop-color="#F1DBB2"/><stop offset="${t(top + 11)}" stop-color="#DDBA86"/><stop offset="1" stop-color="#C39862"/></linearGradient>`);
+    g.push(`<g transform="${fingerT(fg)}">` +
+      `<path d="${fingerD(fg)}" fill="url(#gFb${i})" stroke="${ink}" stroke-width="1.5" stroke-linejoin="round"/>` +
+      // middle-knuckle wrinkles and the soft light on the knuckle itself
+      `<path d="M${n(bx - r + 3)},${n(top + r + 3)} Q${n(bx)},${n(top + r + 6.5)} ${n(bx + r - 3)},${n(top + r + 3)}" fill="none" stroke="${ink}" stroke-width="1.2" stroke-linecap="round" opacity="0.85"/>` +
+      `<path d="M${n(bx - r + 4.5)},${n(top + r + 6.5)} Q${n(bx)},${n(top + r + 9)} ${n(bx + r - 4.5)},${n(top + r + 6.5)}" fill="none" stroke="${LTH.deep}" stroke-width="0.9" stroke-linecap="round" opacity="0.55"/>` +
+      `<path d="M${n(bx - r + 3)},${n(top + r)} C${n(bx - r + 3)},${n(top + 3.5)} ${n(bx - 2)},${n(top + 2.5)} ${n(bx + 2)},${n(top + 2.5)}" fill="none" stroke="#FFF4DC" stroke-width="2" stroke-linecap="round" opacity="0.6"/>` +
+      `</g>`);
   });
-  // cool rim light from the coupling glow on the inner edges
-  f.push(`<path d="M-51,-12 L-52,${n(PR + 2)}" stroke="#8FF3EA" stroke-width="1.6" stroke-linecap="round" opacity="0.35"/><path d="M-40,${n(PR - 9.5)} C-50,${n(PR - 11)} -58,${n(PR - 9)} -64,${n(PR - 5.5)}" fill="none" stroke="#8FF3EA" stroke-width="1.4" stroke-linecap="round" opacity="0.4"/>`);
-  return { arm, fist: f.join('') };
+  // back of the hand
+  g.push(`<path d="${BACK_D}" fill="url(#gBackHand)" stroke="${ink}" stroke-width="1.5" stroke-linejoin="round"/>`);
+  // knuckle light, knuckle seam, tendon ridges, shade toward the pinky side
+  [[-25, -11], [-7, -14], [11, -14], [26, -11]].forEach(([x, y]) => g.push(`<ellipse cx="${x}" cy="${y + 2.5}" rx="5.2" ry="2.6" fill="#FBEACB" opacity="0.55"/>`));
+  g.push(`<path d="M-32,-2 C-14,-9 14,-9 32,-1" fill="none" stroke="${LTH.deep}" stroke-width="1.1" stroke-dasharray="3.2 2.6" opacity="0.8"/>`);
+  g.push(`<g fill="none" stroke="#F6E3BE" stroke-width="2.2" stroke-linecap="round" opacity="0.4"><path d="M-22,4 C-18,16 -12,26 -6,34"/><path d="M-6,2 C-4,14 -1,24 2,34"/><path d="M10,2 C11,14 12,24 12,34"/></g>`);
+  g.push(`<path d="M34,-3 C38,8 38,24 36,44 L27,44 C31,26 31,10 28,-4 Z" fill="${LTH.deep}" opacity="0.25"/>`);
+  // back panel seam and wrist shirring where the glove tucks into the sleeve
+  g.push(`<path d="M-30,8 C-12,4 16,4 33,9" fill="none" stroke="${LTH.deep}" stroke-width="1" stroke-dasharray="3.2 2.6" opacity="0.65"/>`);
+  g.push(`<g fill="none" stroke="${LTH.deep}" stroke-width="1.1" stroke-linecap="round" opacity="0.6"><path d="M-18,30 q4,-2 8,0 t8,0 t8,0 t8,0 t8,0 t8,-1"/><path d="M-20,35 q4,-2 8,0 t8,0 t8,0 t8,0 t8,0 t8,-1 t6,-1"/></g>`);
+  // thumb along the pipe, pointing at the coupling
+  g.push(`<path d="${THUMB_D}" fill="url(#gThumbB)" stroke="${ink}" stroke-width="1.5" stroke-linejoin="round"/>`);
+  g.push(`<path d="M-47,2.5 C-50,8 -50,16 -46,22" fill="none" stroke="${ink}" stroke-width="1.2" stroke-linecap="round"/>`);
+  g.push(`<path d="M-57,3.5 C-61,8 -61,13.5 -57.5,17.5" fill="none" stroke="${LTH.deep}" stroke-width="1" stroke-dasharray="2.4 2" opacity="0.8"/>`);
+  g.push(`<path d="M-35,4.5 C-45,2.5 -54,2.5 -61,5.5" fill="none" stroke="#FBEBCB" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>`);
+  g.push(`<path d="M-30,24.5 C-42,22.5 -52,19.5 -59,17" fill="none" stroke="${LTH.deep}" stroke-width="2" stroke-linecap="round" opacity="0.35"/>`);
+  // shadow the sleeve casts on the glove just above the hem
+  g.push(`<path d="M-24,40 C-8,36 20,30 38,27 L38.5,23 C20,26 -8,32 -23,36 Z" fill="#3B2814" opacity="0.28"/>`);
+  const glove = g.join('');
+
+  // sleeve
+  let sl = `<path d="${SLEEVE_D}" fill="url(#gSleeve)" stroke="#132A4E" stroke-width="1.5" stroke-linejoin="round"/>`;
+  sl += `<g fill="none" stroke-linecap="round"><path d="M-6,52 C4,70 12,90 18,112" stroke="#15305A" stroke-width="2.2" opacity="0.45"/><path d="M26,40 C36,62 44,86 50,108" stroke="#15305A" stroke-width="2" opacity="0.4"/><path d="M-12,50 C-2,68 5,86 10,104" stroke="#6E90C4" stroke-width="1.6" opacity="0.35"/><path d="M-20,47 C-6,44 18,39 36,36" stroke="#15305A" stroke-width="1.6" opacity="0.4"/></g>`;
+  // dulled reflective band wrapping the sleeve
+  sl += `<path d="M-15,64 C4,60 28,54 47,49 L50,59 C31,64 7,70 -12,74 Z" fill="#C4C0AF"/><path d="M-13.5,69 C5,65 29,59 48.5,54" fill="none" stroke="#DEDBCD" stroke-width="1.8"/><path d="M-15,64 C4,60 28,54 47,49 M-12,74 C7,70 31,64 50,59" fill="none" stroke="#8F8B7E" stroke-width="1.1"/>`;
+  // worn, darker hem edge
+  sl += `<path d="M-25,41 C-8,37 20,31 39,28 L40,32.5 C21,35.5 -7,41.5 -24,45.5 Z" fill="#132A4E" opacity="0.8"/>`;
+  return { glove, sleeve: sl };
 }
 const HANDPARTS = handParts();
 
 // dirt differs per hand so the mirrored pair doesn't look stamped
 function handDirt(seed) {
   const r = rng(seed);
-  // sleeve: mud and dust smudges, grease marks, speckles, loose threads at the hem
+  // sleeve: mud and dust smudges, grease streaks, speckles, loose threads at the hem
   let a = '';
   for (let i = 0; i < 6; i++) {
-    const cx = lerp(-2, 86, r()), cy = lerp(36, 74, r());
+    const t = r(), u = r();
+    const cx = lerp(-14, 40, u) + t * 30, cy = lerp(48, 78, t);
     const rx = 4 + r() * 7, ry = 2.5 + r() * 4, rot = (r() - 0.5) * 1.2;
     const col = r() < 0.7 ? '#5B4631' : '#A5977E';
     a += `<path d="${blobPath(cx, cy, rx, ry, r, 9, 0.6, rot)}" fill="${col}" opacity="${n(0.22 + r() * 0.16)}"/>`;
     if (col === '#5B4631') a += `<path d="${blobPath(cx + (r() - 0.5) * 3, cy + (r() - 0.5) * 2, rx * 0.5, ry * 0.5, r, 8, 0.6, rot)}" fill="#4A3826" opacity="${n(0.25 + r() * 0.15)}"/>`;
   }
   for (let i = 0; i < 2; i++) {
-    const x0 = lerp(0, 70, r()), y0 = lerp(34, 60, r());
-    a += `<path d="M${n(x0)},${n(y0)} c${n(6 + r() * 6)},${n(2 + r() * 3)} ${n(12 + r() * 6)},${n(6 + r() * 4)} ${n(16 + r() * 8)},${n(12 + r() * 6)}" fill="none" stroke="#1E1C20" stroke-width="${n(2 + r() * 1.5)}" stroke-linecap="round" opacity="0.22"/>`;
+    const x0 = lerp(-12, 30, r()), y0 = lerp(46, 64, r());
+    a += `<path d="M${n(x0)},${n(y0)} c${n(3 + r() * 4)},${n(5 + r() * 3)} ${n(7 + r() * 4)},${n(10 + r() * 4)} ${n(9 + r() * 6)},${n(16 + r() * 6)}" fill="none" stroke="#1E1C20" stroke-width="${n(2 + r() * 1.5)}" stroke-linecap="round" opacity="0.22"/>`;
   }
-  for (let i = 0; i < 34; i++) a += `<circle cx="${n(lerp(-6, 92, r()))}" cy="${n(lerp(32, 76, r()))}" r="${n(0.4 + r() * 1.1)}" fill="${r() < 0.7 ? '#4A3826' : '#CFC4AE'}" opacity="${n(0.3 + r() * 0.4)}"/>`;
-  // grime along the band edges and at the hem
-  a += `<path d="M-6,61 L89,53 L91,58 L-5,67 Z" fill="#6B5A43" opacity="0.2"/>`;
-  a += `<path d="M-14,33 L79.5,26 L80,31 L-13.5,38.5 Z" fill="#3F3122" opacity="0.28"/>`;
+  for (let i = 0; i < 34; i++) { const t = r(); a += `<circle cx="${n(lerp(-20, 44, r()) + t * 30)}" cy="${n(lerp(42, 80, t))}" r="${n(0.4 + r() * 1.1)}" fill="${r() < 0.7 ? '#4A3826' : '#CFC4AE'}" opacity="${n(0.3 + r() * 0.4)}"/>`; }
+  a += `<path d="M-13.5,69 C5,65 29,59 48.5,54 L50,59 C31,64 7,70 -12,74 Z" fill="#6B5A43" opacity="0.2"/>`;
+  a += `<path d="M-24,45.5 C-7,41.5 21,35.5 40,32.5 L41,37 C22,40 -6,46 -23,50 Z" fill="#3F3122" opacity="0.28"/>`;
   let threads = '';
   for (let i = 0; i < 6; i++) {
-    const x = lerp(-10, 74, r()), y = 33.5 - (x + 15) * (7 / 94);
-    threads += `<path d="M${n(x)},${n(y)} q${n((r() - 0.5) * 3)},${n(2 + r() * 2)} ${n((r() - 0.5) * 4)},${n(4 + r() * 3)}" />`;
+    const t = r(), x = lerp(-22, 36, t), y = lerp(40.5, 29, t) + 2;
+    threads += `<path d="M${n(x)},${n(y)} q${n((r() - 0.5) * 3)},${n(2 + r() * 2)} ${n((r() - 0.5) * 4)},${n(4 + r() * 3)}"/>`;
   }
-  const arm = `<g clip-path="url(#cSleeveL)">${a}</g><g fill="none" stroke="#2A4674" stroke-width="0.9" stroke-linecap="round" opacity="0.9">${threads}</g>`;
+  const sleeve = `<g clip-path="url(#cSleeveL)">${a}</g><g fill="none" stroke="#2A4674" stroke-width="0.9" stroke-linecap="round" opacity="0.9">${threads}</g>`;
 
-  // glove: grime on the fingertips and thumb tip, a couple of small stains, scuffed knuckles, leather grain
+  // glove: grime on the knuckles and finger tops, thumb tip, a couple of stains, leather grain
   let g = '';
-  FINGERS.forEach(([cx, w, top, pip, dip, tip]) => {
-    g += `<path d="${blobPath(cx + (r() - 0.5) * 4, tip - 4, w * 0.46, 6 + r() * 2, r, 9, 0.35)}" fill="#3F2C18" opacity="${n(0.22 + r() * 0.12)}"/>`;
+  FINGERS.forEach(([bx, w, by, top, tilt]) => {
+    g += `<g transform="rotate(${tilt} ${bx} ${by})"><path d="${blobPath(bx + (r() - 0.5) * 3, top + 2.5, w * 0.48, 3.5 + r() * 1.5, r, 9, 0.35)}" fill="#3F2C18" opacity="${n(0.2 + r() * 0.1)}"/></g>`;
   });
-  g += `<path d="${blobPath(-64, PR + 3, 8, 7, r, 8, 0.35)}" fill="#3F2C18" opacity="0.26"/>`;
-  for (let i = 0; i < 2; i++) {
-    const fg = FINGERS[Math.floor(r() * 4)];
-    g += `<path d="${blobPath(fg[0] + (r() - 0.5) * 8, lerp(fg[3] + 6, fg[4] - 2, r()), 3 + r() * 3, 2 + r() * 2, r, 8, 0.6, r() - 0.5)}" fill="#4E3923" opacity="${n(0.2 + r() * 0.1)}"/>`;
-  }
-  g += `<path d="${blobPath(lerp(-30, 26, r()), -44, 8 + r() * 5, 2.5, r, 8, 0.5)}" fill="#4E3923" opacity="0.14"/>`;
-  FINGERS.forEach(([cx, w, top]) => {
-    g += `<path d="${blobPath(cx - 1 + (r() - 0.5) * 3, top + 5, w * 0.26, 2.2, r, 7, 0.5)}" fill="#FBEFD3" opacity="${n(0.3 + r() * 0.15)}"/>`;
-  });
-  for (let i = 0; i < 46; i++) g += `<circle cx="${n(lerp(-70, 58, r()))}" cy="${n(lerp(-52, PR + 14, r()))}" r="${n(0.35 + r() * 0.8)}" fill="${r() < 0.75 ? '#4A3218' : '#F6E6C6'}" opacity="${n(0.25 + r() * 0.35)}"/>`;
-  const fist = `<g clip-path="url(#cFistL)">${g}</g>`;
-  return { arm, fist };
+  g += `<path d="${blobPath(-62, 10.5, 5.5, 7, r, 8, 0.35)}" fill="#3F2C18" opacity="0.26"/>`;
+  for (let i = 0; i < 3; i++) g += `<path d="${blobPath(lerp(-28, 28, r()), lerp(-4, 28, r()), 3 + r() * 4, 2 + r() * 2.5, r, 8, 0.6, r() - 0.5)}" fill="#4E3923" opacity="${n(0.16 + r() * 0.12)}"/>`;
+  [[-25, -10], [-7, -13], [11, -13], [26, -10]].forEach(([x, y]) => { g += `<path d="${blobPath(x + (r() - 0.5) * 3, y + 1, 4.5, 2, r, 7, 0.5)}" fill="#FBEFD3" opacity="${n(0.25 + r() * 0.15)}"/>`; });
+  for (let i = 0; i < 46; i++) g += `<circle cx="${n(lerp(-68, 38, r()))}" cy="${n(lerp(-36, 44, r()))}" r="${n(0.35 + r() * 0.8)}" fill="${r() < 0.75 ? '#4A3218' : '#F6E6C6'}" opacity="${n(0.25 + r() * 0.35)}"/>`;
+  const glove = `<g clip-path="url(#cGloveL)">${g}</g>`;
+  return { sleeve, glove };
 }
 const DIRT_R = handDirt(311), DIRT_L = handDirt(577);
 
 // ================================================================ PIPE + COUPLING
 {
-  // forearms reach up behind the pipe
-  add(`<g clip-path="url(#cAboveBand)">` +
-    `<g transform="translate(${n(CX + HAND.hx)},${PIPE.y}) scale(${HAND.hs})">${HANDPARTS.arm}${DIRT_R.arm}</g>` +
-    `<g transform="translate(${n(CX - HAND.hx)},${PIPE.y}) scale(${-HAND.hs},${HAND.hs})">${HANDPARTS.arm}${DIRT_L.arm}</g></g>`);
   const y0 = PIPE.y - PIPE.r, h = PIPE.r * 2;
   add(`<ellipse cx="${CX}" cy="${PIPE.y + 40}" rx="560" ry="16" fill="#000" opacity="0.35" filter="url(#b8)"/>`);
   defs.push(`<linearGradient id="gPipe" gradientUnits="userSpaceOnUse" x1="0" y1="${y0}" x2="0" y2="${y0 + h}"><stop offset="0" stop-color="#E9F0F7"/><stop offset="0.14" stop-color="#FFFFFF"/><stop offset="0.34" stop-color="#D3DCE6"/><stop offset="0.62" stop-color="#9DAABB"/><stop offset="0.86" stop-color="#6D7A8F"/><stop offset="1" stop-color="#4D596C"/></linearGradient>`);
@@ -785,14 +776,15 @@ const DIRT_R = handDirt(311), DIRT_L = handDirt(577);
 }
 
 
-// fists gripping the pipe on both sides of the coupling
+// hands gripping the pipe on both sides of the coupling: sleeve, glove and thumb as one limb in front of the pipe
 {
   const { hx, hs } = HAND;
+  const limb = (d) => `${HANDPARTS.glove}${d.glove}${HANDPARTS.sleeve}${d.sleeve}`;
   add(`<g clip-path="url(#cAboveBand)">` +
-    `<ellipse cx="${n(CX + hx + 6)}" cy="${PIPE.y + 10}" rx="${n(58 * hs)}" ry="${n(34 * hs)}" fill="#0A1633" opacity="0.32" filter="url(#b8)"/>` +
-    `<ellipse cx="${n(CX - hx - 6)}" cy="${PIPE.y + 10}" rx="${n(58 * hs)}" ry="${n(34 * hs)}" fill="#0A1633" opacity="0.32" filter="url(#b8)"/>` +
-    `<g transform="translate(${n(CX + hx)},${PIPE.y}) scale(${hs})">${HANDPARTS.fist}${DIRT_R.fist}</g>` +
-    `<g transform="translate(${n(CX - hx)},${PIPE.y}) scale(${-hs},${hs})">${HANDPARTS.fist}${DIRT_L.fist}</g>` +
+    `<ellipse cx="${n(CX + hx + 14)}" cy="${PIPE.y + 16}" rx="${n(44 * hs)}" ry="${n(36 * hs)}" fill="#0A1633" opacity="0.32" filter="url(#b8)"/>` +
+    `<ellipse cx="${n(CX - hx - 14)}" cy="${PIPE.y + 16}" rx="${n(44 * hs)}" ry="${n(36 * hs)}" fill="#0A1633" opacity="0.32" filter="url(#b8)"/>` +
+    `<g transform="translate(${n(CX + hx)},${PIPE.y}) scale(${hs})">${limb(DIRT_R)}</g>` +
+    `<g transform="translate(${n(CX - hx)},${PIPE.y}) scale(${-hs},${hs})">${limb(DIRT_L)}</g>` +
     `</g>`);
 }
 
