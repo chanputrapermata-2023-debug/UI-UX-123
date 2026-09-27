@@ -5,11 +5,23 @@ Sub-tema: **Peran Indonesia Eximbank sebagai *Policy Bank* dalam Mendorong Ekspo
 
 | File | Keterangan |
 |---|---|
-| `output/poster-17-tahun-eximbank-A3-300dpi.jpg` | Siap unggah/cetak. A3 potret, 3508 × 4961 px (300 dpi), ±2,3 MB (batas lomba 5 MB) |
-| `output/poster-17-tahun-eximbank.png` | PNG 2480 × 3507 px, ±2,2 MB |
-| `output/poster-17-tahun-eximbank-A3.pdf` | PDF vektor ukuran A3 untuk cetak |
+| `output/poster-17-tahun-eximbank-A4.jpg` | **Versi akhir untuk dikirim.** A4 potret, 2480 × 3508 px (300 dpi), ±2,6 MB |
+| `output/poster-17-tahun-eximbank-A4.png` | Alternatif PNG, A4 2480 × 3508 px (300 dpi), ±3,0 MB |
 | `index.html` | Sumber desain (HTML + ilustrasi SVG buatan tangan), bisa diedit |
-| `render.mjs` | Skrip ekspor PNG/JPG/PDF (Playwright + Chromium) |
+| `render.mjs`, `finalize.py` | Skrip ekspor: Playwright (Chromium) lalu Pillow (ukuran A4 persis, metadata 300 dpi, cek < 5 MB) |
+
+### Kesesuaian dengan ketentuan lomba
+
+| Ketentuan | Status |
+|---|---|
+| Tema besar *17 Tahun Indonesia Eximbank: Berkarya Bermakna* | Tertulis persis di baris atas judul; logo 17 tahun dan kata *berkarya/bermakna* dipakai di bagian dampak dan penutup |
+| Sub-tema (pilih satu) | **Sub-tema 1**, tertulis lengkap di bagian atas poster |
+| Logo Indonesia Eximbank & logo 17 Tahun | Keduanya ada di bagian atas |
+| Format JPG atau PNG | Tersedia keduanya |
+| Ukuran A4 | 2480 × 3508 px = 210 × 297 mm pada 300 dpi |
+| Maksimal 5 MB per karya | JPG ±2,6 MB, PNG ±3,0 MB |
+| Bahasa Indonesia yang baik dan benar | Mengikuti EYD: istilah asing dimiringkan, koma serial sebelum "dan", tanpa singkatan "&" |
+| Sumber data kredibel | Dicantumkan di bagian bawah poster |
 
 ## Konsep
 
@@ -77,7 +89,7 @@ dengan keputusan desain dari peserta.
 cd poster-17-tahun
 npm install            # memasang Playwright (browser Chromium sudah tersedia di environment)
 npm run preview        # output/preview.png, 1200 × 1697 px, untuk cek cepat
-npm run render         # JPG 300 dpi, PNG, dan PDF A3
+npm run render         # JPG & PNG A4 300 dpi (butuh Python + Pillow)
 ```
 
 Teks bisa diubah langsung di `index.html`. Ilustrasi Pinisi ada di elemen `<g id="ship">`.
