@@ -7,6 +7,7 @@ Sub-tema: **Peran Indonesia Eximbank sebagai *Policy Bank* dalam Mendorong Ekspo
 |---|---|
 | `output/poster-17-tahun-eximbank-A4.jpg` | **Versi akhir untuk dikirim.** A4 potret, 2480 × 3508 px (300 dpi), ±2,6 MB |
 | `output/poster-17-tahun-eximbank-A4.png` | Alternatif PNG, A4 2480 × 3508 px (300 dpi), ±3,0 MB |
+| `output/poster-17-tahun-eximbank-A4-ringan.jpg` | Cadangan < 1 MB (A4 2480 × 3508 px, 300 dpi, JPEG baseline standar) untuk formulir yang batas unggahnya lebih kecil. Kualitas visual setara |
 | `output/instagram-4x5.jpg` | Versi Instagram 1080 × 1350 px (4:5): poster utuh di tengah, latar diperlebar. Caption ada di `caption-instagram.md` |
 | `index.html` | Sumber desain (HTML + ilustrasi SVG buatan tangan), bisa diedit. Tambahkan `?ig` di URL untuk mode Instagram |
 | `render.mjs`, `finalize.py` | Skrip ekspor: Playwright (Chromium) lalu Pillow (ukuran A4 persis, metadata 300 dpi, cek < 5 MB) |

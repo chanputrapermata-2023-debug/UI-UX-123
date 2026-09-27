@@ -17,9 +17,13 @@ jpg = os.path.join(OUT, "poster-17-tahun-eximbank-A4.jpg")
 png = os.path.join(OUT, "poster-17-tahun-eximbank-A4.png")
 im.save(jpg, "JPEG", quality=95, subsampling=0, optimize=True, dpi=(300, 300))
 im.save(png, "PNG", optimize=True, dpi=(300, 300))
+# cadangan super-kompatibel untuk formulir yang batas unggahnya lebih kecil (mis. Google Form 1 MB):
+# JPEG baseline 4:2:0, tetap A4 300 dpi, secara visual setara dengan versi utama
+light = os.path.join(OUT, "poster-17-tahun-eximbank-A4-ringan.jpg")
+im.save(light, "JPEG", quality=80, subsampling=2, optimize=True, dpi=(300, 300))
 os.remove(raw)
 
-for f in (jpg, png):
+for f in (jpg, png, light):
     size = os.path.getsize(f)
     print(f"{os.path.basename(f)}: {Image.open(f).size} px, {size/1e6:.2f} MB", "OK" if size < LIMIT else "MELEBIHI 5 MB!")
     assert size < LIMIT
