@@ -1,5 +1,5 @@
 // Halaman konsep / filosofi desain (1920 x 1080) untuk presentasi ke juri.
-import { C } from './common.mjs';
+import { C, INKS, DEFAULT_INKS } from './common.mjs';
 
 export const PW = 1920;
 export const PH = 1080;
@@ -16,6 +16,12 @@ const CHECKS = [
   'Bebas SARA & ujaran kebencian',
 ];
 
+const inkChip = (k) => {
+  const { name, color } = INKS[k];
+  const style = k === 'white' ? 'background:#fff;box-shadow:inset 0 0 0 1.5px #B8C4CE' : `background:${color}`;
+  return `<span><i style="${style}"></i>${name}${k === 'white' ? '' : ` ${color}`}</span>`;
+};
+
 /** @param {object} d desain (lihat `karya1` di src/karya1.mjs) */
 export function conceptSVG(d) {
   const artW = 690;
@@ -24,6 +30,7 @@ export function conceptSVG(d) {
     ([t, d], i) => `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><div><b>${t}</b><p>${d}</p></div></li>`,
   ).join('');
   const checks = CHECKS.map((c) => `<li>${c}</li>`).join('');
+  const inks = d.inks ?? DEFAULT_INKS;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PW} ${PH}">
   <rect width="${PW}" height="${PH}" fill="#FFFFFF"/>
   <rect width="820" height="${PH}" fill="${C.blue}"/>
@@ -34,7 +41,7 @@ export function conceptSVG(d) {
       <style>
         .cp{font-family:'Barlow',sans-serif;color:#23384D;}
         .cp .k{font-family:'Barlow Condensed';font-weight:700;font-size:22px;letter-spacing:5px;color:${C.blue};margin:0;}
-        .cp h1{font-family:'${d.display.family}';font-style:${d.display.style};font-weight:${d.display.weight};font-size:${d.display.conceptSize ?? 84}px;line-height:1;margin:6px 0 18px;color:${C.navy};}
+        .cp h1{font-family:'${d.display.family}';font-style:${d.display.style};font-weight:${d.display.weight};font-size:${d.display.conceptSize ?? 84}px;line-height:1;margin:6px 0 18px;color:${C.navy};${d.display.upper ? 'text-transform:uppercase;' : ''}}
         .cp .lead{font-size:22px;line-height:1.45;font-weight:500;margin:0 0 26px;max-width:880px;}
         .cp ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:22px 34px;}
         .cp li{display:flex;gap:14px;align-items:flex-start;}
@@ -55,10 +62,8 @@ export function conceptSVG(d) {
       <ol>${list}</ol>
       <div class="spec">
         <span><i style="background:${C.blue}"></i>Kaos Biru Habitat #0099CC</span>
-        <span><i style="background:#fff;box-shadow:inset 0 0 0 1.5px #B8C4CE"></i>Putih</span>
-        <span><i style="background:${C.red}"></i>Merah #DA291C</span>
-        <span><i style="background:${C.navy}"></i>Biru Tua #0C2D5B</span>
-        <span>Sablon 3 warna · Area cetak 30 × 40 cm</span>
+        ${inks.map(inkChip).join('')}
+        <span>Sablon ${inks.length} warna · Area cetak 30 × 40 cm</span>
       </div>
       <div class="chk"><h2>KETENTUAN KARYA</h2><ul>${checks}</ul></div>
     </div>

@@ -1,7 +1,7 @@
 // Mockup depan & belakang di atas siluet kaos hasil trace template panitia (1920 x 1080).
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, C, LOGO, logo } from './common.mjs';
+import { ROOT, C, LOGO, logo, INKS, DEFAULT_INKS } from './common.mjs';
 
 const SHIRT = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/shirt-paths.json'), 'utf8'));
 
@@ -15,7 +15,10 @@ const flag = (x, y, rot) => `<g transform="translate(${x},${y}) rotate(${rot})">
   <rect x="-17" y="-11" width="34" height="11" fill="${C.red}"/><rect x="-17" y="0" width="34" height="11" fill="${C.white}"/></g>`;
 
 const sleeveText = (x, y, rot, text, font) =>
-  `<text transform="translate(${x},${y}) rotate(${rot})" text-anchor="middle" font-family="${font.family}" font-weight="${font.weight}" font-size="27" letter-spacing="1.5" fill="${C.white}">${text}</text>`;
+  `<text transform="translate(${x},${y}) rotate(${rot})" text-anchor="middle" font-family="${font.family}" font-weight="${font.weight}" font-size="${font.size ?? 27}" letter-spacing="1.5" fill="${C.white}">${text}</text>`;
+
+// Posisi (pusat lingkaran) contoh warna, tergantung jumlah tinta: kaos + 2 atau 3 tinta.
+const SWATCH_X = { 2: [567, 952, 1179], 3: [394, 794, 1034, 1324] };
 
 function swatch(x, y, fill, name, spec, ring = false) {
   return `<g>
@@ -32,6 +35,8 @@ export function mockupSVG(d) {
   const artW = 236;
   const artX = 1311 - artW / 2;
   const artY = 262;
+  const inks = d.inks ?? DEFAULT_INKS;
+  const xs = SWATCH_X[inks.length];
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${MW} ${MH}">
   <rect width="${MW}" height="${MH}" fill="#FFFFFF"/>
 
@@ -66,11 +71,9 @@ export function mockupSVG(d) {
 
   <!-- warna -->
   <g>
-    ${swatch(394, 960, C.blue, 'Kaos: Biru Habitat', 'C86 M0 Y9 K0 · R0 G153 B204 · #0099CC')}
-    ${swatch(794, 960, C.white, 'Tinta Putih', '#FFFFFF', true)}
-    ${swatch(1034, 960, C.red, 'Tinta Merah', 'Pantone 485 C · #DA291C')}
-    ${swatch(1324, 960, C.navy, 'Tinta Biru Tua', 'Pantone 2757 C · #0C2D5B')}
+    ${swatch(xs[0], 960, C.blue, 'Kaos: Biru Habitat', 'C86 M0 Y9 K0 · R0 G153 B204 · #0099CC')}
+    ${inks.map((k, i) => swatch(xs[i + 1], 960, INKS[k].color, `Tinta ${INKS[k].name}`, INKS[k].spec, k === 'white')).join('')}
   </g>
-  <text x="${MW / 2}" y="1040" text-anchor="middle" font-family="Barlow" font-weight="600" font-size="16" fill="#5B6B7A">Sablon 3 warna di atas kaos Biru Habitat · Area cetak belakang 30 × 40 cm · Tulisan VOLUNTEER melingkar di lengan kiri</text>
+  <text x="${MW / 2}" y="1040" text-anchor="middle" font-family="Barlow" font-weight="600" font-size="16" fill="#5B6B7A">Sablon ${inks.length} warna di atas kaos Biru Habitat · Area cetak belakang 30 × 40 cm · Tulisan VOLUNTEER melingkar di lengan kiri</text>
 </svg>`;
 }

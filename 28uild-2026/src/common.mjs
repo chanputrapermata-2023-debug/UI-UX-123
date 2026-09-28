@@ -14,6 +14,14 @@ export const C = {
   trim: '#007CAB', // rib kerah / manset di mockup
 };
 
+// Tinta sablon yang bisa dipakai tiap karya (urutan = urutan tampil di mockup & halaman konsep).
+export const INKS = {
+  white: { name: 'Putih', color: '#FFFFFF', spec: '#FFFFFF' },
+  red: { name: 'Merah', color: '#DA291C', spec: 'Pantone 485 C · #DA291C' },
+  navy: { name: 'Biru Tua', color: '#0C2D5B', spec: 'Pantone 2757 C · #0C2D5B' },
+};
+export const DEFAULT_INKS = ['white', 'red', 'navy'];
+
 const b64 = (f) => fs.readFileSync(path.join(ROOT, f)).toString('base64');
 
 const img = (file, w, h) => ({ href: `data:image/png;base64,${b64(file)}`, w, h });
@@ -46,6 +54,8 @@ const FONTS = [
   ['Big Shoulders Display', 700, 'normal', 'BigShouldersDisplay-700.ttf'],
   ['Big Shoulders Display', 800, 'normal', 'BigShouldersDisplay-800.ttf'],
   ['Big Shoulders Display', 900, 'normal', 'BigShouldersDisplay-900.ttf'],
+  ['Saira Stencil One', 400, 'normal', 'SairaStencilOne-400.ttf'],
+  ['Space Mono', 700, 'normal', 'SpaceMono-700.ttf'],
 ];
 
 export const fontCSS = FONTS.map(

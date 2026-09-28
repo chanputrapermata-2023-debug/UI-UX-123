@@ -12,6 +12,7 @@ import { mockupSVG, MW, MH } from './src/mockup.mjs';
 import { conceptSVG, PW, PH } from './src/concept.mjs';
 import { karya1 } from './src/karya1.mjs';
 import { karya2 } from './src/karya2.mjs';
+import { karya3 } from './src/karya3.mjs';
 
 const require = createRequire(import.meta.url);
 let playwright;
@@ -24,7 +25,7 @@ try {
 const args = process.argv.slice(2);
 const preview = args.includes('preview');
 const only = args.find((a) => a !== 'preview');
-const DESIGNS = [karya1, karya2].filter((d) => !only || d.slug.includes(only));
+const DESIGNS = [karya1, karya2, karya3].filter((d) => !only || d.slug.includes(only));
 
 const MM_PER_IN = 25.4;
 const DPI = 300;

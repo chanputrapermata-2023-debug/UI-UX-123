@@ -2,7 +2,7 @@
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fontCSS } from '../src/common.mjs';
-const { backSVG } = await import(process.env.KARYA === '1' ? '../src/karya1.mjs' : '../src/karya2.mjs');
+const { backSVG } = await import(`../src/karya${process.env.KARYA ?? '3'}.mjs`);
 const require = createRequire(import.meta.url);
 const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 const [x, y, w, h, dpi, out] = process.argv.slice(2);

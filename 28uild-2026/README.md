@@ -7,6 +7,7 @@ dengan tema Semangat Sumpah Pemuda. Setiap peserta boleh mengirim 3 karya.
 |---|---|---|---|
 | 1 | Rumah Persatuan | [DESKRIPSI-KARYA-1.md](DESKRIPSI-KARYA-1.md) | `export/karya-1-rumah-persatuan/` |
 | 2 | Seribu Atap, Satu Tanah Air | [DESKRIPSI-KARYA-2.md](DESKRIPSI-KARYA-2.md) | `export/karya-2-seribu-atap/` |
+| 3 | Cetak Biru Indonesia | [DESKRIPSI-KARYA-3.md](DESKRIPSI-KARYA-3.md) | `export/karya-3-cetak-biru/` |
 
 ## Isi folder tiap karya
 
@@ -30,12 +31,12 @@ node build.mjs preview      # pratinjau cepat ke export/preview/
 ```
 
 - `src/common.mjs`: palet, font, logo, dan elemen wajib punggung (logo Let's Open The Door, area sponsor)
-- `src/karya1.mjs`, `src/karya2.mjs`: artwork punggung + teks konsep tiap karya (koordinat dalam mm pada kanvas 300 × 400)
+- `src/karya1.mjs`, `src/karya2.mjs`, `src/karya3.mjs`: artwork punggung + teks konsep tiap karya (koordinat dalam mm pada kanvas 300 × 400)
 - `src/mockup.mjs`: papan mockup; siluet kaos hasil trace template panitia (`src/shirt-paths.json`)
 - `src/concept.mjs`: halaman konsep
 - `tools/trace_template.py`: men-trace `assets/template-mockup-panitia.jpg` menjadi path vektor (butuh `opencv-python-headless`, `numpy`, `pillow`)
-- `tools/zoom.mjs`: render potongan artwork untuk dicek dari dekat
+- `tools/zoom.mjs`: render potongan artwork untuk dicek dari dekat (`KARYA=1 node tools/zoom.mjs x y w h dpi out.png`)
 
-Font: Barlow, Barlow Condensed, Special Elite, Fraunces, dan Big Shoulders Display
-(Google Fonts, SIL Open Font License). Logo di `assets/` adalah milik penyelenggara dan
+Font: Barlow, Barlow Condensed, Special Elite, Fraunces, Big Shoulders Display, Saira Stencil One,
+dan Space Mono (Google Fonts, SIL Open Font License). Logo di `assets/` adalah milik penyelenggara dan
 hanya dipakai sesuai ketentuan lomba.
