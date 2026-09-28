@@ -24,7 +24,9 @@ kunci terpasang kokoh, kedua sisi lengkung bisa berdiri tegak dan saling menopan
 
 Lengkung digambarkan sebagai **gerbang dari malam menuju fajar**. Di luar gerbang
 suasananya malam, melambangkan sengketa dan ketidakpastian. Di dalam gerbang, fajar
-kepercayaan terbit, dan jalan terang mengarah ke sana.
+kepercayaan terbit, dan jalan terang mengarah ke sana. Di jalan itu, seorang konsumen
+dan seorang pelaku usaha jasa keuangan berjalan bergandengan tangan: sengketa sudah
+selesai, dan keduanya melangkah bersama.
 
 - **Batu kunci emas = LAPS SJK.** LAPS SJK berdiri di tengah dan bertumpu pada
   profesionalisme. Tiga garis tekan di atasnya menandai batu yang baru saja
@@ -32,6 +34,7 @@ kepercayaan terbit, dan jalan terang mengarah ke sana.
 - **Batu lengkung = prinsip LAPS SJK.** Prinsip aksesibilitas, independensi, keadilan,
   serta efisiensi dan efektivitas dipahatkan pada batu-batu yang menyusun lengkung.
 - **Dua tiang = Konsumen dan PUJK.** Keduanya ditopang secara setara oleh lengkung yang sama.
+  Nama dan simbolnya dipahat pada batu, sehingga hanya batu kunci yang berwarna emas.
 - **Fajar = kepercayaan.** Kepercayaan terbit kembali ketika sengketa diselesaikan
   secara adil, sesuai frasa **"Menguatkan Kepercayaan"**. Warna emas pada kata
   "Profesionalisme" dan "Kepercayaan" di judul sengaja disamakan dengan warna batu
@@ -52,7 +55,24 @@ persik) hanya dipakai di dalam gerbang.
 huruf rancangan desainer Indonesia. Keduanya berlisensi SIL Open Font License.
 Seluruh ilustrasi digambar sendiri dengan SVG, tanpa foto atau aset stok.
 
-## Catatan revisi (v2)
+## Catatan revisi
+
+### v3
+
+- Ditambah dua sosok berlatar cahaya (konsumen dan PUJK) yang berjalan bergandengan
+  menuju fajar. Proporsi tubuhnya dewasa, dan pakaiannya membedakan keduanya.
+- Tiang dibuat dengan gaya pahat, menggantikan ikon navy yang terlihat seperti ikon aplikasi.
+- Cahaya fajar mengenai sisi dalam batu dan tiang, dan langit di dalam gerbang dibuat
+  lebih terang sehingga gerbang benar-benar "menyala".
+- Bayangan bangunan tidak lagi jatuh ke langit fajar, karena secara logika cahaya itu mustahil.
+- Awan digambar sebagai guratan stratus yang meruncing, dan jalan dibuat lurus sempurna
+  menuju titik hilang.
+- Judul disamakan persis dengan teks tema resmi (tanpa titik di akhir).
+- Garis emas membingkai panel alur di atas dan bawah.
+- **Perbaikan PDF:** vignette dipindah dari gradien CSS ke SVG. Sebelumnya, di PDF tepi
+  poster tampil keunguan.
+
+### v2
 
 - Gerbang malam → fajar menggantikan latar seragam, sehingga metafora bercerita
   tanpa perlu legenda.

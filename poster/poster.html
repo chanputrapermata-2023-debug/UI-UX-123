@@ -53,11 +53,6 @@
     background: linear-gradient(180deg, #051126 0%, #091B35 36%, #0B1F36 56%, #0B1F36 100%);
   }
   .bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-  /* darkens the night toward the edges so the eye settles on the gate */
-  .vignette {
-    position: absolute; left: 0; top: 0; width: 100%; height: 1044px; pointer-events: none;
-    background: radial-gradient(ellipse 70% 62% at 50% 54%, rgba(2, 8, 20, 0) 55%, rgba(2, 8, 20, .55) 100%);
-  }
 
   /* ---------- header ---------- */
   .head { position: relative; padding: 54px 72px 0; text-align: center; }
@@ -66,7 +61,7 @@
     font-size: 12.5px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
     color: var(--gold-soft); word-spacing: 0;
   }
-  .eyebrow::before, .eyebrow::after { content: ""; width: 54px; height: 1px; background: rgba(242, 178, 51, .6); }
+  .eyebrow::before, .eyebrow::after { content: ""; width: 54px; height: 1px; background: #9A7632; }
   h1 {
     margin: 20px 0 0;
     font-family: "Fraunces", serif; font-weight: 600;
@@ -99,6 +94,7 @@
     color: var(--ink);
     text-align: center;
   }
+  .steps { border-top: 3px solid var(--gold); }
   .kicker { font-size: 12.5px; font-weight: 800; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold-deep); word-spacing: 0; }
   .steps h2 { margin: 8px 0 0; font-family: "Fraunces", serif; font-weight: 600; font-size: 38px; line-height: 1.1; letter-spacing: -.5px; word-spacing: 0; color: var(--navy-900); }
   .steps h2 em { font-style: italic; color: var(--gold-deep); }
@@ -165,12 +161,19 @@
         <stop offset=".34" stop-color="#fff" stop-opacity="0"/>
       </linearGradient>
       <mask id="kawungMask"><rect width="1123" height="1587" fill="url(#kawungFade)"/></mask>
+      <!-- vignette: darkens the night toward the edges so the eye settles on the gate
+           (an SVG gradient, because CSS rgba gradients do not survive the PDF export) -->
+      <radialGradient id="vignette" cx="561.5" cy="564" r="786" gradientUnits="userSpaceOnUse"
+                      gradientTransform="translate(0 564) scale(1 .823) translate(0 -564)">
+        <stop offset=".55" stop-color="#020814" stop-opacity="0"/>
+        <stop offset="1" stop-color="#020814" stop-opacity=".55"/>
+      </radialGradient>
     </defs>
     <rect width="1123" height="1587" fill="url(#kawung)" opacity=".08" mask="url(#kawungMask)"/>
     <g id="stars" fill="#F7F0E3"></g>
+    <rect width="1123" height="1044" fill="url(#vignette)"/>
   </svg>
 
-  <div class="vignette"></div>
 
   <header class="head">
     <div class="eyebrow">Subtema · Lembaga Alternatif Penyelesaian Sengketa Sektor Jasa Keuangan</div>
@@ -274,6 +277,17 @@
         <rect x="${x0}" y="${cy + 16}" width="${r2 - r1}" height="${ground - cy - 36}"/>
         <rect x="${x0 - 16}" y="${ground - 20}" width="${r2 - r1 + 32}" height="20"/>`).join("")}
     </clipPath>
+    <!-- everything except the opening: shadows may fall on the night, never on the distant dawn sky -->
+    <clipPath id="notOpening">
+      <path clip-rule="evenodd" d="M-200,-200 H${W + 200} V${H + 200} H-200 Z
+        M${cx - r1},${ground} V${cy} A${r1},${r1} 0 0 1 ${cx + r1},${cy} V${ground} Z"/>
+    </clipPath>
+    <filter id="castShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dy="10" result="o"/>
+      <feFlood flood-color="#020813" flood-opacity=".6"/>
+      <feComposite in2="o" operator="in"/>
+    </filter>
     <clipPath id="opening">
       <path d="M${cx - r1},${ground} V${cy} A${r1},${r1} 0 0 1 ${cx + r1},${cy} V${ground} Z"/>
     </clipPath>
@@ -341,9 +355,6 @@
       <stop offset=".5" stop-color="#F2B233"/>
       <stop offset="1" stop-color="#CF8A10"/>
     </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#020813" flood-opacity=".6"/>
-    </filter>
     <filter id="blur16" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"/></filter>
     <filter id="soft" x="-10%" y="-100%" width="120%" height="300%"><feGaussianBlur stdDeviation="1.6"/></filter>
     <filter id="softer" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4"/></filter>
@@ -382,11 +393,19 @@
   el("circle", { cx, cy: horizon, r: 190, fill: "url(#sunGlow)" }, inside);
   el("circle", { cx, cy: horizon, r: 62, fill: "url(#sun)" }, inside);
 
-  // soft cloud strokes
-  const clouds = el("g", { fill: "#FFFFFF", filter: "url(#soft)" }, inside);
-  [[cx - 205, 346, 150, 9, .16], [cx - 160, 362, 88, 7, .12], [cx + 70, 318, 176, 9, .15],
-   [cx + 128, 334, 96, 7, .11], [cx - 120, 452, 120, 6, .16], [cx + 60, 474, 150, 6, .18]]
-    .forEach(([x, y, w, h, o]) => el("rect", { x, y, width: w, height: h, rx: h / 2, opacity: o }, clouds));
+  // thin stratus streaks: tapered at both ends, the lower ones lit warm from below
+  const clouds = el("g", { filter: "url(#soft)" }, inside);
+  const streak = (x, y, w, h, fill, o) =>
+    el("path", { d: `M${x},${y} C${x + w * .3},${y - h} ${x + w * .7},${y - h * 1.1} ${x + w},${y}
+                     C${x + w * .7},${y + h * .45} ${x + w * .3},${y + h * .4} ${x},${y} Z`, fill, opacity: o }, clouds);
+  streak(cx - 228, 352, 178, 10, "#E3E6F4", .22);
+  streak(cx - 170, 364, 104, 6, "#E3E6F4", .16);
+  streak(cx + 58, 326, 196, 11, "#E3E6F4", .2);
+  streak(cx + 132, 339, 104, 6, "#E3E6F4", .15);
+  streak(cx - 150, 458, 150, 8, "#FFD6B8", .32);
+  streak(cx + 40, 478, 176, 8, "#FFD6B8", .34);
+  streak(cx - 214, 492, 96, 5, "#FFE2C4", .3);
+  streak(cx + 150, 500, 82, 5, "#FFE2C4", .3);
 
   // far skyline: the financial district, softened by distance
   const city = (x0, x1, fill, maxH, minH) => {
@@ -455,7 +474,8 @@
   person("man", cx + 28 * 0.74, feet + 0.6, 0.74, true);   // PUJK, right
 
   /* ---------- the arch ---------- */
-  const arch = el("g", { filter: "url(#shadow)" }, svg);
+  const shadowLayer = el("g", { "clip-path": "url(#notOpening)" }, svg);
+  const arch = el("g", {}, svg);
   const stone = el("g", { filter: "url(#grain)" }, arch);
 
   // carved lettering: light catch below, dark cut on top
@@ -538,7 +558,17 @@
   // keystone: halo, body, bevels, lettering
   const kA1 = edges[3] - gap, kA2 = edges[4] + gap, kR1 = r1 - 16, kR2 = r2 + 42;
   el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "#F2B233", opacity: .8, filter: "url(#blur16)" }, svg);
-  el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "url(#keyG)", filter: "url(#shadow)" }, svg);
+  el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "url(#keyG)" }, svg);
+
+  // one cast shadow for the whole structure, kept out of the opening
+  const castG = el("g", { filter: "url(#castShadow)", fill: "#000" }, shadowLayer);
+  el("path", { d: sector(r1, r2, 179.99, 0.01) }, castG);
+  el("path", { d: sector(kR1, kR2, kA1, kA2) }, castG);
+  [cx - r2, cx + r1].forEach(x0 => {
+    el("rect", { x: x0 - 12, y: cy, width: r2 - r1 + 24, height: 16 }, castG);
+    el("rect", { x: x0, y: cy + 16, width: r2 - r1, height: ground - cy - 36 }, castG);
+    el("rect", { x: x0 - 16, y: ground - 20, width: r2 - r1 + 32, height: 20 }, castG);
+  });
   el("path", { d: sector(kR2 - 9, kR2, kA1, kA2), fill: "#FFF3C9", opacity: .75 }, svg);
   el("path", { d: sector(kR1, kR1 + 7, kA1, kA2), fill: "#FFF0BF", opacity: .7 }, svg);
 
