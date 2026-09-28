@@ -53,6 +53,11 @@
     background: linear-gradient(180deg, #051126 0%, #091B35 36%, #0B1F36 56%, #0B1F36 100%);
   }
   .bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  /* darkens the night toward the edges so the eye settles on the gate */
+  .vignette {
+    position: absolute; left: 0; top: 0; width: 100%; height: 1044px; pointer-events: none;
+    background: radial-gradient(ellipse 70% 62% at 50% 54%, rgba(2, 8, 20, 0) 55%, rgba(2, 8, 20, .55) 100%);
+  }
 
   /* ---------- header ---------- */
   .head { position: relative; padding: 54px 72px 0; text-align: center; }
@@ -73,12 +78,12 @@
   .tagline strong { color: var(--cream); font-weight: 700; }
 
   /* ---------- illustration ---------- */
-  .scene { position: relative; margin-top: 4px; height: 672px; }
+  .scene { position: relative; margin-top: 14px; height: 672px; }
   .scene svg { display: block; width: 1123px; height: 672px; word-spacing: 0; overflow: visible; }
 
   .metaphor {
     position: relative;
-    margin: 2px auto 0; max-width: 860px; text-wrap: balance;
+    margin: -4px auto 0; max-width: 860px; text-wrap: balance;
     text-align: center;
     font-family: "Fraunces", serif; font-style: italic; font-weight: 600;
     font-size: 20px; line-height: 1.5; word-spacing: 0;
@@ -115,7 +120,7 @@
   }
   .step.last .node { background: var(--gold); color: var(--navy-900); box-shadow: 0 0 0 7px var(--cream), 0 0 0 9px #E9C57A; }
   .step h4 { margin: 18px 0 8px; font-size: 19px; font-weight: 800; line-height: 1.25; word-spacing: 0; color: var(--navy-900); }
-  .step p { margin: 0 auto; max-width: 226px; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+  .step p { text-wrap: balance; margin: 0 auto; max-width: 226px; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
   .step p b { font-weight: 700; color: var(--navy-900); }
 
   .info {
@@ -165,9 +170,11 @@
     <g id="stars" fill="#F7F0E3"></g>
   </svg>
 
+  <div class="vignette"></div>
+
   <header class="head">
     <div class="eyebrow">Subtema · Lembaga Alternatif Penyelesaian Sengketa Sektor Jasa Keuangan</div>
-    <h1>Meneguhkan <em>Profesionalisme,</em><br>Menguatkan <em>Kepercayaan.</em></h1>
+    <h1>Meneguhkan <em>Profesionalisme,</em><br>Menguatkan <em>Kepercayaan</em></h1>
     <p class="tagline">Sengketa boleh terjadi — <strong>kepercayaan harus tetap berdiri.</strong></p>
   </header>
 
@@ -190,7 +197,7 @@
       <div class="step">
         <div class="node">1</div>
         <h4>Adukan ke PUJK</h4>
-        <p>Sampaikan keluhan dulu ke lembaga jasa keuangan terkait, beserta bukti.</p>
+        <p>Sampaikan keluhan beserta bukti ke lembaga jasa keuangan terkait.</p>
       </div>
       <div class="step">
         <div class="node">2</div>
@@ -242,7 +249,7 @@
   for (let i = 0; i < 90; i++) {
     const x = rnd() * 1123, y = 20 + rnd() * 820;
     if (y < 300 && x > 90 && x < 1030) continue;          // keep the headline calm
-    if (Math.hypot(x - 561.5, y - 750) < 400) continue;   // nothing behind the arch
+    if (Math.hypot(x - 561.5, y - 752) < 480) continue;   // nothing behind or touching the arch
     el("circle", { cx: f(x), cy: f(y), r: f(0.5 + rnd() * 1.2), opacity: f(0.2 + rnd() * 0.5) }, stars);
   }
 
@@ -260,14 +267,21 @@
 
   const defs = el("defs", {}, svg);
   defs.innerHTML = `
+    <clipPath id="masonry">
+      <path d="${sector(r1, r2 + 50, 179.99, 0.01)}"/>
+      ${[cx - r2, cx + r1].map(x0 => `
+        <rect x="${x0 - 12}" y="${cy}" width="${r2 - r1 + 24}" height="16"/>
+        <rect x="${x0}" y="${cy + 16}" width="${r2 - r1}" height="${ground - cy - 36}"/>
+        <rect x="${x0 - 16}" y="${ground - 20}" width="${r2 - r1 + 32}" height="20"/>`).join("")}
+    </clipPath>
     <clipPath id="opening">
       <path d="M${cx - r1},${ground} V${cy} A${r1},${r1} 0 0 1 ${cx + r1},${cy} V${ground} Z"/>
     </clipPath>
     <linearGradient id="dawnSky" gradientUnits="userSpaceOnUse" x1="0" y1="${cy - r1}" x2="0" y2="${horizon}">
-      <stop offset="0"   stop-color="#15375F"/>
-      <stop offset=".34" stop-color="#3D5C8E"/>
-      <stop offset=".6"  stop-color="#8C86B4"/>
-      <stop offset=".82" stop-color="#E9A88A"/>
+      <stop offset="0"   stop-color="#244677"/>
+      <stop offset=".3"  stop-color="#4B679A"/>
+      <stop offset=".58" stop-color="#9A8CBA"/>
+      <stop offset=".8"  stop-color="#EEAA8A"/>
       <stop offset="1"   stop-color="#FFD890"/>
     </linearGradient>
     <radialGradient id="sunGlow" cx="${cx}" cy="${horizon}" r="190" gradientUnits="userSpaceOnUse">
@@ -298,10 +312,21 @@
       <stop offset=".5" stop-color="#F3C672" stop-opacity=".8"/>
       <stop offset="1" stop-color="#F2B233" stop-opacity="0"/>
     </linearGradient>
-    <radialGradient id="spill" cx="${cx}" cy="${ground}" r="330" gradientTransform="translate(0 ${ground}) scale(1 .09) translate(0 -${ground})" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FFD98A" stop-opacity=".5"/>
-      <stop offset="1" stop-color="#FFD98A" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="carpet" gradientUnits="userSpaceOnUse" x1="0" y1="${ground}" x2="0" y2="${H}">
+      <stop offset="0" stop-color="#1D3358" stop-opacity="1"/>
+      <stop offset="1" stop-color="#1D3358" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimV" gradientUnits="userSpaceOnUse" x1="0" y1="${cy + 18}" x2="0" y2="${ground - 22}">
+      <stop offset="0" stop-color="#FFD98A" stop-opacity=".25"/>
+      <stop offset=".62" stop-color="#FFD98A" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#FFD98A" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="edgeShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#020813" stop-opacity=".5"/>
+      <stop offset=".3" stop-color="#020813" stop-opacity="0"/>
+      <stop offset=".7" stop-color="#020813" stop-opacity="0"/>
+      <stop offset="1" stop-color="#020813" stop-opacity=".5"/>
+    </linearGradient>
     <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#F7F0E2"/>
       <stop offset="1" stop-color="#DCCDB0"/>
@@ -321,6 +346,15 @@
     </filter>
     <filter id="blur16" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"/></filter>
     <filter id="soft" x="-10%" y="-100%" width="120%" height="300%"><feGaussianBlur stdDeviation="1.6"/></filter>
+    <filter id="softer" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4"/></filter>
+    <!-- thin warm outline where the dawn catches a silhouette's edge -->
+    <filter id="rim" x="-20%" y="-20%" width="140%" height="140%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1.3" result="d"/>
+      <feFlood flood-color="#FFE3A0" flood-opacity=".75"/>
+      <feComposite in2="d" operator="in" result="edge"/>
+      <feGaussianBlur in="edge" stdDeviation=".6" result="soft"/>
+      <feMerge><feMergeNode in="soft"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
     <!-- fine speckle so the stone reads as stone, not plastic -->
     <filter id="grain" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
@@ -335,9 +369,12 @@
 
   /* ---------- outside the gate: night ---------- */
   el("rect", { x: 0, y: horizon, width: W, height: H - horizon, fill: "url(#outerGround)" }, svg);
+  el("rect", { x: 0, y: horizon, width: W, height: H - horizon, fill: "url(#edgeShade)" }, svg);
   el("rect", { x: 0, y: horizon - 0.75, width: W, height: 1.5, fill: "url(#horizonGlow)" }, svg);
-  el("rect", { x: 0, y: ground - 60, width: W, height: 160, fill: "url(#spill)" }, svg);
-  el("path", { d: `M${cx - 118},${ground} L${cx + 118},${ground} L${cx + 136},${H} L${cx - 136},${H} Z`, fill: "url(#road)" }, svg);
+  el("path", { d: `M${cx - r1},${ground - 8} L${cx + r1},${ground - 8} L${cx + r1 + 34},${H} L${cx - r1 - 34},${H} Z`, fill: "url(#carpet)", filter: "url(#softer)" }, svg);
+  // same slope as inside the gate, so the road runs straight to the vanishing point
+  const roadHalf = y => 118 * (y - horizon) / (ground - horizon);
+  el("path", { d: `M${cx - 118},${ground} L${cx + 118},${ground} L${f(cx + roadHalf(H))},${H} L${f(cx - roadHalf(H))},${H} Z`, fill: "url(#road)" }, svg);
 
   /* ---------- inside the gate: dawn ---------- */
   const inside = el("g", { "clip-path": "url(#opening)" }, svg);
@@ -381,29 +418,79 @@
   [[646, 18, 4.6, .45], [620, 15, 3.6, .75], [596, 10, 2.6, .8], [578, 7, 1.9, .8], [566, 4, 1.3, .8]]
     .forEach(([y, h, w, o]) => el("rect", { x: f(cx - w / 2), y, width: w, height: h, rx: w / 2, opacity: o }, dash));
 
+  /* ---------- two people walking into the dawn, hand in hand ---------- */
+  // Back view in a 100-unit figure: feet at y = 0, crown at y = -100.
+  // Eye level sits on the horizon, as it would for a standing viewer.
+  const FIG = {
+    // konsumen: shoulder-length hair, blouse and A-line skirt
+    woman:
+      "M-7.6,-91 C-8.4,-101.5 8.4,-101.5 7.6,-91 L8.6,-80.5 L-8.6,-80.5 Z" +
+      "M-13.5,-80 C-15.5,-79.5 -16,-77 -16,-74 L-11,-60 L-16,-34 L16,-34 L11,-60 L16,-74 C16,-77 15.5,-79.5 13.5,-80 L4,-82 L-4,-82 Z" +
+      "M-10,-35 L-3.6,-35 L-4.6,-3.2 L-8.6,-3.2 Z M3.6,-35 L10,-35 L8.9,-7.2 L4.9,-7.2 Z" +
+      "M-9.4,-3.6 H-3.6 A1.6,1.6 0 0 1 -2,-2 V0 H-9.4 Z M4.2,-7.6 H9.8 V-4.2 H4.2 Z" +
+      "M-15.8,-75 C-17,-66 -17.6,-58 -17.6,-50 L-13.6,-49.5 C-13.6,-57 -13,-65 -12.4,-72 Z" +
+      "M11.5,-78 L16,-75 L30.5,-48.5 L26.5,-46 Z",
+    // PUJK: suit jacket, trousers, briefcase in the outer hand
+    man:
+      "M-7.3,-92.5 A7.3,7.3 0 1 1 7.3,-92.5 A7.3,7.3 0 1 1 -7.3,-92.5 Z M-3.2,-86.5 H3.2 V-80 H-3.2 Z" +
+      "M-14.5,-80 C-16.5,-79.5 -17,-77 -17,-74 L-15,-43 L15,-43 L17,-74 C17,-77 16.5,-79.5 14.5,-80 L4,-82 L-4,-82 Z" +
+      "M-12.8,-44 L-1,-44 L-2.2,-3.2 L-9.2,-3.2 Z M1,-44 L12.8,-44 L10.8,-7.2 L3.9,-7.2 Z" +
+      "M-10,-3.6 H-3 A1.8,1.8 0 0 1 -1.2,-1.8 V0 H-10 Z M3.4,-7.6 H11 V-4 H3.4 Z" +
+      "M-16.8,-75 C-18.4,-66 -19.4,-55 -19.4,-46 L-15,-45.5 C-15,-54 -14.4,-64 -13,-73 Z" +
+      "M11.5,-78 L16,-75 L30.5,-48.5 L26.5,-46 Z" +
+      "M-24.5,-44 H-11.5 A1.8,1.8 0 0 1 -9.7,-42.2 V-33.8 A1.8,1.8 0 0 1 -11.5,-32 H-24.5 A1.8,1.8 0 0 1 -26.3,-33.8 V-42.2 A1.8,1.8 0 0 1 -24.5,-44 Z" +
+      "M-20.5,-44 V-46.5 H-15.5 V-44 H-16.8 V-45.3 H-19.2 V-44 Z"
+  };
+  const person = (kind, x, footY, scale, flip) => {
+    const g = el("g", { transform: `translate(${f(x)},${f(footY)}) scale(${f((flip ? -1 : 1) * scale)},${f(scale)})` }, inside);
+    // backlit, so the shadow falls toward the viewer
+    el("path", { d: "M-11,0 L11,0 L15,24 L-15,24 Z", fill: "#0B1F36", opacity: .3, filter: "url(#softer)" }, g);
+    // each part is its own path so overlaps union instead of cancelling out
+    const body = el("g", { fill: "#14294A", filter: "url(#rim)" }, g);
+    FIG[kind].split("M").filter(Boolean).forEach(part => el("path", { d: "M" + part }, body));
+    if (kind === "woman") el("circle", { cx: 0, cy: -92.3, r: 7.2 }, body);
+  };
+  const feet = 629;
+  person("woman", cx - 28 * 0.7, feet, 0.7, false);        // konsumen, left
+  person("man", cx + 28 * 0.74, feet + 0.6, 0.74, true);   // PUJK, right
+
   /* ---------- the arch ---------- */
   const arch = el("g", { filter: "url(#shadow)" }, svg);
   const stone = el("g", { filter: "url(#grain)" }, arch);
 
-  // pillars: capital, shaft with an inset panel, plinth
-  const pillar = (x0, label, sub, icon) => {
+  // carved lettering: light catch below, dark cut on top
+  const carved = (attrs, parent, text, dark) => {
+    el("text", { ...attrs, fill: "#FFFFFF", opacity: .75, dy: 1.1 }, parent, text);
+    el("text", { ...attrs, fill: dark || "#3A3020" }, parent, text);
+  };
+
+  // pillars: capital, shaft with an inset panel, plinth, carved medallion and name
+  const pillar = (x0, label, sub, icon, innerX) => {
     const w = r2 - r1, mx = x0 + w / 2;
     el("rect", { x: x0 - 12, y: cy, width: w + 24, height: 16, rx: 3, fill: "#CDBB98" }, stone);
     el("rect", { x: x0, y: cy + 18, width: w, height: ground - cy - 40, rx: 2, fill: "url(#pillarG)" }, stone);
     el("rect", { x: x0 - 16, y: ground - 20, width: w + 32, height: 20, rx: 3, fill: "#C5B28C" }, stone);
     const g = el("g", {}, svg);
+    // dawn light catching the inner face
+    el("rect", { x: innerX < cx ? innerX - 6 : innerX, y: cy + 18, width: 6, height: ground - cy - 40, fill: "url(#rimV)" }, g);
     el("rect", { x: x0 + 8, y: cy + 26, width: w - 16, height: ground - cy - 56, rx: 4, fill: "none", stroke: "#B9A683", "stroke-width": 1.2 }, g);
-    el("circle", { cx: mx, cy: cy + 60, r: 22, fill: "#10294A" }, g);
-    const ic = el("g", { transform: `translate(${mx - 11.5},${cy + 48.5}) scale(.96)`, fill: "none", stroke: "#F2B233", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
-    ic.innerHTML = icon;
-    el("text", { x: mx, y: cy + 112, "text-anchor": "middle", "font-family": "Plus Jakarta Sans", "font-weight": 800, "font-size": 14, "letter-spacing": .6, fill: "#10294A" }, g, label);
-    sub.forEach((s, i) =>
-      el("text", { x: mx, y: cy + 131 + i * 14, "text-anchor": "middle", "font-family": "Plus Jakarta Sans", "font-weight": 600, "font-size": 11.5, fill: "#4A5870" }, g, s));
+    // recessed medallion
+    const my = cy + 58, mr = 23;
+    el("circle", { cx: mx, cy: my, r: mr, fill: "#E3D4B8" }, g);
+    el("path", { d: `M${mx - mr},${my} A${mr},${mr} 0 0 1 ${mx + mr},${my}`, fill: "none", stroke: "#9C8661", "stroke-width": 1.3, opacity: .55 }, g);
+    el("path", { d: `M${mx - mr},${my} A${mr},${mr} 0 0 0 ${mx + mr},${my}`, fill: "none", stroke: "#FFFFFF", "stroke-width": 1.6, opacity: .8 }, g);
+    [["#FFFFFF", .75, 1.1], ["#3A3020", 1, 0]].forEach(([c, o, dy]) => {
+      const ic = el("g", { transform: `translate(${mx - 12},${my - 12 + dy})`, fill: "none", stroke: c, opacity: o, "stroke-width": 2.1, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
+      ic.innerHTML = icon;
+    });
+    const t = { x: mx, "text-anchor": "middle", "font-family": "Plus Jakarta Sans" };
+    carved({ ...t, y: cy + 112, "font-weight": 800, "font-size": 14.5, "letter-spacing": .6 }, g, label);
+    sub.forEach((s, i) => carved({ ...t, y: cy + 131 + i * 14, "font-weight": 700, "font-size": 11.5 }, g, s, "#5E4E33"));
   };
   pillar(cx - r2, "KONSUMEN", ["Pengguna", "Jasa Keuangan"],
-    '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>');
+    '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>', cx - r1);
   pillar(cx + r1, "PUJK", ["Pelaku Usaha", "Jasa Keuangan"],
-    '<path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M4 11h16M12 2l8 5H4z"/>');
+    '<path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M4 11h16M12 2l8 5H4z"/>', cx + r1);
 
   // voussoirs: 3 per side, keystone wider
   const edges = [180, 155.333, 130.667, 106, 74, 49.333, 24.667, 0];
@@ -415,8 +502,12 @@
     el("path", { d: sector(r1, r2, a1, a2), fill: "url(#stoneG)" }, stone);
     el("path", { d: sector(r1 + 4, r2 - 4, a1 - .4, a2 + .4), fill: tints[i], opacity: .55 }, stone);
     el("path", { d: sector(r2 - 6, r2, a1, a2), fill: "#FFFFFF", opacity: .45 }, stone);
-    el("path", { d: sector(r1, r1 + 5, a1, a2), fill: "#8A7654", opacity: .22 }, stone);
+    el("path", { d: sector(r1, r1 + 6, a1, a2), fill: "#FFD98A", opacity: .6 }, stone);
   }
+
+  // dawn light washing over the inner faces of the masonry
+  el("path", { d: `M${cx - r1},${ground} V${cy} A${r1},${r1} 0 0 1 ${cx + r1},${cy} V${ground}`, fill: "none",
+    stroke: "#FFCF73", "stroke-width": 30, opacity: .32, filter: "url(#blur16)", "clip-path": "url(#masonry)" }, svg);
 
   // principles carved into the stones (highlight below, dark cut above)
   const carve = el("g", { "font-family": "Plus Jakarta Sans", "font-weight": 800, "text-anchor": "middle" }, svg);
@@ -449,7 +540,7 @@
   el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "#F2B233", opacity: .8, filter: "url(#blur16)" }, svg);
   el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "url(#keyG)", filter: "url(#shadow)" }, svg);
   el("path", { d: sector(kR2 - 9, kR2, kA1, kA2), fill: "#FFF3C9", opacity: .75 }, svg);
-  el("path", { d: sector(kR1, kR1 + 7, kA1, kA2), fill: "#7E4F05", opacity: .35 }, svg);
+  el("path", { d: sector(kR1, kR1 + 7, kA1, kA2), fill: "#FFF0BF", opacity: .7 }, svg);
 
   // three short strokes: the stone has just been set firmly (meneguhkan)
   const marks = el("g", { stroke: "#FFD98A", "stroke-width": 3.4, "stroke-linecap": "round" }, svg);
