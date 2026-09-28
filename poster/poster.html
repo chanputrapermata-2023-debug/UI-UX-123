@@ -14,19 +14,26 @@
   @font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; src: url("fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
   @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
 
+  /*
+    Palette (kept deliberately small):
+      navy  — professionalism, the "night" of a dispute
+      gold  — the keystone and the dawn, i.e. value and trust
+      cream — carved stone, steadiness
+    Dawn tints (lavender, peach) live only inside the arch.
+
+    Type scale: 66 display · 38 heading · 20 lead · 18 title · 15 body · 12.5 label
+  */
   :root {
-    --navy-950: #071528;
+    --navy-950: #061328;
     --navy-900: #0B1F36;
     --navy-800: #10294A;
-    --navy-700: #1A3A62;
     --gold: #F2B233;
     --gold-soft: #FFD98A;
-    --gold-deep: #A96C07;
+    --gold-deep: #9A6206;
     --cream: #F7F0E3;
-    --cream-2: #EFE4CF;
     --ink: #0E223A;
-    --ink-2: #3B4C63;
-    --line: #E2D4B8;
+    --ink-2: #3E4D62;
+    --mist: #C4D0E0;
   }
 
   @page { size: 297mm 420mm; margin: 0; }
@@ -41,127 +48,93 @@
     overflow: hidden;
     margin: 0 auto;
     font-family: "Plus Jakarta Sans", sans-serif;
-    word-spacing: .1em;
+    word-spacing: .08em;
     color: var(--cream);
-    background: linear-gradient(180deg, #06142A 0%, #0B2140 34%, #12315A 58%, #0B1F36 70%);
+    background: linear-gradient(180deg, #051126 0%, #091B35 36%, #0B1F36 56%, #0B1F36 100%);
   }
-
-  /* ---------- background layer: stars + kawung ---------- */
   .bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
   /* ---------- header ---------- */
-  .head { position: relative; padding: 58px 72px 0; text-align: center; }
+  .head { position: relative; padding: 54px 72px 0; text-align: center; }
   .eyebrow {
-    display: inline-flex; align-items: center; gap: 12px;
-    padding: 9px 20px; border-radius: 999px;
-    border: 1px solid rgba(242, 178, 51, .45);
-    background: rgba(242, 178, 51, .08);
-    font-size: 12.5px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase;
-    color: var(--gold-soft);
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: var(--gold-soft); word-spacing: 0;
   }
-  .eyebrow b { color: var(--gold); font-weight: 800; }
+  .eyebrow::before, .eyebrow::after { content: ""; width: 54px; height: 1px; background: rgba(242, 178, 51, .6); }
   h1 {
-    margin: 26px 0 0;
-    word-spacing: 0;
+    margin: 20px 0 0;
     font-family: "Fraunces", serif; font-weight: 600;
-    font-size: 66px; line-height: 1.04; letter-spacing: -1px;
+    font-size: 66px; line-height: 1.04; letter-spacing: -1px; word-spacing: 0;
     color: var(--cream);
   }
   h1 em { font-style: italic; color: var(--gold); }
-  .tagline {
-    margin: 18px 0 0;
-    font-size: 21px; font-weight: 500; color: #C9D5E6;
-  }
+  .tagline { margin: 16px 0 0; font-size: 20px; font-weight: 500; color: var(--mist); }
   .tagline strong { color: var(--cream); font-weight: 700; }
 
   /* ---------- illustration ---------- */
-  .scene { position: relative; margin-top: 4px; height: 640px; }
-  .scene svg { display: block; width: 1123px; height: 640px; word-spacing: 0; }
+  .scene { position: relative; margin-top: 4px; height: 672px; }
+  .scene svg { display: block; width: 1123px; height: 672px; word-spacing: 0; overflow: visible; }
 
-  /* ---------- legend ---------- */
-  .legend {
+  .metaphor {
     position: relative;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
-    margin: 10px 72px 0;
+    margin: 2px auto 0; max-width: 860px; text-wrap: balance;
+    text-align: center;
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 600;
+    font-size: 20px; line-height: 1.5; word-spacing: 0;
+    color: #D9E1EC;
   }
-  .legend .item { display: flex; gap: 14px; align-items: flex-start; }
-  .legend svg { flex: none; width: 40px; height: 40px; }
-  .legend h3 { margin: 1px 0 3px; font-size: 15px; font-weight: 800; letter-spacing: .3px; color: var(--gold-soft); }
-  .legend p  { margin: 0; font-size: 13.5px; line-height: 1.45; color: #C3CFE0; }
+  .metaphor b { font-style: normal; font-weight: 700; color: var(--gold-soft); }
 
   /* ---------- steps ---------- */
   .steps {
-    position: absolute; left: 0; right: 0; bottom: 104px; height: 432px;
-    padding: 30px 72px 0;
+    position: absolute; left: 0; right: 0; top: 1044px; bottom: 104px;
+    padding: 44px 72px 0;
     background: var(--cream);
     color: var(--ink);
-    border-radius: 36px 36px 0 0;
+    text-align: center;
   }
-  .steps-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
-  .steps-head .kicker { font-size: 12.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; color: var(--gold-deep); }
-  .steps-head h2 { margin: 6px 0 0; word-spacing: 0; font-family: "Fraunces", serif; font-weight: 600; font-size: 36px; line-height: 1.1; color: var(--navy-900); letter-spacing: -.4px; }
-  .steps-head h2 em { font-style: italic; color: var(--gold-deep); }
-  .badges { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 14px; border-radius: 999px;
-    background: var(--navy-900); color: var(--cream);
-    font-size: 12.5px; font-weight: 700; white-space: nowrap;
-  }
-  .badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); display: inline-block; }
+  .kicker { font-size: 12.5px; font-weight: 800; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold-deep); word-spacing: 0; }
+  .steps h2 { margin: 8px 0 0; font-family: "Fraunces", serif; font-weight: 600; font-size: 38px; line-height: 1.1; letter-spacing: -.5px; word-spacing: 0; color: var(--navy-900); }
+  .steps h2 em { font-style: italic; color: var(--gold-deep); }
 
-  .cards { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 22px; }
-  .card {
-    position: relative;
-    height: 246px;
-    padding: 20px 20px 18px;
-    border-radius: 20px;
-    background: #FFFCF6;
-    border: 1.5px solid var(--line);
-    box-shadow: 0 10px 24px -18px rgba(11, 31, 54, .55);
+  .timeline { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 40px; }
+  .timeline::before {
+    content: ""; position: absolute; top: 28px; left: 12.5%; right: 12.5%;
+    border-top: 2px dashed #D6A541;
   }
-  .card.final { background: var(--navy-900); border-color: var(--navy-900); color: var(--cream); }
-  .card .top { display: flex; justify-content: space-between; align-items: center; }
-  .card .num { font-family: "Fraunces", serif; font-weight: 700; font-size: 34px; line-height: 1; color: var(--gold-deep); }
-  .card.final .num { color: var(--gold); }
-  .card .ico {
-    width: 46px; height: 46px; border-radius: 14px;
+  .chev { position: absolute; top: 20px; width: 18px; height: 18px; margin-left: -9px; background: var(--cream); }
+  .chev svg { width: 18px; height: 18px; fill: none; stroke: #C48A1B; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+  .step { position: relative; padding: 0 14px; }
+  .node {
+    width: 56px; height: 56px; margin: 0 auto; border-radius: 50%;
     display: grid; place-items: center;
     background: var(--navy-900); color: var(--gold);
+    font-family: "Fraunces", serif; font-weight: 700; font-size: 23px;
+    box-shadow: 0 0 0 7px var(--cream);
   }
-  .card.final .ico { background: var(--gold); color: var(--navy-900); }
-  .card .ico svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .card h4 { word-spacing: 0; margin: 16px 0 8px; font-size: 17.5px; line-height: 1.25; font-weight: 800; color: var(--navy-900); }
-  .card.final h4 { color: var(--gold-soft); }
-  .card p { margin: 0; font-size: 13.4px; line-height: 1.5; color: var(--ink-2); }
-  .card.final p { color: #D5DEEA; }
-  .card.final p b { color: var(--gold-soft); }
-  .card p b { color: var(--navy-900); font-weight: 700; }
-  .pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 9px; }
-  .pills span {
-    padding: 4px 10px; border-radius: 999px;
-    background: #F6E7C4; color: #6B4506;
-    font-size: 12px; font-weight: 800;
+  .step.last .node { background: var(--gold); color: var(--navy-900); box-shadow: 0 0 0 7px var(--cream), 0 0 0 9px #E9C57A; }
+  .step h4 { margin: 18px 0 8px; font-size: 19px; font-weight: 800; line-height: 1.25; word-spacing: 0; color: var(--navy-900); }
+  .step p { margin: 0 auto; max-width: 226px; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+  .step p b { font-weight: 700; color: var(--navy-900); }
+
+  .info {
+    position: absolute; left: 72px; right: 72px; bottom: 26px;
+    padding-top: 16px; border-top: 1px solid #E0D2B6;
+    font-size: 13.5px; color: var(--ink-2);
   }
-  .arrow {
-    position: absolute; top: 108px; width: 30px; height: 30px; margin-left: -15px;
-    border-radius: 50%; background: var(--gold); color: var(--navy-900);
-    display: grid; place-items: center; z-index: 2;
-    box-shadow: 0 0 0 5px var(--cream);
-  }
-  .arrow svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .info b { font-weight: 700; color: var(--navy-900); }
+  .info .sep { display: inline-block; margin: 0 14px; color: #C48A1B; }
 
   /* ---------- footer ---------- */
   footer {
     position: absolute; left: 0; right: 0; bottom: 0; height: 104px;
-    padding: 0 72px;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: center; gap: 22px;
     background: var(--navy-950);
     border-top: 4px solid var(--gold);
   }
-  footer .slogan { word-spacing: 0; font-family: "Fraunces", serif; font-style: italic; font-weight: 600; font-size: 30px; color: var(--gold); letter-spacing: -.2px; }
-  footer .info { text-align: right; font-size: 13px; line-height: 1.6; color: #B8C6D9; }
-  footer .info b { color: var(--cream); font-weight: 700; }
+  footer svg { width: 26px; height: 26px; }
+  footer .slogan { font-family: "Fraunces", serif; font-style: italic; font-weight: 600; font-size: 34px; letter-spacing: -.3px; word-spacing: 0; color: var(--gold); }
 </style>
 </head>
 <body>
@@ -183,121 +156,68 @@
       </pattern>
       <linearGradient id="kawungFade" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#fff" stop-opacity="1"/>
-        <stop offset=".26" stop-color="#fff" stop-opacity=".35"/>
-        <stop offset=".42" stop-color="#fff" stop-opacity="0"/>
+        <stop offset=".2" stop-color="#fff" stop-opacity=".3"/>
+        <stop offset=".34" stop-color="#fff" stop-opacity="0"/>
       </linearGradient>
       <mask id="kawungMask"><rect width="1123" height="1587" fill="url(#kawungFade)"/></mask>
     </defs>
-    <rect width="1123" height="1587" fill="url(#kawung)" opacity=".085" mask="url(#kawungMask)"/>
+    <rect width="1123" height="1587" fill="url(#kawung)" opacity=".08" mask="url(#kawungMask)"/>
     <g id="stars" fill="#F7F0E3"></g>
   </svg>
 
   <header class="head">
-    <div class="eyebrow"><b>Subtema</b> Lembaga Alternatif Penyelesaian Sengketa Sektor Jasa Keuangan</div>
+    <div class="eyebrow">Subtema · Lembaga Alternatif Penyelesaian Sengketa Sektor Jasa Keuangan</div>
     <h1>Meneguhkan <em>Profesionalisme,</em><br>Menguatkan <em>Kepercayaan.</em></h1>
     <p class="tagline">Sengketa boleh terjadi — <strong>kepercayaan harus tetap berdiri.</strong></p>
   </header>
 
   <div class="scene">
-    <svg id="arch" viewBox="0 0 1123 640" role="img"
-         aria-label="Lengkung batu dengan batu kunci emas bertuliskan LAPS SJK, ditopang tiang Konsumen dan tiang PUJK, dengan fajar kepercayaan terbit di baliknya"></svg>
+    <svg id="arch" viewBox="0 0 1123 672" role="img"
+         aria-label="Gerbang lengkung batu dengan batu kunci emas bertuliskan LAPS SJK, ditopang tiang Konsumen dan tiang PUJK. Di luar gerbang malam, di dalamnya fajar kepercayaan terbit."></svg>
   </div>
 
-  <div class="legend">
-    <div class="item">
-      <svg viewBox="0 0 40 40" aria-hidden="true">
-        <path d="M8 6 H32 L27 34 H13 Z" fill="#F2B233"/>
-        <path d="M8 6 H32 L31.2 10 H8.8 Z" fill="#FFE39A"/>
-      </svg>
-      <div>
-        <h3>Batu Kunci = LAPS SJK</h3>
-        <p>Berdiri di tengah secara profesional dan independen, mengunci kedua sisi agar tetap tegak.</p>
-      </div>
-    </div>
-    <div class="item">
-      <svg viewBox="0 0 40 40" aria-hidden="true">
-        <path d="M4 36 V22 A16 16 0 0 1 36 22 V36 H29 V22 A9 9 0 0 0 11 22 V36 Z" fill="#EDE3D0"/>
-        <path d="M17.2 6.4 H22.8 L21.6 13 H18.4 Z" fill="#F2B233"/>
-      </svg>
-      <div>
-        <h3>Batu Lengkung = Prinsip</h3>
-        <p>Aksesibilitas, independensi, keadilan, serta efisiensi dan efektivitas.</p>
-      </div>
-    </div>
-    <div class="item">
-      <svg viewBox="0 0 40 40" aria-hidden="true">
-        <circle cx="20" cy="24" r="9" fill="#F2B233"/>
-        <g stroke="#FFD98A" stroke-width="2.4" stroke-linecap="round">
-          <path d="M20 5v5M7 11l3.5 3.5M33 11l-3.5 3.5M3 24h5M32 24h5"/>
-        </g>
-        <path d="M2 33h36" stroke="#F7F0E3" stroke-width="2.4" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <h3>Fajar = Kepercayaan</h3>
-        <p>Terbit kembali saat sengketa diselesaikan secara adil, di luar pengadilan.</p>
-      </div>
-    </div>
-  </div>
+  <p class="metaphor">Seperti batu kunci yang menahan lengkung, <b>LAPS SJK</b> berdiri di tengah secara profesional — menjaga kedua pihak tetap tegak hingga kepercayaan kembali terbit.</p>
 
   <section class="steps">
-    <div class="steps-head">
-      <div>
-        <div class="kicker">Alur penyelesaian sengketa</div>
-        <h2>Tahu jalurnya, <em>tenang</em> menghadapinya.</h2>
+    <div class="kicker">Alur penyelesaian sengketa</div>
+    <h2>Tahu jalurnya, <em>tenang</em> menghadapinya.</h2>
+
+    <div class="timeline">
+      <span class="chev" style="left: 25%"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+      <span class="chev" style="left: 50%"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+      <span class="chev" style="left: 75%"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+
+      <div class="step">
+        <div class="node">1</div>
+        <h4>Adukan ke PUJK</h4>
+        <p>Sampaikan keluhan dulu ke lembaga jasa keuangan terkait, beserta bukti.</p>
       </div>
-      <div class="badges">
-        <span class="badge"><i></i>Bisa daring (Online Dispute Resolution)</span>
-        <span class="badge"><i></i>Bebas biaya mediasi untuk sengketa ritel bernilai kecil</span>
+      <div class="step">
+        <div class="node">2</div>
+        <h4>Ajukan ke LAPS SJK</h4>
+        <p>Belum ada titik temu? Ajukan <b>secara daring</b> melalui APPK atau datang langsung.</p>
+      </div>
+      <div class="step">
+        <div class="node">3</div>
+        <h4>Pilih layanan</h4>
+        <p><b>Mediasi, arbitrase,</b> atau <b>pendapat mengikat</b> oleh pihak yang netral.</p>
+      </div>
+      <div class="step last">
+        <div class="node">4</div>
+        <h4>Sengketa tuntas</h4>
+        <p>Hak terlindungi, hubungan terjaga, <b>kepercayaan kembali menguat.</b></p>
       </div>
     </div>
 
-    <div class="cards">
-      <div class="card">
-        <div class="top">
-          <span class="num">01</span>
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 8h8M8 12h5"/></svg></span>
-        </div>
-        <h4>Adukan dulu ke PUJK</h4>
-        <p>Sampaikan keluhan ke lembaga jasa keuangan terkait, lengkap dengan bukti pendukung.</p>
-      </div>
-      <div class="card">
-        <div class="top">
-          <span class="num">02</span>
-          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20M12 13V7M9 10l3-3 3 3"/></svg></span>
-        </div>
-        <h4>Belum ada titik temu?</h4>
-        <p>Ajukan ke <b>LAPS SJK</b> — secara daring melalui APPK di <b>kontak157.ojk.go.id</b> atau datang langsung.</p>
-      </div>
-      <div class="card">
-        <div class="top">
-          <span class="num">03</span>
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/></svg></span>
-        </div>
-        <h4>Pilih layanan</h4>
-        <div class="pills"><span>Mediasi</span><span>Arbitrase</span><span>Pendapat Mengikat</span></div>
-        <p>Ditangani mediator atau arbiter yang netral dan profesional.</p>
-      </div>
-      <div class="card final">
-        <div class="top">
-          <span class="num">04</span>
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
-        </div>
-        <h4>Sengketa tuntas</h4>
-        <p>Hak konsumen terlindungi, reputasi lembaga terjaga — <b>kepercayaan kembali menguat.</b></p>
-      </div>
-
-      <span class="arrow" style="left: calc(25% - 5.5px)"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      <span class="arrow" style="left: calc(50%)"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      <span class="arrow" style="left: calc(75% + 5.5px)"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <div class="info">
+      Informasi layanan <b>lapssjk.id</b><span class="sep">◆</span>Pengaduan konsumen <b>kontak157.ojk.go.id</b><span class="sep">◆</span>Kontak OJK <b>157</b>
     </div>
   </section>
 
   <footer>
+    <svg viewBox="0 0 26 26" aria-hidden="true"><g fill="none" stroke="#F2B233" stroke-width="1.6"><ellipse cx="13" cy="6.5" rx="4" ry="6"/><ellipse cx="13" cy="19.5" rx="4" ry="6"/><ellipse cx="6.5" cy="13" rx="6" ry="4"/><ellipse cx="19.5" cy="13" rx="6" ry="4"/></g></svg>
     <div class="slogan">Adil di tengah, kokoh di kedua sisi.</div>
-    <div class="info">
-      Informasi layanan: <b>lapssjk.id</b><br>
-      Pengaduan konsumen: <b>kontak157.ojk.go.id</b> · Kontak OJK <b>157</b>
-    </div>
+    <svg viewBox="0 0 26 26" aria-hidden="true"><g fill="none" stroke="#F2B233" stroke-width="1.6"><ellipse cx="13" cy="6.5" rx="4" ry="6"/><ellipse cx="13" cy="19.5" rx="4" ry="6"/><ellipse cx="6.5" cy="13" rx="6" ry="4"/><ellipse cx="19.5" cy="13" rx="6" ry="4"/></g></svg>
   </footer>
 </div>
 
@@ -311,30 +231,28 @@
     if (parent) parent.appendChild(n);
     return n;
   };
+  const f = n => (+n).toFixed(2);
 
   // deterministic pseudo-random, so every render is identical
-  let seed = 7;
+  let seed = 11;
   const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
 
-  /* ---------- stars in the upper sky ---------- */
+  /* ---------- stars: night outside the gate ---------- */
   const stars = document.getElementById("stars");
-  for (let i = 0; i < 70; i++) {
-    const x = rnd() * 1123, y = rnd() * 520;
-    // keep the headline area calm
-    if (y > 70 && y < 300 && x > 110 && x < 1010) continue;
-    el("circle", { cx: x.toFixed(1), cy: y.toFixed(1), r: (0.6 + rnd() * 1.3).toFixed(2), opacity: (0.25 + rnd() * 0.55).toFixed(2) }, stars);
+  for (let i = 0; i < 90; i++) {
+    const x = rnd() * 1123, y = 20 + rnd() * 820;
+    if (y < 300 && x > 90 && x < 1030) continue;          // keep the headline calm
+    if (Math.hypot(x - 561.5, y - 750) < 400) continue;   // nothing behind the arch
+    el("circle", { cx: f(x), cy: f(y), r: f(0.5 + rnd() * 1.2), opacity: f(0.2 + rnd() * 0.5) }, stars);
   }
 
-  /* ---------- arch scene ---------- */
+  /* ---------- scene geometry ---------- */
   const svg = document.getElementById("arch");
-  const W = 1123, cx = W / 2, cy = 450;       // arch centre (spring line)
-  const r1 = 250, r2 = 360;                    // intrados / extrados
-  const horizon = 540, ground = 626;
+  const W = 1123, H = 672, cx = W / 2, cy = 470;   // cy = spring line of the arch
+  const r1 = 255, r2 = 370;                        // intrados / extrados
+  const horizon = 560, ground = 648;
   const rad = d => d * Math.PI / 180;
   const pt = (r, d) => [cx + r * Math.cos(rad(d)), cy - r * Math.sin(rad(d))];
-  const f = n => n.toFixed(2);
-
-  // annular sector from angle a1 (left) to a2 (right), degrees, clockwise on screen
   const sector = (ra, rb, a1, a2) => {
     const [x1, y1] = pt(rb, a1), [x2, y2] = pt(rb, a2), [x3, y3] = pt(ra, a2), [x4, y4] = pt(ra, a1);
     return `M${f(x1)},${f(y1)} A${rb},${rb} 0 0 1 ${f(x2)},${f(y2)} L${f(x3)},${f(y3)} A${ra},${ra} 0 0 0 ${f(x4)},${f(y4)} Z`;
@@ -342,153 +260,209 @@
 
   const defs = el("defs", {}, svg);
   defs.innerHTML = `
-    <radialGradient id="dawn" cx="${cx}" cy="${horizon}" r="470" gradientUnits="userSpaceOnUse">
-      <stop offset="0"   stop-color="#FFE7AE" stop-opacity="1"/>
-      <stop offset=".18" stop-color="#F9C160" stop-opacity=".95"/>
-      <stop offset=".42" stop-color="#E0894A" stop-opacity=".55"/>
-      <stop offset=".7"  stop-color="#3B5C86" stop-opacity=".25"/>
-      <stop offset="1"   stop-color="#12315A" stop-opacity="0"/>
+    <clipPath id="opening">
+      <path d="M${cx - r1},${ground} V${cy} A${r1},${r1} 0 0 1 ${cx + r1},${cy} V${ground} Z"/>
+    </clipPath>
+    <linearGradient id="dawnSky" gradientUnits="userSpaceOnUse" x1="0" y1="${cy - r1}" x2="0" y2="${horizon}">
+      <stop offset="0"   stop-color="#15375F"/>
+      <stop offset=".34" stop-color="#3D5C8E"/>
+      <stop offset=".6"  stop-color="#8C86B4"/>
+      <stop offset=".82" stop-color="#E9A88A"/>
+      <stop offset="1"   stop-color="#FFD890"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="${cx}" cy="${horizon}" r="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF1C4" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#FFD890" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#FFD890" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="sun" cx="${cx}" cy="${horizon}" r="78" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FFFBEA"/>
-      <stop offset=".6" stop-color="#FFE9A8"/>
-      <stop offset="1" stop-color="#FFD06B"/>
+    <radialGradient id="sun" cx="${cx}" cy="${horizon}" r="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFCF0"/>
+      <stop offset=".7" stop-color="#FFF0C2"/>
+      <stop offset="1" stop-color="#FFE29A"/>
     </radialGradient>
-    <linearGradient id="groundG" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#15345C"/>
+    <linearGradient id="innerGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4B4F83"/>
+      <stop offset="1" stop-color="#1D3358"/>
+    </linearGradient>
+    <linearGradient id="outerGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B203B"/>
       <stop offset="1" stop-color="#0B1F36"/>
     </linearGradient>
-    <linearGradient id="pathG" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFE7AE" stop-opacity=".95"/>
+    <linearGradient id="horizonGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFD98A" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#FFD98A" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#FFD98A" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="road" gradientUnits="userSpaceOnUse" x1="0" y1="${horizon}" x2="0" y2="${H}">
+      <stop offset="0" stop-color="#FFEBB8"/>
+      <stop offset=".5" stop-color="#F3C672" stop-opacity=".8"/>
       <stop offset="1" stop-color="#F2B233" stop-opacity="0"/>
     </linearGradient>
+    <radialGradient id="spill" cx="${cx}" cy="${ground}" r="330" gradientTransform="translate(0 ${ground}) scale(1 .09) translate(0 -${ground})" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFD98A" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#FFD98A" stop-opacity="0"/>
+    </radialGradient>
     <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#F6EFE1"/>
-      <stop offset="1" stop-color="#D8C9AC"/>
+      <stop offset="0" stop-color="#F7F0E2"/>
+      <stop offset="1" stop-color="#DCCDB0"/>
     </linearGradient>
     <linearGradient id="pillarG" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#E9DDC6"/>
-      <stop offset=".55" stop-color="#F4ECDC"/>
-      <stop offset="1" stop-color="#D5C5A6"/>
+      <stop offset="0" stop-color="#E3D5BA"/>
+      <stop offset=".5" stop-color="#F6EFE1"/>
+      <stop offset="1" stop-color="#D2C1A1"/>
     </linearGradient>
     <linearGradient id="keyG" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFE08A"/>
-      <stop offset=".45" stop-color="#F2B233"/>
-      <stop offset="1" stop-color="#D08D12"/>
+      <stop offset="0" stop-color="#FFE294"/>
+      <stop offset=".5" stop-color="#F2B233"/>
+      <stop offset="1" stop-color="#CF8A10"/>
     </linearGradient>
     <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#030B16" flood-opacity=".55"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#020813" flood-opacity=".6"/>
     </filter>
-    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="16"/>
+    <filter id="blur16" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"/></filter>
+    <filter id="soft" x="-10%" y="-100%" width="120%" height="300%"><feGaussianBlur stdDeviation="1.6"/></filter>
+    <!-- fine speckle so the stone reads as stone, not plastic -->
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 .36  0 0 0 0 .29  0 0 0 0 .19  1.1 0 0 0 -.5" result="speck"/>
+      <feComposite in="speck" in2="SourceGraphic" operator="in" result="tex"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="tex"/></feMerge>
     </filter>
-    <path id="lab"  d="M${cx - 305},${cy} A305,305 0 0 1 ${cx + 305},${cy}"/>
-    <path id="labA" d="M${cx - 318},${cy} A318,318 0 0 1 ${cx + 318},${cy}"/>
-    <path id="labB" d="M${cx - 293},${cy} A293,293 0 0 1 ${cx + 293},${cy}"/>
+    <path id="lab"  d="M${cx - 312},${cy} A312,312 0 0 1 ${cx + 312},${cy}"/>
+    <path id="labA" d="M${cx - 325},${cy} A325,325 0 0 1 ${cx + 325},${cy}"/>
+    <path id="labB" d="M${cx - 299},${cy} A299,299 0 0 1 ${cx + 299},${cy}"/>
   `;
 
-  // sky glow, sun, skyline, ground, path
-  el("rect", { x: 0, y: 0, width: W, height: 640, fill: "url(#dawn)" }, svg);
-  el("circle", { cx, cy: horizon, r: 120, fill: "#FFD98A", opacity: .35, filter: "url(#glow)" }, svg);
-  el("circle", { cx, cy: horizon, r: 78, fill: "url(#sun)" }, svg);
+  /* ---------- outside the gate: night ---------- */
+  el("rect", { x: 0, y: horizon, width: W, height: H - horizon, fill: "url(#outerGround)" }, svg);
+  el("rect", { x: 0, y: horizon - 0.75, width: W, height: 1.5, fill: "url(#horizonGlow)" }, svg);
+  el("rect", { x: 0, y: ground - 60, width: W, height: 160, fill: "url(#spill)" }, svg);
+  el("path", { d: `M${cx - 118},${ground} L${cx + 118},${ground} L${cx + 136},${H} L${cx - 136},${H} Z`, fill: "url(#road)" }, svg);
 
-  const sky = el("g", { fill: "#22446D" }, svg);
-  for (let x = 250; x < 874;) {
-    const w = 12 + Math.round(rnd() * 20);
-    const nearSun = Math.abs(x + w / 2 - cx) < 95;
-    const h = nearSun ? 4 + rnd() * 9 : 10 + rnd() * 30;
-    el("rect", { x, y: f(horizon - h), width: w - 2, height: f(h + 1) }, sky);
-    x += w;
-  }
+  /* ---------- inside the gate: dawn ---------- */
+  const inside = el("g", { "clip-path": "url(#opening)" }, svg);
+  el("rect", { x: cx - r1, y: cy - r1, width: 2 * r1, height: ground - (cy - r1), fill: "url(#dawnSky)" }, inside);
+  el("circle", { cx, cy: horizon, r: 190, fill: "url(#sunGlow)" }, inside);
+  el("circle", { cx, cy: horizon, r: 62, fill: "url(#sun)" }, inside);
 
-  el("rect", { x: 0, y: horizon, width: W, height: 640 - horizon, fill: "url(#groundG)" }, svg);
-  el("line", { x1: 0, y1: horizon, x2: W, y2: horizon, stroke: "#FFD98A", "stroke-opacity": .55, "stroke-width": 1.2 }, svg);
-  el("path", { d: `M${cx - 3},${horizon} L${cx + 3},${horizon} L${cx + 158},640 L${cx - 158},640 Z`, fill: "url(#pathG)" }, svg);
-  // centre dashes shrinking toward the horizon
-  const dash = el("g", { fill: "#FFF6DC" }, svg);
-  [[622, 18, 4], [596, 12, 3], [578, 8, 2.2], [565, 5, 1.6], [556, 3, 1.1]].forEach(([y, h, w]) =>
-    el("rect", { x: f(cx - w / 2), y, width: w, height: h, rx: w / 2, opacity: .75 }, dash));
+  // soft cloud strokes
+  const clouds = el("g", { fill: "#FFFFFF", filter: "url(#soft)" }, inside);
+  [[cx - 205, 346, 150, 9, .16], [cx - 160, 362, 88, 7, .12], [cx + 70, 318, 176, 9, .15],
+   [cx + 128, 334, 96, 7, .11], [cx - 120, 452, 120, 6, .16], [cx + 60, 474, 150, 6, .18]]
+    .forEach(([x, y, w, h, o]) => el("rect", { x, y, width: w, height: h, rx: h / 2, opacity: o }, clouds));
+
+  // far skyline: the financial district, softened by distance
+  const city = (x0, x1, fill, maxH, minH) => {
+    const g = el("g", { fill }, inside);
+    for (let x = x0; x < x1;) {
+      const w = 14 + Math.round(rnd() * 18);
+      const h = minH + rnd() * (maxH - minH);
+      const top = horizon - h, kind = Math.floor(rnd() * 4);
+      let d = `M${x},${horizon} V${f(top)} H${x + w - 2} V${horizon} Z`;
+      if (kind === 1) d += `M${x + 3},${f(top)} V${f(top - 9)} H${x + w - 5} V${f(top)} Z`;          // setback
+      if (kind === 2) d += `M${x + w / 2 - 1},${f(top)} L${x + w / 2},${f(top - 16)} L${x + w / 2 + 1},${f(top)} Z`; // spire
+      if (kind === 3) d = `M${x},${horizon} V${f(top + 6)} L${x + w - 2},${f(top)} V${horizon} Z`;       // slanted roof
+      el("path", { d }, g);
+      x += w;
+    }
+  };
+  city(cx - 250, cx - 78, "#D99A8A", 78, 34);
+  city(cx + 80, cx + 256, "#D99A8A", 82, 30);
+
+  // rolling hills with a valley that frames the sun
+  el("path", { d: `M${cx - r1},${horizon - 30} C${cx - 190},${horizon - 52} ${cx - 110},${horizon - 8} ${cx},${horizon + 1}
+                   C${cx + 110},${horizon - 8} ${cx + 190},${horizon - 50} ${cx + r1},${horizon - 34}
+                   L${cx + r1},${horizon + 2} L${cx - r1},${horizon + 2} Z`, fill: "#7E74A4" }, inside);
+  el("rect", { x: cx - r1, y: horizon, width: 2 * r1, height: ground - horizon, fill: "url(#innerGround)" }, inside);
+  el("path", { d: `M${cx - 2},${horizon} L${cx + 2},${horizon} L${cx + 118},${ground} L${cx - 118},${ground} Z`, fill: "url(#road)" }, inside);
+
+  // centre dashes of the road, shrinking toward the horizon
+  const dash = el("g", { fill: "#FFF7E0" }, svg);
+  [[646, 18, 4.6, .45], [620, 15, 3.6, .75], [596, 10, 2.6, .8], [578, 7, 1.9, .8], [566, 4, 1.3, .8]]
+    .forEach(([y, h, w, o]) => el("rect", { x: f(cx - w / 2), y, width: w, height: h, rx: w / 2, opacity: o }, dash));
 
   /* ---------- the arch ---------- */
   const arch = el("g", { filter: "url(#shadow)" }, svg);
+  const stone = el("g", { filter: "url(#grain)" }, arch);
 
-  // pillars: capital, body blocks, plinth
+  // pillars: capital, shaft with an inset panel, plinth
   const pillar = (x0, label, sub, icon) => {
-    const g = el("g", {}, arch);
-    const w = r2 - r1;
-    el("rect", { x: x0 - 12, y: cy, width: w + 24, height: 16, rx: 3, fill: "#CDBB98" }, g);
-    el("rect", { x: x0, y: cy + 18, width: w, height: ground - cy - 40, rx: 2, fill: "url(#pillarG)" }, g);
-    el("rect", { x: x0 + 7, y: cy + 25, width: w - 14, height: ground - cy - 54, rx: 4, fill: "none", stroke: "#BCA985", "stroke-width": 1.2 }, g);
-    el("rect", { x: x0 - 16, y: ground - 20, width: w + 32, height: 20, rx: 3, fill: "#C7B48F" }, g);
-
-    const mx = x0 + w / 2;
-    el("circle", { cx: mx, cy: cy + 56, r: 21, fill: "#10294A" }, g);
-    const ic = el("g", { transform: `translate(${mx - 11},${cy + 45}) scale(.92)`, fill: "none", stroke: "#F2B233", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
+    const w = r2 - r1, mx = x0 + w / 2;
+    el("rect", { x: x0 - 12, y: cy, width: w + 24, height: 16, rx: 3, fill: "#CDBB98" }, stone);
+    el("rect", { x: x0, y: cy + 18, width: w, height: ground - cy - 40, rx: 2, fill: "url(#pillarG)" }, stone);
+    el("rect", { x: x0 - 16, y: ground - 20, width: w + 32, height: 20, rx: 3, fill: "#C5B28C" }, stone);
+    const g = el("g", {}, svg);
+    el("rect", { x: x0 + 8, y: cy + 26, width: w - 16, height: ground - cy - 56, rx: 4, fill: "none", stroke: "#B9A683", "stroke-width": 1.2 }, g);
+    el("circle", { cx: mx, cy: cy + 60, r: 22, fill: "#10294A" }, g);
+    const ic = el("g", { transform: `translate(${mx - 11.5},${cy + 48.5}) scale(.96)`, fill: "none", stroke: "#F2B233", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
     ic.innerHTML = icon;
-    el("text", { x: mx, y: cy + 104, "text-anchor": "middle", "font-family": "Plus Jakarta Sans", "font-weight": 800, "font-size": 13.5, "letter-spacing": 1, fill: "#10294A" }, g, label);
+    el("text", { x: mx, y: cy + 112, "text-anchor": "middle", "font-family": "Plus Jakarta Sans", "font-weight": 800, "font-size": 14, "letter-spacing": .6, fill: "#10294A" }, g, label);
     sub.forEach((s, i) =>
-      el("text", { x: mx, y: cy + 121 + i * 13, "text-anchor": "middle", "font-family": "Plus Jakarta Sans", "font-weight": 600, "font-size": 10, fill: "#4A5A70" }, g, s));
+      el("text", { x: mx, y: cy + 131 + i * 14, "text-anchor": "middle", "font-family": "Plus Jakarta Sans", "font-weight": 600, "font-size": 11.5, fill: "#4A5870" }, g, s));
   };
-  pillar(cx - r2, "KONSUMEN", ["Pengguna produk", "jasa keuangan"],
+  pillar(cx - r2, "KONSUMEN", ["Pengguna", "Jasa Keuangan"],
     '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>');
   pillar(cx + r1, "PUJK", ["Pelaku Usaha", "Jasa Keuangan"],
     '<path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M4 11h16M12 2l8 5H4z"/>');
 
-  // voussoirs: 3 per side + keystone (wider)
+  // voussoirs: 3 per side, keystone wider
   const edges = [180, 155.333, 130.667, 106, 74, 49.333, 24.667, 0];
-  const gap = 0.55;
+  const gap = 0.6;
+  const tints = ["#F3EBDB", "#F7F0E3", "#F1E8D6", null, "#F5EEDF", "#F2E9D8", "#F6EFE1"];
   for (let i = 0; i < 7; i++) {
     if (i === 3) continue;
     const a1 = edges[i] - (i === 0 ? 0 : gap), a2 = edges[i + 1] + (i === 6 ? 0 : gap);
-    el("path", { d: sector(r1, r2, a1, a2), fill: "url(#stoneG)" }, arch);
-    el("path", { d: sector(r2 - 7, r2, a1, a2), fill: "#FFFFFF", opacity: .35 }, arch);
+    el("path", { d: sector(r1, r2, a1, a2), fill: "url(#stoneG)" }, stone);
+    el("path", { d: sector(r1 + 4, r2 - 4, a1 - .4, a2 + .4), fill: tints[i], opacity: .55 }, stone);
+    el("path", { d: sector(r2 - 6, r2, a1, a2), fill: "#FFFFFF", opacity: .45 }, stone);
+    el("path", { d: sector(r1, r1 + 5, a1, a2), fill: "#8A7654", opacity: .22 }, stone);
   }
 
-  const labels = el("g", { "font-family": "Plus Jakarta Sans", "font-weight": 800, "font-size": 16, fill: "#173356", "text-anchor": "middle" }, svg);
+  // principles carved into the stones (highlight below, dark cut above)
+  const carve = el("g", { "font-family": "Plus Jakarta Sans", "font-weight": 800, "text-anchor": "middle" }, svg);
   const onArc = (id, deg, text, size) => {
-    const t = el("text", { "dominant-baseline": "central", "font-size": size || 16 }, labels);
-    el("textPath", { href: "#" + id, startOffset: f((180 - deg) / 180 * 100) + "%" }, t, text);
+    const off = f((180 - deg) / 180 * 100) + "%";
+    [["#FFFFFF", .7, 1.1], ["#3A3020", 1, 0]].forEach(([fill, o, dy]) => {
+      const t = el("text", { "dominant-baseline": "central", "font-size": size, fill, opacity: o, dy }, carve);
+      el("textPath", { href: "#" + id, startOffset: off }, t, text);
+    });
   };
-  onArc("lab", 143, "Aksesibilitas");
-  onArc("lab", 118.33, "Independensi");
-  onArc("lab", 61.67, "Keadilan");
-  onArc("labA", 37, "Efisiensi &", 15);
-  onArc("labB", 37, "Efektivitas", 15);
+  onArc("lab", 143, "Aksesibilitas", 17);
+  onArc("lab", 118.33, "Independensi", 17);
+  onArc("lab", 61.67, "Keadilan", 17);
+  onArc("labA", 37, "Efisiensi &", 15.5);
+  onArc("labB", 37, "Efektivitas", 15.5);
 
-  // small kawung flowers engraved on the springer stones
+  // kawung flowers engraved on the springer stones
   [167.67, 12.33].forEach(d => {
-    const [x, y] = pt(305, d);
-    const g = el("g", { transform: `translate(${f(x)},${f(y)}) rotate(${f(90 - d)})`, fill: "none", stroke: "#AE9A74", "stroke-width": 1.6 }, svg);
-    el("ellipse", { cx: 0, cy: -10, rx: 6, ry: 9.5 }, g);
-    el("ellipse", { cx: 0, cy: 10, rx: 6, ry: 9.5 }, g);
-    el("ellipse", { cx: -10, cy: 0, rx: 9.5, ry: 6 }, g);
-    el("ellipse", { cx: 10, cy: 0, rx: 9.5, ry: 6 }, g);
-    el("circle", { cx: 0, cy: 0, r: 1.8, fill: "#AE9A74" }, g);
+    const [x, y] = pt(312, d);
+    const g = el("g", { transform: `translate(${f(x)},${f(y)}) rotate(${f(90 - d)})`, fill: "none", stroke: "#A8936C", "stroke-width": 1.7 }, svg);
+    el("ellipse", { cx: 0, cy: -10.5, rx: 6.3, ry: 10 }, g);
+    el("ellipse", { cx: 0, cy: 10.5, rx: 6.3, ry: 10 }, g);
+    el("ellipse", { cx: -10.5, cy: 0, rx: 10, ry: 6.3 }, g);
+    el("ellipse", { cx: 10.5, cy: 0, rx: 10, ry: 6.3 }, g);
+    el("circle", { cx: 0, cy: 0, r: 2, fill: "#A8936C" }, g);
   });
 
-  // keystone: glow, stone, bevel, text
-  const kA1 = edges[3] - gap, kA2 = edges[4] + gap, kR1 = r1 - 14, kR2 = r2 + 40;
-  el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "#F2B233", opacity: .85, filter: "url(#glow)" }, svg);
-  el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "url(#keyG)" }, svg);
-  el("path", { d: sector(kR2 - 9, kR2, kA1, kA2), fill: "#FFF1C2", opacity: .7 }, svg);
-  el("path", { d: sector(kR1, kR1 + 6, kA1, kA2), fill: "#8E5A06", opacity: .35 }, svg);
+  // keystone: halo, body, bevels, lettering
+  const kA1 = edges[3] - gap, kA2 = edges[4] + gap, kR1 = r1 - 16, kR2 = r2 + 42;
+  el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "#F2B233", opacity: .8, filter: "url(#blur16)" }, svg);
+  el("path", { d: sector(kR1, kR2, kA1, kA2), fill: "url(#keyG)", filter: "url(#shadow)" }, svg);
+  el("path", { d: sector(kR2 - 9, kR2, kA1, kA2), fill: "#FFF3C9", opacity: .75 }, svg);
+  el("path", { d: sector(kR1, kR1 + 7, kA1, kA2), fill: "#7E4F05", opacity: .35 }, svg);
 
-  // "meneguhkan": short press marks above the freshly set keystone
-  const marks = el("g", { stroke: "#FFD98A", "stroke-width": 3.2, "stroke-linecap": "round" }, svg);
-  [[80, 422, 440], [90, 424, 446], [100, 422, 440], [70.5, 408, 420], [109.5, 408, 420]].forEach(([d, ra, rb]) => {
+  // three short strokes: the stone has just been set firmly (meneguhkan)
+  const marks = el("g", { stroke: "#FFD98A", "stroke-width": 3.4, "stroke-linecap": "round" }, svg);
+  [[81, 428, 444], [90, 430, 452], [99, 428, 444]].forEach(([d, ra, rb]) => {
     const [x1, y1] = pt(ra, d), [x2, y2] = pt(rb, d);
     el("line", { x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2) }, marks);
   });
 
   const kt = el("g", { "text-anchor": "middle", fill: "#10294A" }, svg);
-  el("path", { d: `M${cx} ${cy - 372} l6 6 -6 6 -6 -6z`, fill: "#10294A" }, kt);
-  el("text", { x: cx, y: cy - 322, "font-family": "Fraunces", "font-weight": 700, "font-size": 33, "letter-spacing": .5 }, kt, "LAPS SJK");
-  el("rect", { x: cx - 44, y: cy - 306, width: 88, height: 2, fill: "#10294A", opacity: .5 }, kt);
-  el("text", { x: cx, y: cy - 283, "font-family": "Plus Jakarta Sans", "font-weight": 800, "font-size": 11.5, "letter-spacing": 2.4 }, kt, "PROFESIONALISME");
-  el("text", { x: cx, y: cy - 266, "font-family": "Plus Jakarta Sans", "font-weight": 600, "font-size": 10.5, "letter-spacing": .6, fill: "#5A3C06" }, kt, "independen · imparsial");
-
-  // word of trust inside the opening, just above the sun
-  el("text", { x: cx, y: horizon - 108, "text-anchor": "middle", "font-family": "Plus Jakarta Sans", "font-weight": 800, "font-size": 16, "letter-spacing": 8, fill: "#FFF3D1" }, svg, "KEPERCAYAAN");
+  el("path", { d: `M${cx} ${cy - 392} l6 6 -6 6 -6 -6z`, fill: "#10294A" }, kt);
+  el("text", { x: cx, y: cy - 340, "font-family": "Fraunces", "font-weight": 700, "font-size": 35, "letter-spacing": .4 }, kt, "LAPS SJK");
+  el("rect", { x: cx - 40, y: cy - 324, width: 80, height: 1.6, fill: "#10294A", opacity: .5 }, kt);
+  el("text", { x: cx, y: cy - 299, "font-family": "Plus Jakarta Sans", "font-weight": 800, "font-size": 12.5, "letter-spacing": 2.2 }, kt, "PROFESIONALISME");
 })();
 </script>
 </body>
