@@ -1,4 +1,6 @@
-# Rumah Persatuan: Desain T-shirt 28UILD 2026
+# Karya 1 · Rumah Persatuan
+
+Desain T-shirt 28UILD 2026. File: `export/karya-1-rumah-persatuan/`.
 
 **Tema:** Semangat Sumpah Pemuda
 **Tagline:** Together We Build Indonesia
@@ -10,6 +12,14 @@ daerah berikrar menjadi satu di Jl. Kramat Raya 106, Jakarta. Hampir seabad
 kemudian, semangat yang sama hidup di 28UILD: pemuda bergotong royong membangun
 rumah layak untuk Indonesia. Desain ini menyambungkan dua momen itu:
 **1928, pemuda berikrar; 2026, pemuda membangun.**
+
+## Ide & makna untuk formulir (163 kata)
+
+Sumpah Pemuda lahir di sebuah rumah: rumah pondokan pelajar di Jl. Kramat Raya 106, Jakarta. Di sanalah, pada 28 Oktober 1928, pemuda dari berbagai daerah berikrar menjadi satu. Dari fakta inilah desain "Rumah Persatuan" berangkat: dulu pemuda berikrar di sebuah rumah, kini pemuda membangun rumah layak bagi sesama melalui 28UILD.
+
+Rumah menjadi pusat desain. Atapnya berwarna merah putih, simbol Indonesia yang menaungi semua orang tanpa memandang asal-usul. Tiga tangan yang terangkat di bawahnya menggambarkan tiga butir ikrar sekaligus semangat gotong royong mengangkat atap bersama. Setiap tangan memakai gelang merah putih: berbeda latar belakang, tetap satu Indonesia. Fondasinya tersusun dari batu bata bertuliskan "Satu Tanah Air, Satu Bangsa, Satu Bahasa", karena persatuan adalah dasar dari setiap rumah yang kita bangun. Sinar dari dalam rumah melambangkan energi dan harapan pemuda.
+
+Angka 1928 dan 2026 mengapit atap sebagai penghubung dua generasi: Pemuda Berikrar, Pemuda Membangun. Tagline "Together We Build Indonesia" menjadi penutup yang tegas: membangun rumah berarti ikut membangun Indonesia, dan itu hanya bisa dilakukan bersama.
 
 ## Makna elemen
 

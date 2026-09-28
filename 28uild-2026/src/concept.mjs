@@ -1,18 +1,8 @@
 // Halaman konsep / filosofi desain (1920 x 1080) untuk presentasi ke juri.
 import { C } from './common.mjs';
-import { backSVG } from './back.mjs';
 
 export const PW = 1920;
 export const PH = 1080;
-
-const POINTS = [
-  ['Rumah', 'Sumpah Pemuda lahir di sebuah rumah: Jl. Kramat Raya 106, Jakarta. Kini pemuda melanjutkannya dengan membangun rumah layak bagi sesama.'],
-  ['Atap Merah Putih', 'Indonesia sebagai atap yang menaungi semua orang, dari mana pun asalnya.'],
-  ['Tiga Tangan Berikrar', 'Tiga butir Sumpah Pemuda, sekaligus gotong royong mengangkat atap bersama. Setiap tangan memakai gelang merah putih: berbeda-beda, tetap satu.'],
-  ['Fondasi Tiga Ikrar', 'Satu Tanah Air, Satu Bangsa, Satu Bahasa menjadi batu bata paling dasar. Persatuan adalah fondasi setiap rumah yang kita bangun.'],
-  ['Sinar Semangat', 'Cahaya yang memancar dari dalam rumah melambangkan energi dan optimisme pemuda.'],
-  ['1928 → 2026', 'Pemuda berikrar, pemuda membangun. Sejarah disambung dengan aksi nyata hari ini, ditutup tagline Together We Build Indonesia.'],
-];
 
 const CHECKS = [
   'Tema Semangat Sumpah Pemuda',
@@ -26,24 +16,25 @@ const CHECKS = [
   'Bebas SARA & ujaran kebencian',
 ];
 
-export function conceptSVG() {
+/** @param {object} d desain (lihat `karya1` di src/karya1.mjs) */
+export function conceptSVG(d) {
   const artW = 690;
   const artH = (artW * 400) / 300;
-  const list = POINTS.map(
+  const list = d.points.map(
     ([t, d], i) => `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><div><b>${t}</b><p>${d}</p></div></li>`,
   ).join('');
   const checks = CHECKS.map((c) => `<li>${c}</li>`).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PW} ${PH}">
   <rect width="${PW}" height="${PH}" fill="#FFFFFF"/>
   <rect width="820" height="${PH}" fill="${C.blue}"/>
-  ${backSVG({ id: 'cp', guides: true, x: (820 - artW) / 2, y: (PH - artH) / 2, width: artW })}
+  ${d.backSVG({ id: 'cp', guides: true, x: (820 - artW) / 2, y: (PH - artH) / 2, width: artW })}
 
   <foreignObject x="900" y="56" width="940" height="990">
     <div xmlns="http://www.w3.org/1999/xhtml" class="cp">
       <style>
         .cp{font-family:'Barlow',sans-serif;color:#23384D;}
         .cp .k{font-family:'Barlow Condensed';font-weight:700;font-size:22px;letter-spacing:5px;color:${C.blue};margin:0;}
-        .cp h1{font-family:'Barlow Condensed';font-style:italic;font-weight:900;font-size:84px;line-height:1;margin:6px 0 18px;color:${C.navy};}
+        .cp h1{font-family:'${d.display.family}';font-style:${d.display.style};font-weight:${d.display.weight};font-size:${d.display.conceptSize ?? 84}px;line-height:1;margin:6px 0 18px;color:${C.navy};}
         .cp .lead{font-size:22px;line-height:1.45;font-weight:500;margin:0 0 26px;max-width:880px;}
         .cp ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:22px 34px;}
         .cp li{display:flex;gap:14px;align-items:flex-start;}
@@ -59,8 +50,8 @@ export function conceptSVG() {
         .cp .spec i{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-1px;margin-right:6px;font-style:normal;}
       </style>
       <p class="k">KONSEP DESAIN · 28UILD 2026</p>
-      <h1>Rumah Persatuan</h1>
-      <p class="lead">Pada 28 Oktober 1928, pemuda dari berbagai daerah berikrar menjadi satu di sebuah rumah di Kramat Raya 106. Hampir seabad kemudian, semangat yang sama hidup di 28UILD: pemuda bergotong royong membangun rumah layak untuk Indonesia.</p>
+      <h1>${d.title}</h1>
+      <p class="lead">${d.lead}</p>
       <ol>${list}</ol>
       <div class="spec">
         <span><i style="background:${C.blue}"></i>Kaos Biru Habitat #0099CC</span>

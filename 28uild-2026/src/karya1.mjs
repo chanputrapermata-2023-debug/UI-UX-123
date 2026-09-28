@@ -1,10 +1,6 @@
-// Artwork punggung kaos 28UILD 2026 – "Rumah Persatuan".
+// Karya 1 – "Rumah Persatuan".
 // Semua koordinat dalam milimeter pada kanvas 300 x 400 mm (ukuran cetak maksimum).
-import { C, LOGO, logo, f } from './common.mjs';
-
-export const W = 300;
-export const H = 400;
-const CX = W / 2;
+import { C, f, W, H, CX, backFrame } from './common.mjs';
 const GAP = 1.6; // celah antar blok warna (memberi kesan stensil & aman untuk sablon)
 
 // ---------------------------------------------------------------- atap merah putih
@@ -180,44 +176,18 @@ function footer() {
   return `<text x="${CX}" y="${H - 8}" text-anchor="middle" font-family="Special Elite" font-size="6.6" letter-spacing="0.3" fill="${C.white}">Lahir dari sebuah rumah · Kramat Raya 106 · 28.10.1928</text>`;
 }
 
-// ---------------------------------------------------------------- area wajib panitia
-function lotd() {
-  const w = 66;
-  return logo(LOGO.lotd, CX - w / 2, 6, w);
-}
-
-function sponsorSpace() {
-  return `<g>
-    <rect x="22" y="40" width="256" height="52" rx="3" fill="none" stroke="${C.white}" stroke-width="1" stroke-dasharray="3 2.4"/>
-    <text x="${CX}" y="68.8" text-anchor="middle" font-family="Barlow" font-weight="700" font-size="8" fill="${C.white}" opacity="0.9">SPACE LOGO SPONSOR</text>
-  </g>`;
-}
-
-/**
- * @param {object} o
- * @param {boolean} [o.shirt] isi latar dengan warna kaos (pratinjau); false = latar transparan (file cetak)
- * @param {boolean} [o.guides] tampilkan kotak panduan area sponsor
- * @param {boolean} [o.mm] ukuran fisik dalam mm pada elemen <svg>
- */
-export function backSVG({ shirt = false, guides = true, mm = true, id = 'bk', x, y, width } = {}) {
+export function backSVG({ id = 'bk', ...frame } = {}) {
   const fnd = foundation(`${id}-found`);
-  const size = width
-    ? `x="${x}" y="${y}" width="${width}" height="${(width * H) / W}"`
-    : mm
-      ? `width="${W}mm" height="${H}mm"`
-      : '';
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" ${size}>
-  <defs>
+  const defs = `
     ${fnd.mask}
     <clipPath id="${id}-room"><polygon points="${room()}"/></clipPath>
     <mask id="${id}-rays" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}">
       <rect width="${W}" height="${H}" fill="#fff"/><g fill="#000">${rays()}</g>
-    </mask>
-  </defs>
-  ${shirt ? `<rect width="${W}" height="${H}" fill="${C.blue}"/>` : ''}
-  ${lotd()}
-  ${guides ? sponsorSpace() : ''}
-
+    </mask>`;
+  return backFrame(
+    frame,
+    defs,
+    `
   ${yearTag(CX - 118, '1928', 'PEMUDA BERIKRAR', 'start')}
   ${yearTag(CX + 118, '2026', 'PEMUDA MEMBANGUN', 'end')}
 
@@ -233,6 +203,23 @@ export function backSVG({ shirt = false, guides = true, mm = true, id = 'bk', x,
 
   <g mask="url(#${id}-found)">${fnd.svg}</g>
   ${lockup()}
-  ${footer()}
-</svg>`;
+  ${footer()}`,
+  );
 }
+
+export const karya1 = {
+  slug: 'karya-1-rumah-persatuan',
+  title: 'Rumah Persatuan',
+  display: { family: 'Barlow Condensed', style: 'italic', weight: 900 },
+  sleeve: { family: 'Barlow Condensed', weight: 800 },
+  lead: 'Pada 28 Oktober 1928, pemuda dari berbagai daerah berikrar menjadi satu di sebuah rumah di Kramat Raya 106. Hampir seabad kemudian, semangat yang sama hidup di 28UILD: pemuda bergotong royong membangun rumah layak untuk Indonesia.',
+  points: [
+    ['Rumah', 'Sumpah Pemuda lahir di sebuah rumah: Jl. Kramat Raya 106, Jakarta. Kini pemuda melanjutkannya dengan membangun rumah layak bagi sesama.'],
+    ['Atap Merah Putih', 'Indonesia sebagai atap yang menaungi semua orang, dari mana pun asalnya.'],
+    ['Tiga Tangan Berikrar', 'Tiga butir Sumpah Pemuda, sekaligus gotong royong mengangkat atap bersama. Setiap tangan memakai gelang merah putih: berbeda-beda, tetap satu.'],
+    ['Fondasi Tiga Ikrar', 'Satu Tanah Air, Satu Bangsa, Satu Bahasa menjadi batu bata paling dasar. Persatuan adalah fondasi setiap rumah yang kita bangun.'],
+    ['Sinar Semangat', 'Cahaya yang memancar dari dalam rumah melambangkan energi dan optimisme pemuda.'],
+    ['1928 → 2026', 'Pemuda berikrar, pemuda membangun. Sejarah disambung dengan aksi nyata hari ini, ditutup tagline Together We Build Indonesia.'],
+  ],
+  backSVG,
+};

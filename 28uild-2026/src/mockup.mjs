@@ -2,7 +2,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, C, LOGO, logo } from './common.mjs';
-import { backSVG } from './back.mjs';
 
 const SHIRT = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/shirt-paths.json'), 'utf8'));
 
@@ -15,8 +14,8 @@ const shirt = (s) => `<path d="${s.body}" fill="${C.blue}"/><path d="${s.trim}" 
 const flag = (x, y, rot) => `<g transform="translate(${x},${y}) rotate(${rot})">
   <rect x="-17" y="-11" width="34" height="11" fill="${C.red}"/><rect x="-17" y="0" width="34" height="11" fill="${C.white}"/></g>`;
 
-const sleeveText = (x, y, rot, text, anchor) =>
-  `<text transform="translate(${x},${y}) rotate(${rot})" text-anchor="${anchor}" font-family="Barlow Condensed" font-weight="800" font-size="27" letter-spacing="1.5" fill="${C.white}">${text}</text>`;
+const sleeveText = (x, y, rot, text, font) =>
+  `<text transform="translate(${x},${y}) rotate(${rot})" text-anchor="middle" font-family="${font.family}" font-weight="${font.weight}" font-size="27" letter-spacing="1.5" fill="${C.white}">${text}</text>`;
 
 function swatch(x, y, fill, name, spec, ring = false) {
   return `<g>
@@ -26,7 +25,8 @@ function swatch(x, y, fill, name, spec, ring = false) {
   </g>`;
 }
 
-export function mockupSVG() {
+/** @param {object} d desain (lihat `karya1` di src/karya1.mjs) */
+export function mockupSVG(d) {
   const F = SHIRT.front;
   const B = SHIRT.back;
   const artW = 236;
@@ -37,7 +37,7 @@ export function mockupSVG() {
 
   <g text-anchor="middle" font-family="Barlow Condensed">
     <text x="${MW / 2}" y="62" font-weight="700" font-size="22" letter-spacing="5" fill="${C.blue}">DESAIN T-SHIRT 28UILD 2026 · SEMANGAT SUMPAH PEMUDA</text>
-    <text x="${MW / 2}" y="112" font-style="italic" font-weight="900" font-size="54" fill="${C.navy}">RUMAH PERSATUAN</text>
+    <text x="${MW / 2}" y="112" font-family="${d.display.family}" font-style="${d.display.style}" font-weight="${d.display.weight}" font-size="${d.display.mockupSize ?? 54}" fill="${C.navy}">${d.title.toUpperCase()}</text>
     <text x="614" y="168" font-family="Barlow" font-weight="700" font-size="34" fill="${C.blue}">Depan</text>
     <text x="1312" y="168" font-family="Barlow" font-weight="700" font-size="34" fill="${C.blue}">Belakang</text>
   </g>
@@ -53,16 +53,16 @@ export function mockupSVG() {
   ${logo(LOGO.habitat, 664, 352, 76)}
   <g clip-path="url(#clip-front)">
     ${flag(366, 416, 20)}
-    ${sleeveText(838, 458, -21, 'VOLUN', 'middle')}
+    ${sleeveText(838, 458, -21, 'VOLUN', d.sleeve)}
   </g>
 
   <!-- BELAKANG -->
   ${shirt(B)}
   <g clip-path="url(#clip-back)">
     ${flag(1555, 418, -20)}
-    ${sleeveText(1074, 440, 21, 'TEER', 'middle')}
+    ${sleeveText(1074, 440, 21, 'TEER', d.sleeve)}
   </g>
-  ${backSVG({ id: 'mk', guides: true, x: artX, y: artY, width: artW })}
+  ${d.backSVG({ id: 'mk', guides: true, x: artX, y: artY, width: artW })}
 
   <!-- warna -->
   <g>
