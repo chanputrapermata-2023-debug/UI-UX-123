@@ -316,6 +316,10 @@
       <stop offset="0" stop-color="#0B203B"/>
       <stop offset="1" stop-color="#0B1F36"/>
     </linearGradient>
+    <linearGradient id="nightGlow" gradientUnits="userSpaceOnUse" x1="0" y1="${horizon - 190}" x2="0" y2="${horizon}">
+      <stop offset="0" stop-color="#1E3E6A" stop-opacity="0"/>
+      <stop offset="1" stop-color="#1E3E6A" stop-opacity=".6"/>
+    </linearGradient>
     <linearGradient id="horizonGlow" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#FFD98A" stop-opacity="0"/>
       <stop offset=".5" stop-color="#FFD98A" stop-opacity=".7"/>
@@ -379,6 +383,60 @@
   `;
 
   /* ---------- outside the gate: night ---------- */
+  // separate generator, so the dawn skyline inside the gate keeps its shape
+  let seed2 = 23;
+  const rnd2 = () => (seed2 = (seed2 * 16807) % 2147483647) / 2147483647;
+
+  // the same city, still asleep outside the gate: dark towers, a few lit windows
+  el("rect", { x: 0, y: horizon - 190, width: W, height: 190, fill: "url(#nightGlow)" }, svg);
+  const nightCity = (x0, x1, outerX) => {
+    const g = el("g", { fill: "#061429" }, svg);
+    const lights = el("g", { fill: "#FFD98A" }, svg);
+    for (let x = x0; x < x1;) {
+      const w = Math.min(16 + Math.round(rnd2() * 20), x1 - x);
+      if (w < 8) break;
+      const t = 1 - Math.min(1, Math.abs(x + w / 2 - outerX) / (x1 - x0));   // 1 at the outer edge
+      const h = 24 + t * 64 + rnd2() * 30;
+      const top = horizon - h, kind = Math.floor(rnd2() * 4);
+      let d = `M${f(x)},${horizon} V${f(top)} H${f(x + w - 2)} V${horizon} Z`;
+      if (kind === 1) d += `M${f(x + 3)},${f(top)} V${f(top - 10)} H${f(x + w - 5)} V${f(top)} Z`;
+      if (kind === 2) d += `M${f(x + w / 2 - 1)},${f(top)} L${f(x + w / 2)},${f(top - 18)} L${f(x + w / 2 + 1)},${f(top)} Z`;
+      if (kind === 3) d = `M${f(x)},${horizon} V${f(top + 7)} L${f(x + w - 2)},${f(top)} V${horizon} Z`;
+      el("path", { d }, g);
+      for (let wy = top + 8; wy < horizon - 6; wy += 7)
+        for (let wx = x + 3; wx < x + w - 5; wx += 5)
+          if (rnd2() < .09) el("rect", { x: f(wx), y: f(wy), width: 2, height: 3, opacity: f(.45 + rnd2() * .45) }, lights);
+      x += w;
+    }
+  };
+  nightCity(-6, cx - r2 - 18, -6);
+  nightCity(cx + r2 + 18, W + 6, W + 6);
+
+  // guiding constellations of the night: justice (a balance) and protection (a shield)
+  const constellation = (ox, oy, pts, links, label) => {
+    const g = el("g", { transform: `translate(${ox},${oy})` }, svg);
+    links.forEach(([a, b]) => el("line", { x1: pts[a][0], y1: pts[a][1], x2: pts[b][0], y2: pts[b][1],
+      stroke: "#BFD0EA", "stroke-width": .9, opacity: .34 }, g));
+    pts.forEach(([x, y, r]) => {
+      el("circle", { cx: x, cy: y, r: r * 3.2, fill: "#FFF3D1", opacity: .1 }, g);
+      el("circle", { cx: x, cy: y, r, fill: "#FFF7E6", opacity: .95 }, g);
+    });
+    const xs = pts.map(p => p[0]);
+    // labels share one baseline across both constellations
+    el("text", { x: f((Math.min(...xs) + Math.max(...xs)) / 2), y: 178, "text-anchor": "middle",
+      "font-family": "Plus Jakarta Sans", "font-weight": 700, "font-size": 9.5, "letter-spacing": 3, fill: "#BFD0EA", opacity: .55 }, g, label);
+  };
+  constellation(46, 150,
+    [[70, 0, 2.6], [70, 22, 1.8], [2, 22, 2.2], [138, 22, 2.2], [-14, 82, 1.6], [18, 82, 1.9],
+     [122, 82, 1.9], [154, 82, 1.6], [70, 136, 2.3], [46, 150, 1.6], [94, 150, 1.6]],
+    [[0, 1], [1, 2], [1, 3], [2, 4], [2, 5], [4, 5], [3, 6], [3, 7], [6, 7], [1, 8], [8, 9], [8, 10], [9, 10]],
+    "KEADILAN");
+  constellation(W - 46 - 120, 150,
+    [[0, 14, 2.2], [60, 0, 2.6], [120, 14, 2.2], [118, 70, 1.7], [96, 112, 1.6], [60, 142, 2.3], [24, 112, 1.6], [2, 70, 1.7],
+     [34, 72, 1.5], [52, 92, 1.9], [88, 50, 1.5]],
+    [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 0], [8, 9], [9, 10]],
+    "PELINDUNGAN");
+
   el("rect", { x: 0, y: horizon, width: W, height: H - horizon, fill: "url(#outerGround)" }, svg);
   el("rect", { x: 0, y: horizon, width: W, height: H - horizon, fill: "url(#edgeShade)" }, svg);
   el("rect", { x: 0, y: horizon - 0.75, width: W, height: 1.5, fill: "url(#horizonGlow)" }, svg);

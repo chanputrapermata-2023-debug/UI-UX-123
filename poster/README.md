@@ -39,6 +39,11 @@ selesai, dan keduanya melangkah bersama.
   secara adil, sesuai frasa **"Menguatkan Kepercayaan"**. Warna emas pada kata
   "Profesionalisme" dan "Kepercayaan" di judul sengaja disamakan dengan warna batu
   kunci dan fajar.
+- **Kota yang sama, dua keadaan.** Di dalam gerbang, kota sudah diterangi fajar. Di luar
+  gerbang, kota itu masih malam, dengan hanya beberapa jendela yang menyala.
+- **Rasi bintang penuntun.** Di langit malam, bintang membentuk rasi **timbangan
+  (Keadilan)** dan **perisai (Pelindungan)**. Di tengah malam sengketa, keadilan dan
+  pelindungan konsumen menjadi bintang yang menuntun menuju gerbang.
 - **Motif kawung** samar di latar dan pada batu dasar adalah batik Nusantara yang
   dimaknai sebagai lambang integritas dan keadilan.
 
@@ -56,6 +61,12 @@ huruf rancangan desainer Indonesia. Keduanya berlisensi SIL Open Font License.
 Seluruh ilustrasi digambar sendiri dengan SVG, tanpa foto atau aset stok.
 
 ## Catatan revisi
+
+### v4
+
+- Area kosong di samping tiang diisi dua lapis bermakna. Di cakrawala, siluet kota malam
+  dengan jendela menyala menjadi lanjutan dari kota fajar di dalam gerbang. Di langit,
+  ada rasi bintang timbangan (Keadilan) dan perisai (Pelindungan).
 
 ### v3
 
