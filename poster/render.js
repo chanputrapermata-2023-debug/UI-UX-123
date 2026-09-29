@@ -13,6 +13,7 @@ const SRC = "file://" + path.join(__dirname, "poster.html");
     const page = await browser.newPage({ viewport: { width: 1123, height: 1587 }, deviceScaleFactor: scale });
     await page.goto(SRC);
     await page.evaluate(() => document.fonts.ready);
+    await page.waitForFunction(() => window.__starsReady === true);
     await page.locator("#poster").screenshot({ path: path.join(OUT, file), ...opts });
     await page.close();
   };
@@ -25,6 +26,7 @@ const SRC = "file://" + path.join(__dirname, "poster.html");
   const page = await browser.newPage({ viewport: { width: 1123, height: 1587 } });
   await page.goto(SRC);
   await page.evaluate(() => document.fonts.ready);
+  await page.waitForFunction(() => window.__starsReady === true);
   await page.pdf({ path: path.join(OUT, "poster-A3.pdf"), width: "297mm", height: "420mm", printBackground: true, pageRanges: "1" });
 
   await browser.close();

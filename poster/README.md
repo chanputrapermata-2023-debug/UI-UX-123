@@ -67,6 +67,11 @@ Seluruh ilustrasi digambar sendiri dengan SVG, tanpa foto atau aset stok.
 - Area kosong di samping tiang diisi dua lapis bermakna. Di cakrawala, siluet kota malam
   dengan jendela menyala menjadi lanjutan dari kota fajar di dalam gerbang. Di langit,
   ada rasi bintang timbangan (Keadilan) dan perisai (Pelindungan).
+- Bintang di langit malam diperbanyak dari sekitar 40 menjadi sekitar 300, dengan ukuran,
+  terang, dan rona yang beragam, dan makin jarang ke arah cakrawala. Posisi setiap baris
+  tulisan diukur langsung, dan bintang tidak boleh masuk ke area tulisan. Di dekat rasi
+  bintang, hanya bintang kecil dan redup yang boleh muncul, dan tidak ada yang menempel
+  pada garisnya.
 
 ### v3
 

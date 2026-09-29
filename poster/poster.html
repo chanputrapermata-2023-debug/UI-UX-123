@@ -244,17 +244,9 @@
   const f = n => (+n).toFixed(2);
 
   // deterministic pseudo-random, so every render is identical
-  let seed = 11;
+  // (this seed continues where an earlier star loop left off, so the dawn skyline keeps its shape)
+  let seed = 1696953337;
   const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-
-  /* ---------- stars: night outside the gate ---------- */
-  const stars = document.getElementById("stars");
-  for (let i = 0; i < 90; i++) {
-    const x = rnd() * 1123, y = 20 + rnd() * 820;
-    if (y < 300 && x > 90 && x < 1030) continue;          // keep the headline calm
-    if (Math.hypot(x - 561.5, y - 752) < 480) continue;   // nothing behind or touching the arch
-    el("circle", { cx: f(x), cy: f(y), r: f(0.5 + rnd() * 1.2), opacity: f(0.2 + rnd() * 0.5) }, stars);
-  }
 
   /* ---------- scene geometry ---------- */
   const svg = document.getElementById("arch");
@@ -413,8 +405,13 @@
   nightCity(cx + r2 + 18, W + 6, W + 6);
 
   // guiding constellations of the night: justice (a balance) and protection (a shield)
+  const constSegs = [], constLabels = [], constBoxes = [];   // scene coordinates, used by the star field
   const constellation = (ox, oy, pts, links, label) => {
     const g = el("g", { transform: `translate(${ox},${oy})` }, svg);
+    links.forEach(([a, b]) => constSegs.push([ox + pts[a][0], oy + pts[a][1], ox + pts[b][0], oy + pts[b][1]]));
+    pts.forEach(([x, y]) => constSegs.push([ox + x, oy + y, ox + x, oy + y]));
+    const bx = pts.map(p => p[0]), by = pts.map(p => p[1]);
+    constBoxes.push([ox + Math.min(...bx), oy + Math.min(...by), ox + Math.max(...bx), oy + Math.max(...by)]);
     links.forEach(([a, b]) => el("line", { x1: pts[a][0], y1: pts[a][1], x2: pts[b][0], y2: pts[b][1],
       stroke: "#BFD0EA", "stroke-width": .9, opacity: .34 }, g));
     pts.forEach(([x, y, r]) => {
@@ -423,8 +420,8 @@
     });
     const xs = pts.map(p => p[0]);
     // labels share one baseline across both constellations
-    el("text", { x: f((Math.min(...xs) + Math.max(...xs)) / 2), y: 178, "text-anchor": "middle",
-      "font-family": "Plus Jakarta Sans", "font-weight": 700, "font-size": 9.5, "letter-spacing": 3, fill: "#BFD0EA", opacity: .55 }, g, label);
+    constLabels.push(el("text", { x: f((Math.min(...xs) + Math.max(...xs)) / 2), y: 178, "text-anchor": "middle",
+      "font-family": "Plus Jakarta Sans", "font-weight": 700, "font-size": 9.5, "letter-spacing": 3, fill: "#BFD0EA", opacity: .55 }, g, label));
   };
   constellation(46, 150,
     [[70, 0, 2.6], [70, 22, 1.8], [2, 22, 2.2], [138, 22, 2.2], [-14, 82, 1.6], [18, 82, 1.9],
@@ -436,6 +433,54 @@
      [34, 72, 1.5], [52, 92, 1.9], [88, 50, 1.5]],
     [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 0], [8, 9], [9, 10]],
     "PELINDUNGAN");
+
+  /* ---------- stars: night outside the gate, kept clear of every line of text ---------- */
+  // Placed once the webfonts are in, so the measured text boxes are the final ones.
+  document.fonts.ready.then(() => {
+    const stars = document.getElementById("stars");
+    const P = document.getElementById("poster").getBoundingClientRect();
+    const keepOut = [];
+    const add = (r, pad) => keepOut.push([r.left - P.left - pad, r.top - P.top - pad, r.right - P.left + pad, r.bottom - P.top + pad]);
+    document.querySelectorAll("h1, .tagline, .metaphor").forEach(n => {
+      const range = document.createRange();
+      range.selectNodeContents(n);
+      [...range.getClientRects()].forEach(r => add(r, 16));
+    });
+    add(document.querySelector(".eyebrow").getBoundingClientRect(), 14);
+    constLabels.forEach(n => add(n.getBoundingClientRect(), 10));
+    const blocked = (x, y) => keepOut.some(([l, t, r, b]) => x > l && x < r && y > t && y < b);
+
+    // constellations: keep stars off their lines and nodes; close by, only faint ones
+    const S = svg.getBoundingClientRect(), sx = S.left - P.left, sy = S.top - P.top;
+    const segDist = (x, y, [x1, y1, x2, y2]) => {
+      const dx = x2 - x1, dy = y2 - y1, len = dx * dx + dy * dy;
+      const t = len ? Math.max(0, Math.min(1, ((x - x1) * dx + (y - y1) * dy) / len)) : 0;
+      return Math.hypot(x - (x1 + t * dx), y - (y1 + t * dy));
+    };
+    const nearLines = (x, y) => constSegs.some(sg => segDist(x - sx, y - sy, sg) < 12);
+    const nearFigure = (x, y) => constBoxes.some(([l, t, r, b]) => x - sx > l - 24 && x - sx < r + 24 && y - sy > t - 24 && y - sy < b + 24);
+
+    let s = 101;
+    const rs = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    const placed = [];
+    const tints = ["#F7F0E3", "#F7F0E3", "#F7F0E3", "#DCE7FF", "#FFE9BF"];
+    for (let i = 0; placed.length < 300 && i < 8000; i++) {
+      const x = 6 + rs() * 1111, y = 8 + rs() * 824;
+      if (rs() < .55 * (y / 832)) continue;                    // thinner toward the horizon glow
+      if (Math.hypot(x - 561.5, y - 752) < 470) continue;     // nothing behind or touching the arch
+      if (blocked(x, y) || nearLines(x, y)) continue;
+      if (placed.some(([px, py]) => Math.hypot(px - x, py - y) < 11)) continue;
+      placed.push([x, y]);
+      const faint = nearFigure(x, y);
+      const big = !faint && rs() < .05;
+      const r = big ? 1.5 + rs() * .5 : 0.4 + Math.pow(rs(), 3) * (faint ? .3 : 1.1);
+      const fill = tints[Math.floor(rs() * tints.length)];
+      if (big) el("circle", { cx: f(x), cy: f(y), r: f(r * 3.4), fill: "#FFF3D1", opacity: .08 }, stars);
+      el("circle", { cx: f(x), cy: f(y), r: f(r), fill,
+        opacity: f(big ? .9 : faint ? .18 + rs() * .17 : .2 + (r / 1.5) * .5 + rs() * .2) }, stars);
+    }
+    window.__starsReady = true;
+  });
 
   el("rect", { x: 0, y: horizon, width: W, height: H - horizon, fill: "url(#outerGround)" }, svg);
   el("rect", { x: 0, y: horizon, width: W, height: H - horizon, fill: "url(#edgeShade)" }, svg);
