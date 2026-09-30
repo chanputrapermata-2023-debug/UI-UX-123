@@ -26,9 +26,10 @@
     --paper-2: #E9E0CF;
     --ink: #1B2A22;
     --ink-2: #46564C;
-    --ink-3: #6E7A72;
+    --ink-3: #5E6A62;
     --rust: #B4452A;
-    --grain: #D6982B;
+    --grain: #D6982B;          /* gabah di atas latar gelap & jendela */
+    --grain-deep: #B87C1C;     /* gabah di atas kertas (kontras >= 3:1) */
     --leaf: #2E6A45;
     --wood: #8A5A34;
     --line: #D3C8B4;
@@ -147,6 +148,7 @@
     white-space: nowrap;
   }
   .steps-head .hr { flex: 1; height: 1.5px; background: var(--line); }
+  .steps-head .where { font: 600 14px/1 var(--sans); word-spacing: .12em; color: var(--ink-2); white-space: nowrap; }
   .steps {
     left: var(--m); right: var(--m); top: 994px; height: 140px;
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
@@ -157,7 +159,7 @@
     font-family: var(--serif); font-weight: 900; font-size: 30px; line-height: 1; color: var(--leaf);
     font-variation-settings: "opsz" 72;
   }
-  .step svg { width: 40px; height: 40px; stroke: var(--ink); fill: none; stroke-width: 1.7;
+  .step svg { width: 40px; height: 40px; color: var(--ink); stroke: var(--ink); fill: none; stroke-width: 1.7;
     stroke-linecap: round; stroke-linejoin: round; }
   .step h4 { margin-top: 10px; font: 800 20px/1.2 var(--sans); letter-spacing: -.01em; color: var(--ink); }
   .step p { margin-top: 6px; font: 500 17px/1.36 var(--sans); color: var(--ink-2); }
@@ -180,13 +182,15 @@
     left: var(--m); right: var(--m); top: 1294px; height: 40px;
     display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
   }
-  .footer .credit { font: 500 11.5px/1.4 var(--sans); color: var(--ink-3); max-width: 600px; }
+  .footer .credit { flex: 1 1 0; min-width: 0; font: 500 11.5px/1.4 var(--sans); color: var(--ink-3); max-width: 600px; }
   .footer .credit b { color: var(--ink-2); font-weight: 700; }
-  .footer .who { text-align: right; white-space: nowrap; font: 800 16px/1.2 var(--sans); color: var(--ink); }
+  .footer .who { flex: 0 0 auto; max-width: 440px; text-align: right; font: 800 16px/1.25 var(--sans); color: var(--ink); }
+  .footer .who span { white-space: nowrap; }
   .footer .who span { font-weight: 600; color: var(--ink-2); }
 
   /* ---------- Mode wireframe (peta tata letak untuk dieksekusi manual) ---------- */
   body.wireframe .guide { display: block; }
+  body.wireframe > :not(.guide):not(script) { opacity: .38; }
   .guide { display: none; }
   .grid-col { position: absolute; top: 0; bottom: 0; background: rgba(180, 69, 42, .06);
     border-left: 1px solid rgba(180, 69, 42, .18); border-right: 1px solid rgba(180, 69, 42, .18); }
@@ -219,7 +223,7 @@
 
 <div class="abs bignum" data-zone="2 · Fakta 1 (angka kunci)">
   <div class="n">23–48 <span class="u">juta ton<br>per tahun</span></div>
-  <p class="c">pangan susut &amp; terbuang di Indonesia, <strong>setara porsi makan 61–125 juta orang</strong> setiap tahun.</p>
+  <p class="c">pangan yang susut &amp; terbuang di Indonesia, <strong>setara porsi makan 61–125 juta orang.</strong></p>
   <p class="src">Bappenas, Kajian Food Loss &amp; Waste di Indonesia (2021) · rata-rata 2000–2019</p>
 </div>
 
@@ -274,24 +278,24 @@
        produksi 9,65 · pascapanen 8,0 · pengolahan 1,45 · distribusi 5,4 -->
   <!-- 1 Produksi (susut) -->
   <g>
-    <path d="M232 60 C262 60 290 70 306 96" fill="none" stroke="var(--grain)" stroke-width="10.6" stroke-linecap="round"/>
+    <path d="M232 60 C262 60 290 70 306 96" fill="none" stroke="var(--grain-deep)" stroke-width="10.6" stroke-linecap="round"/>
     <polygon points="238.1,62.5 233.2,64.2 230.1,68.1 226.6,64.9 221.6,62.9 225.3,58.5 225.4,53.9 229.9,53.6 234.9,53.1 235.3,58.2" fill="var(--paper)"/>
-    <ellipse cx="306" cy="110" rx="3.2" ry="1.9" fill="var(--grain)" transform="rotate(60 306 110)"/><ellipse cx="302" cy="122" rx="3.2" ry="1.9" fill="var(--grain)" transform="rotate(60 302 122)"/><ellipse cx="309" cy="134" rx="3.2" ry="1.9" fill="var(--grain)" transform="rotate(60 309 134)"/>
+    <ellipse cx="306" cy="110" rx="3.2" ry="1.9" fill="var(--grain-deep)" transform="rotate(60 306 110)"/><ellipse cx="302" cy="122" rx="3.2" ry="1.9" fill="var(--grain-deep)" transform="rotate(60 302 122)"/><ellipse cx="309" cy="134" rx="3.2" ry="1.9" fill="var(--grain-deep)" transform="rotate(60 309 134)"/>
     <text class="lbl" x="318" y="92">Produksi</text>
   </g>
   <!-- 2 Pascapanen & penyimpanan (susut) -->
   <g>
-    <path d="M262 112 C292 112 318 124 332 150" fill="none" stroke="var(--grain)" stroke-width="8.8" stroke-linecap="round"/>
+    <path d="M262 112 C292 112 318 124 332 150" fill="none" stroke="var(--grain-deep)" stroke-width="8.8" stroke-linecap="round"/>
     <polygon points="267.6,114.4 263.0,116.0 260.1,119.6 256.8,116.6 252.0,114.7 255.6,110.6 255.7,106.2 259.9,106.0 264.6,105.5 265.0,110.3" fill="var(--paper)"/>
-    <ellipse cx="333" cy="164" rx="3.2" ry="1.9" fill="var(--grain)" transform="rotate(60 333 164)"/><ellipse cx="329" cy="176" rx="3.2" ry="1.9" fill="var(--grain)" transform="rotate(60 329 176)"/>
+    <ellipse cx="333" cy="164" rx="3.2" ry="1.9" fill="var(--grain-deep)" transform="rotate(60 333 164)"/><ellipse cx="329" cy="176" rx="3.2" ry="1.9" fill="var(--grain-deep)" transform="rotate(60 329 176)"/>
     <text class="lbl" x="344" y="146">Pascapanen</text>
     <text class="lbl-sub" x="344" y="162">&amp; penyimpanan</text>
   </g>
   <!-- 3 Pengolahan & pengemasan (susut) -->
   <g>
-    <path d="M282 170 C306 170 326 180 336 198" fill="none" stroke="var(--grain)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M282 170 C306 170 326 180 336 198" fill="none" stroke="var(--grain-deep)" stroke-width="3" stroke-linecap="round"/>
     <polygon points="286.3,171.6 283.0,172.7 281.1,175.2 278.8,173.1 275.5,171.9 278.0,169.1 278.0,166.0 280.9,165.9 284.2,165.5 284.4,168.8" fill="var(--paper)"/>
-    <ellipse cx="337" cy="210" rx="3.2" ry="1.9" fill="var(--grain)" transform="rotate(60 337 210)"/>
+    <ellipse cx="337" cy="210" rx="3.2" ry="1.9" fill="var(--grain-deep)" transform="rotate(60 337 210)"/>
     <text class="lbl" x="346" y="200">Pengolahan</text>
   </g>
   <!-- 4 Distribusi & pemasaran (sisa) -->
@@ -321,11 +325,11 @@
 
   <!-- legenda -->
   <g transform="translate(0,368)">
-    <circle cx="6" cy="-2" r="5" fill="var(--grain)"/>
-    <text class="lbl-sub" x="16" y="2">susut pangan (food loss)</text>
-    <circle cx="186" cy="-2" r="5" fill="var(--rust)"/>
-    <text class="lbl-sub" x="196" y="2">sisa pangan (food waste)</text>
-    <text class="lbl-sub" x="366" y="2" style="font-style:italic">tebal = volume</text>
+    <circle cx="6" cy="-2" r="5" fill="var(--grain-deep)"/>
+    <text class="lbl-sub" x="16" y="2">susut (food loss)</text>
+    <circle cx="146" cy="-2" r="5" fill="var(--rust)"/>
+    <text class="lbl-sub" x="156" y="2">sisa (food waste)</text>
+    <text class="lbl-sub" x="472" y="2" text-anchor="end" style="font-style:italic">tebal aliran = volume</text>
   </g>
 </svg>
 </div>
@@ -341,7 +345,7 @@
   <div class="fact">
     <div class="tag">Dunia · Krisis &amp; Iklim</div>
     <div class="n">645 <small>juta orang</small></div>
-    <p>menghadapi kelaparan (2025). Pangan hilang &amp; terbuang menyumbang <strong>8–10% emisi gas rumah kaca.</strong></p>
+    <p>menghadapi kelaparan (2025). Pangan yang susut &amp; terbuang ikut menyumbang <strong>8–10% emisi gas rumah kaca.</strong></p>
     <p class="src">FAO dkk. · SOFI 2026 &nbsp;|&nbsp; UNEP · 2024</p>
   </div>
   <div class="fact local">
@@ -353,7 +357,7 @@
 </section>
 
 <!-- [BAGIAN 3] Solusi / aksi nyata -->
-<div class="abs steps-head"><h3>4 langkah menambal dari dapur</h3><div class="hr"></div></div>
+<div class="abs steps-head"><h3>4 langkah menambal kebocoran</h3><div class="hr"></div><span class="where">di rumah, sekolah, kampus &amp; kantor</span></div>
 <section class="abs steps" data-zone="3 · Solusi (4 langkah)">
   <div class="step">
     <div class="top"><span class="num">01</span>
@@ -364,17 +368,17 @@
   </div>
   <div class="step">
     <div class="top"><span class="num">02</span>
-      <svg viewBox="0 0 24 24"><path d="M3 19h18"/><rect x="4" y="12" width="4.5" height="7" rx="1"/><rect x="9.8" y="12" width="4.5" height="7" rx="1"/><rect x="15.5" y="12" width="4.5" height="7" rx="1"/><path d="M19.5 7.5H6"/><path d="M8.5 5L6 7.5 8.5 10"/></svg>
+      <svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M5 9h14"/><path d="M8 5v2"/><path d="M16 15.5H9.5"/><path d="M11.5 13l-2.5 2.5 2.5 2.5"/></svg>
     </div>
     <h4>Simpan dengan benar</h4>
     <p>Pakai FIFO: yang lebih dulu dibeli, dipakai lebih dulu.</p>
   </div>
   <div class="step">
     <div class="top"><span class="num">03</span>
-      <svg viewBox="0 0 24 24"><path d="M12 3c2.4 0 3.8 3 3.8 7s-1.4 8-3.8 8-3.8-4-3.8-8S9.6 3 12 3z"/><path d="M10 7.5h4M9.3 11h5.4M9.8 14.5h4.4"/><path d="M8.4 12.5C6.2 13.6 5 16.5 5 20c3 0 5.3-1.1 7-3"/><path d="M15.6 12.5c2.2 1.1 3.4 4 3.4 7.5-3 0-5.3-1.1-7-3"/></svg>
+      <svg viewBox="0 0 24 24"><g transform="translate(12 12.4) rotate(30) scale(1.22) translate(-12 -10.4)" stroke-width="1.4"><path d="M12 2.2c2 0 3.2 2.8 3.2 6.4S14 15.4 12 15.4s-3.2-3.2-3.2-6.8S10 2.2 12 2.2z"/><g fill="currentColor" stroke="none"><circle cx="10.9" cy="6" r=".6"/><circle cx="13.1" cy="6" r=".6"/><circle cx="12" cy="7.5" r=".6"/><circle cx="10.6" cy="9" r=".6"/><circle cx="13.4" cy="9" r=".6"/><circle cx="12" cy="10.5" r=".6"/><circle cx="10.9" cy="12" r=".6"/><circle cx="13.1" cy="12" r=".6"/></g><path d="M12 15.4c-3.3-.4-5.6-3.4-5.8-7.4 2.6.8 4.4 2.8 5 5.2"/><path d="M12 15.4c3-.2 5.3-2.4 5.9-5.6-2.3.4-4.1 1.8-4.9 3.9"/><path d="M12 15.6v3"/></g></svg>
     </div>
     <h4>Pilih pangan lokal</h4>
-    <p>Umbi, jagung, sayur &amp; lauk dari sekitar kita.</p>
+    <p>Umbi, jagung, sayur &amp; lauk bergizi dari sekitar kita.</p>
   </div>
   <div class="step">
     <div class="top"><span class="num">04</span>
@@ -449,6 +453,12 @@
     for (const [s, r] of rects) {
       if (r.right > 1080 || r.bottom > 1350) issues.push(s + ' keluar kanvas');
     }
+    document.querySelectorAll('.footer *, .steps-head *, .facts *, .steps *').forEach((n) => {
+      const r = n.getBoundingClientRect();
+      if (r.right > 1021 || r.left < 59) issues.push('keluar margin: ' + (n.className || n.tagName) + ' ' + Math.round(r.left) + '-' + Math.round(r.right));
+    });
+    const who = document.querySelector('.who').getBoundingClientRect(), cr = document.querySelector('.credit').getBoundingClientRect();
+    if (who.left < cr.right) issues.push('nama menabrak kredit');
     document.querySelectorAll('.fact, .step, .band, .bignum').forEach((el) => {
       if (el.scrollHeight > el.clientHeight + 1 && getComputedStyle(el).height !== 'auto') issues.push('isi terpotong: ' + el.className);
     });

@@ -40,7 +40,7 @@ Peserta: `[NAMA KAMU]` · Instansi: `[UNIVERSITAS/INSTANSI KAMU]`
 | I-8 | Komposisi sampah nasional | Sisa makanan **40,77%** (terbesar), plastik 20,52%, kayu/ranting 13,13% | 2025 (data indikatif, ±244 kab/kota melapor) | KLH/BPLH, SIPSN | [SIPSN komposisi](https://sipsn.menlhk.go.id/sipsn/public/data/komposisi) · [GoodStats](https://goodstats.id/article/sampah-indonesia-didominasi-sisa-makanan-pada-2025-Yttj3) | ⚠️ dicek via sumber sekunder |
 | I-9 | Pembanding 2024 | Sisa makanan **±40%** dari sampah (pernyataan Menteri LH, data SIPSN 2024) | 2024 | KLH, via Antara | [Antara](https://www.antaranews.com/berita/4713529/menteri-lh-sisa-makanan-masih-jadi-jenis-timbulan-sampah-terbesar) | ✅ |
 | I-10 | Sumber sampah | Rumah tangga **56,7%** | 2025 | SIPSN (via GoodStats) | [GoodStats](https://goodstats.id/article/persentase-sumber-sampah-indonesia-2025-rumah-tangga-dominasi-timbulan-nasional-GR9A5) | ⚠️ cek di SIPSN |
-| I-11 | Prevalensi ketidakcukupan konsumsi pangan (PoU) | **7,89%** (2024: 8,27% · 2023: 8,53%). Target RPJMN 2029: 4,41% | 2025 | BPS & Badan Pangan Nasional | [Tabel BPS](https://www.bps.go.id/id/statistics-table/2/MTQ3MyMy/prevalensi-ketidakcukupan-konsumsi-pangan--persen-.html) · [Bapanas](https://badanpangan.go.id/blog/post/detailkan-hingga-tingkat-desa-nfa-dorong-penurunan-pou-jadi-441-persen-pada-2029) | ⚠️ angka 2025 terbaca di tabel BPS lewat pencarian; buka tabelnya untuk konfirmasi |
+| I-11 | Prevalensi ketidakcukupan konsumsi pangan (PoU) | **7,89%** (2024: 8,27% · 2023: 8,53%). Target RPJMN 2029: 4,41% | 2025 | BPS & Badan Pangan Nasional | [Tabel BPS](https://www.bps.go.id/id/statistics-table/2/MTQ3MyMy/prevalensi-ketidakcukupan-konsumsi-pangan--persen-.html) · [Bapanas](https://badanpangan.go.id/blog/post/detailkan-hingga-tingkat-desa-nfa-dorong-penurunan-pou-jadi-441-persen-pada-2029) | ⚠️ angka 2025 konsisten di beberapa rilis Databoks yang mengutip tabel BPS; buka tabel BPS untuk konfirmasi akhir |
 | I-12 | Stunting balita | **19,8%** | 2024 (SSGI 2024, rilis 26 Mei 2025) | Kemenkes | [Kemenkes](https://kemkes.go.id/id/ssgi-2024-prevalensi-stunting-nasional-turun-menjadi-198) | ✅ (hasil SSGI 2025 tidak saya temukan) |
 | I-13 | Skor Pola Pangan Harapan (PPH) | **95,1** (2024: 93,5). Konsumsi sayur & buah 251,34 g/kapita/hari (melampaui target 245,33) | 2025 (rilis 9 Des 2025) | Badan Pangan Nasional | [Bapanas](https://badanpangan.go.id/blog/post/skor-pph-nasional-2025-meningkat-konsumsi-pangan-makin-beragam) | ✅ |
 | I-14 | Konsumsi umbi-umbian | **50,22 g/kapita/hari**, masih di bawah target 53,40 g | Disebut dalam rilis PPH Bapanas (tahun perlu dicek: 2024 atau 2025) | Badan Pangan Nasional | [Bapanas](https://badanpangan.go.id/blog/post/skor-pph-nasional-2025-meningkat-konsumsi-pangan-makin-beragam) | ⚠️ |
@@ -99,7 +99,7 @@ Peserta: `[NAMA KAMU]` · Instansi: `[UNIVERSITAS/INSTANSI KAMU]`
 - **Ide headline:** Judul resmi *Food Crisis, No Food Waste* + pesan utama *Lumbung pangan kita bocor.*
 - **Ide visual utama:** Lumbung khas Sasak dengan 5 lubang. Tebal aliran butir = volume tiap tahap. Aliran terbesar (konsumsi) jatuh ke piring.
 - **Struktur informasi:** Judul resmi → pesan utama → angka 23–48 → lumbung (5 tahap) → 3 fakta (Indonesia, dunia, lokal) → 4 langkah → ajakan + slogan → footer.
-- **CTA:** "Tambal dari dapur." + ajakan resmi + slogan wajib.
+- **CTA:** "Tambal kebocorannya, mulai dari rumah, sekolah, kampus, dan kantor." + ajakan resmi + slogan wajib.
 - **Daya tarik visual:** Ikon budaya lokal yang langsung dikenali. Metaforanya terbaca sekali lihat. Data diterjemahkan ke dalam ilustrasi, bukan ditempel di sampingnya.
 
 ### Konsep 3 — "Perjalanan Seikat Sayur"
@@ -284,12 +284,12 @@ Peserta: `[NAMA KAMU]` · Instansi: `[UNIVERSITAS/INSTANSI KAMU]`
   3. Indonesia: 7,89% penduduk makan di bawah kebutuhan energi minimum (2025).
   4. Dunia: 645 juta orang menghadapi kelaparan (2025). Susut & sisa pangan menyumbang 8–10% emisi GRK.
   5. Potensi lokal: 77 jenis sumber karbohidrat lokal.
-  6. 4 langkah menambal dari dapur.
+  6. 4 langkah menambal kebocoran, berlaku di rumah, sekolah, kampus, dan kantor.
 - **Data ditampilkan:** 23–48 · 61–125 · 5 tahap (tebal aliran) · 5–19 · 7,89% · 645 juta · 8–10% · 77.
 - **Urutan:** Logo → judul resmi → pesan utama → angka kunci → lumbung → 3 fakta → 4 langkah → ajakan & slogan → kredit & nama.
 - **Hierarchy visual:** (1) Judul resmi, (2) lumbung + aliran merah konsumsi, (3) angka 23–48, (4) pesan utama miring, (5) tiga angka fakta, (6) 4 langkah, (7) band slogan.
 - **Typography:** Fraunces untuk judul, angka, dan kalimat miring. Plus Jakarta Sans (typeface karya desainer Indonesia) untuk isi dan label. Hanya 2 keluarga font.
-- **Icon/ilustrasi:** Lumbung Sasak flat (atap hijau-hitam, tiang kayu, jelepeng). Ikon garis 1,7 px untuk 4 langkah: daftar belanja, rak FIFO, jagung, panci.
+- **Icon/ilustrasi:** Lumbung Sasak flat (atap hijau-hitam, tiang kayu, jelepeng). Ikon garis 1,7 px untuk 4 langkah: daftar belanja, kulkas dengan panah FIFO, jagung, panci.
 - **Chart/diagram:** Ilustrasi berkode data. Tebal aliran ∝ nilai tengah volume per tahap (produksi 9,65 · pascapanen 8,0 · pengolahan 1,45 · distribusi 5,4 · konsumsi 12,0 juta ton; skala 1,1 px per juta ton; aliran pengolahan dibulatkan ke minimum 3 px agar terlihat). Warna membedakan **susut** (kuning gabah) dan **sisa** (merah bata).
 - **Layout:** Lihat Tahap 6.1.
 - **CTA:** "Ambil secukupnya. Piring yang tidak berlebihan adalah bentuk sayang pada sesama." + slogan wajib.
@@ -322,16 +322,16 @@ Prinsip: kalimat pendek, kata sehari-hari, tanpa jargon ("food loss & waste" han
 | Judul (Bagian 1, wajib) | **Food Crisis, No Food Waste** |
 | Sub judul (wajib) | Krisis Pangan dan Pangan yang Terbuang |
 | Pesan utama | *Lumbung pangan kita bocor. Lubang terbesarnya ada di piring kita sendiri.* |
-| Fakta 1 (angka kunci) | **23–48 juta ton per tahun**: pangan susut & terbuang di Indonesia, setara porsi makan 61–125 juta orang setiap tahun. *(Bappenas, 2021 · rata-rata 2000–2019)* |
+| Fakta 1 (angka kunci) | **23–48 juta ton per tahun**: pangan yang susut & terbuang di Indonesia, setara porsi makan 61–125 juta orang. *(Bappenas, 2021 · rata-rata 2000–2019)* |
 | Label visual | Produksi · Pascapanen & penyimpanan · Pengolahan · Distribusi & pasar · **Konsumsi 5–19 juta ton/tahun** |
-| Legenda | ● susut pangan (food loss) ● sisa pangan (food waste) · tebal = volume |
+| Legenda | ● susut (food loss) ● sisa (food waste) · tebal aliran = volume |
 | Fakta 2a (Indonesia) | **7,89%** penduduk makan di bawah kebutuhan energi minimum harian (2025). *(BPS & Bapanas · PoU 2025)* |
-| Fakta 2b (Dunia) | **645 juta orang** menghadapi kelaparan (2025). Pangan hilang & terbuang menyumbang 8–10% emisi gas rumah kaca. *(FAO dkk. · SOFI 2026, UNEP · 2024)* |
+| Fakta 2b (Dunia) | **645 juta orang** menghadapi kelaparan (2025). Pangan yang susut & terbuang ikut menyumbang 8–10% emisi gas rumah kaca. *(FAO dkk. · SOFI 2026, UNEP · 2024)* |
 | Fakta 3 (lokal) | **77 jenis** sumber karbohidrat lokal. Kenyang tak harus nasi: ada singkong, jagung, sagu, talas. *(Badan Pangan Nasional)* |
-| Judul solusi (Bagian 3) | 4 LANGKAH MENAMBAL DARI DAPUR |
+| Judul solusi (Bagian 3) | 4 LANGKAH MENAMBAL KEBOCORAN · *di rumah, sekolah, kampus & kantor* |
 | Langkah 1 | **Belanja terencana.** Buat daftar mingguan, beli sesuai porsi keluarga. |
 | Langkah 2 | **Simpan dengan benar.** Pakai FIFO: yang lebih dulu dibeli, dipakai lebih dulu. |
-| Langkah 3 | **Pilih pangan lokal.** Umbi, jagung, sayur & lauk dari sekitar kita. |
+| Langkah 3 | **Pilih pangan lokal.** Umbi, jagung, sayur & lauk bergizi dari sekitar kita. |
 | Langkah 4 | **Olah sisa jadi baru.** Sisa sayur jadi kaldu, sisa organik jadi kompos. |
 | Ajakan (Bagian 4) | *Ambil secukupnya. Piring yang tidak berlebihan adalah bentuk sayang pada sesama.* |
 | Slogan wajib (verbatim) | **"Stop sampah pangan, atasi krisis pangan, perkuat ketahanan pangan bersama SEAMEO RECFON!"** |
@@ -376,7 +376,7 @@ y=526  │ 23–48 juta ton / tahun            │   (472 × 372)          │ �
        │ sumber                            │ legenda                │ │
 y=744  ├──────────────────┬────────────────────┬───────────────────┤ │
        │ INDONESIA 7,89%  │ DUNIA 645 juta     │ LOKAL 77 jenis     │ │ ← Bagian 2: Fakta 2 & 3
-y=962  │ 4 LANGKAH MENAMBAL DARI DAPUR ─────────────────────────────  │
+y=962  │ 4 LANGKAH MENAMBAL KEBOCORAN ──────── di rumah, sekolah, kampus… │
 y=994  │ 01 Belanja │ 02 Simpan   │ 03 Pangan   │ 04 Olah sisa       │ ← Bagian 3: solusi
        │ terencana  │ dgn benar   │ lokal       │ jadi baru          │
 y=1150 ├██████████████████████████████████████████████████████████████┤
@@ -399,10 +399,11 @@ Jalur baca: Z terbalik. Judul besar → pesan miring di kiri → mata tertarik k
 | Kertas | `#F3EDE2` | latar |
 | Tinta | `#1B2A22` | teks utama, atap lumbung, band penutup |
 | Merah bata | `#B4452A` | **sisa pangan / masalah**: baris ke-2 judul, aliran konsumsi, label Indonesia |
-| Kuning gabah | `#D6982B` | **susut pangan / padi**: aliran awal rantai, slogan di band gelap |
+| Kuning gabah | `#D6982B` | jendela lumbung dan slogan di band gelap (kontras 6:1 terhadap tinta) |
+| Gabah tua | `#B87C1C` | **susut pangan**: aliran awal rantai di atas kertas (kontras 3:1, batas minimum elemen grafis) |
 | Hijau daun | `#2E6A45` | **solusi & pangan lokal**: nomor langkah, label lokal |
 | Kayu | `#8A5A34` | tiang dan lantai lumbung |
-| Abu teks | `#46564C` / `#6E7A72` | teks isi / sumber |
+| Abu teks | `#46564C` / `#5E6A62` | teks isi (6,7:1) / sumber (4,9:1, lolos WCAG AA) |
 
   Aturan warna: merah hanya untuk masalah, hijau hanya untuk solusi. Warna tidak dipakai sebagai hiasan.
 - **Tipografi (2 keluarga, keduanya gratis, SIL OFL, tersedia di Google Fonts):**
@@ -422,7 +423,7 @@ Flat editorial vector illustration of a traditional Sasak (Lombok) rice barn "lu
 helmet-shaped thatched roof in deep green-black (#1B2A22), small ochre window showing rice grains,
 wooden floor and four stilts with round rat-guard discs. Five torn holes on the roof's right side and
 floor; from each hole a stream of rice grains pours out. Stream thickness varies (thickest from the
-floor, in brick red #B4452A, falling onto a white plate; upper streams in grain ochre #D6982B).
+floor, in brick red #B4452A, falling onto a white plate; upper streams in deep grain ochre #B87C1C).
 Warm paper background #F3EDE2, no gradients, no shadows, no text, generous negative space,
 magazine infographic style, centered-right composition, 4:5.
 Negative: photorealistic, 3D render, glossy, cartoon faces, clutter, extra buildings, text, watermark.
@@ -449,9 +450,10 @@ paper background, top-down view, even spacing, no text, no shadows.
 | Apakah tema sesuai dengan "Food Crisis, Food Waste"? | **Ya.** Lumbung mewakili ketahanan pangan (krisis), dan kebocoran mewakili food loss & waste. Dua angka krisis (Indonesia & dunia) dan pangan lokal hadir sebagai fakta. |
 | Apakah pesan utama langsung terbaca? | **Ya.** Judul besar → kalimat "Lumbung pangan kita bocor" → angka 23–48 → lumbung. Diuji pada pratinjau lebar 390 px (ukuran ponsel). |
 | Apakah desain terlalu penuh? | Padat karena lima bagian wajib panitia, tapi terkendali. Hanya satu angka dominan, tiga angka fakta, langkah ≤ 9 kata, dan whitespace di kanan judul. Kalau ingin lebih lega, hapus baris "susut/sisa" pada legenda dan kalimat emisi di fakta Dunia. |
-| Apakah data mudah dipahami? | **Ya.** Satuan selalu ditulis (juta ton/tahun, %, juta orang). Rentang ditulis apa adanya. Tebal aliran dijelaskan dengan legenda "tebal = volume". |
-| Apakah nama peserta dan instansi di kanan bawah? | **Ya.** Rata kanan di y ≈ 1.320 px (placeholder). |
+| Apakah data mudah dipahami? | **Ya.** Satuan selalu ditulis (juta ton/tahun, %, juta orang). Rentang ditulis apa adanya. Tebal aliran dijelaskan dengan legenda "tebal aliran = volume". |
+| Apakah nama peserta dan instansi di kanan bawah? | **Ya.** Rata kanan di pojok kanan bawah, format satu baris "Nama \| Instansi". Sudah diuji dengan nama dan instansi panjang: teks otomatis terlipat ke dua baris dan tetap di dalam margin. |
 | Apakah logo wajib sudah diperhitungkan? | **Ya.** Tiga slot logo di area atas kiri, tinggi 60 px, lebar mengikuti proporsi asli file. File resmi harus dimasukkan (6.6). |
+| Apakah kontras warna cukup? | **Ya.** Semua teks lolos WCAG AA (≥ 4,5:1). Teks terkecil (sumber) 4,9:1. Aliran data di atas kertas ≥ 3:1. |
 | Apakah desain tetap terbaca di smartphone? | Judul, pesan, semua angka, dan judul langkah terbaca di lebar 390 px. Teks isi 16–19 px. Sumber berukuran fine print (bisa dizoom). |
 | Apakah ada informasi yang tidak memiliki sumber? | **Tidak ada angka tanpa sumber.** Kalimat ajakan dan 4 langkah bersifat anjuran, diadaptasi dari naskah panitia. |
 
@@ -474,3 +476,22 @@ node scripts/render.mjs --mode wireframe
    - `design/logos/seameo-recfon.png`
 3. Render ulang. Logo otomatis dipasang dengan **tinggi 60 px dan lebar sesuai proporsi asli** (`height: 60px; width: auto`). Bentuk, warna, dan proporsinya tidak diubah.
 4. Jika mengerjakan di Figma atau Canva: tempatkan logo di area kiri atas (x = 60, y = 36, tinggi 60 px, jarak antarlogo 18 px), kunci proporsi (tahan Shift), dan jangan beri efek, outline, atau warna baru.
+
+---
+
+## Riwayat revisi (audit berulang)
+
+| Putaran | Temuan | Perbaikan |
+|---|---|---|
+| 1 | Teks sumber (#6E7A72) hanya 3,84:1, di bawah WCAG AA. Aliran kuning di atas kertas 2,15:1 | Abu sumber → `#5E6A62` (4,85:1). Aliran susut → `#B87C1C` (3,04:1) |
+| 1 | Ikon langkah 03 (jagung tegak simetris) terlihat seperti roket. Ikon 02 (rak) terlihat seperti gedung | Jagung digambar miring dengan butir dan dua kelobot tidak simetris. Rak diganti kulkas dengan panah FIFO |
+| 1 | Nama/instansi panjang bisa keluar kanvas (teks tidak boleh terlipat) | Blok nama boleh terlipat (maks. 440 px). Kolom kredit menyempit lebih dulu. Pemeriksa overflow ditambah cek margin dan tabrakan nama–kredit |
+| 1 | Istilah tidak konsisten ("susut & terbuang" vs "hilang & terbuang"). "per tahun" ditulis dua kali | Istilah diseragamkan menjadi "susut & terbuang". Pengulangan dihapus |
+| 1 | Kata "bergizi" (fokus tema) belum ada. Lingkup sekolah/kampus/kantor (fokus brief) belum disebut | Langkah 3 memuat "bergizi". Judul langkah diberi keterangan "di rumah, sekolah, kampus & kantor" |
+| 1 | Legenda "tebal = volume" ambigu | Menjadi "tebal aliran = volume". Label legenda dipersingkat |
+| 2 | Judul "menambal dari dapur" bertentangan dengan keterangan "di kantor" | Menjadi "4 langkah menambal kebocoran", sekaligus menguatkan metafora |
+| 2 | Ikon jagung terlalu kecil dan garisnya lebih tebal dari ikon lain | Diperbesar 1,22×, tebal garis dikompensasi agar setara |
+| 3 | Placeholder "Nama \| Instansi" terlipat jadi dua baris padahal muat satu baris | Aturan flex footer diperbaiki: satu baris bila muat, terlipat hanya bila panjang |
+| 4 | Dokumen belum sinkron dengan desain (copy deck, palet, storyboard, checklist) | Semua bagian diselaraskan. Checklist ditambah butir kontras dan uji nama panjang |
+| 5 | Label zona di wireframe menutupi konten sehingga sulit dipakai sebagai acuan kerja manual | Konten diredupkan (38%) dalam mode wireframe, jadi zona, grid, dan koordinat terbaca jelas |
+| 6 | Pemeriksaan ulang menyeluruh (data, naskah wajib, kontras, overflow, nama panjang, ponsel 390 px) | Tidak ada temuan baru |
