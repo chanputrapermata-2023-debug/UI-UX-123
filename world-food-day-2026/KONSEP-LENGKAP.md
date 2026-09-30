@@ -338,7 +338,7 @@ Prinsip: kalimat pendek, kata sehari-hari, tanpa jargon ("food loss & waste" han
 | Ajakan (Bagian 4) | *Ambil secukupnya. Piring yang tidak berlebihan adalah bentuk sayang pada sesama.* |
 | Slogan wajib (verbatim) | **"Stop sampah pangan, atasi krisis pangan, perkuat ketahanan pangan bersama SEAMEO RECFON!"** |
 | Kredit (Bagian 5, wajib) | Kredit sumber data: Materi Edukasi Pangan SEAMEO RECFON, Peringatan Hari Pangan Sedunia 2026. Data pendukung: Bappenas (2021); BPS & Bapanas (2025); FAO dkk. (2026); UNEP (2024); Badan Pangan Nasional. |
-| Kanan bawah (wajib) | **Chandra Putra Permata Jaya \| Universitas Airlangga** |
+| Kanan bawah (wajib) | **Chandra Putra Permata Jaya - Universitas Airlangga** |
 
 Keempat langkah diringkas dari naskah panitia (Smart Planning, Store Properly/FIFO, Go Local, Zero-Waste Cooking). Kalimat ajakan diadaptasi dari contoh ajakan di naskah.
 
@@ -414,6 +414,16 @@ Jalur baca: Z terbalik. Judul besar → pesan miring di kiri → mata tertarik k
   - Ukuran terkecil: sumber 11,5–12,5 px (fine print). Semua teks isi ≥ 16 px.
 - **Ilustrasi:** Lumbung Sasak disederhanakan: atap melengkung seperti helm (siluet gelap dengan tekstur ilalang diagonal 55%), jendela kuning berisi gabah, lantai kayu, 4 tiang dengan jelepeng (piringan penahan tikus). Lubang berbentuk sobekan warna kertas. Aliran berupa garis tebal dengan ujung bulat dan beberapa butir yang jatuh.
 - **Ikon:** Garis 1,7 px, ujung bulat, 40 × 40 px, warna tinta. Nomor langkah memakai serif hijau.
+
+### 6.2a Acuan: karya dan kriteria pemenang
+
+Saya mencari karya pemenang lomba ini dari tahun sebelumnya, tapi **tidak menemukannya**. "World Food Day Contest" kategori infografis tampaknya baru diadakan pertama kali tahun 2026. Lomba SEAMEO RECFON sebelumnya berkategori esai foto dan video reels ([2nd ICFN 2024](https://www.seameo-recfon.org/seameo-recfon-announce-the-winner-of-photo-essay-and-video-reels-competition-and-commemorates-its-collaboration-with-wageningen-university-research-during-the-2nd-international-conference-on-food/)), serta desain poster/leaflet bersama GAIN ([SBNP](https://sbnp.seameo-recfon.org/lomba/)), dan arsip karya pemenangnya tidak terbuka. Karena itu acuannya diambil dari:
+
+| Acuan | Isi | Penerapan di poster final |
+|---|---|---|
+| Kriteria penilaian umum lomba infografis di Indonesia ([contoh rubrik](https://www.scribd.com/document/512063943/RUBRIK-PENILAIAN-INFOGRAFIS)) | Orisinalitas/ide (bobot terbesar, ±30%), informatif, estetika, kesesuaian tema, keterbacaan | Metafora lumbung (orisinal dan lokal). Data resmi bersumber. Dua font, lima warna. Kontras lolos WCAG AA |
+| [FAO World Food Day Poster Contest](https://www.fao.org/world-food-day/contest/en) | Dinilai dari relevansi tema serta keunggulan estetika dan teknis. [Pemenang 2025](https://www.fao.org/worldfoodday-campaign/contest/contest-winners-2025/en/) cenderung punya satu ilustrasi kuat, identitas lokal, dan pesan yang langsung terbaca | Satu ilustrasi dominan. Identitas Nusantara (lumbung Sasak, umbi, jagung). Pesan utama satu kalimat |
+| Prinsip "show, don't tell" | Visual menggantikan teks bila bisa | Kartu pangan lokal diberi ikon jagung, singkong, dan talas |
 
 ### 6.2b Catatan DKV (prinsip yang diterapkan)
 
@@ -519,4 +529,5 @@ Saat ini folder `design/logos/` sudah berisi tiga file yang dipisahkan dari gamb
 | 9 | Audit DKV: angka 23-48 (118 px) mengalahkan judul wajib (104 px). Lumbung terlalu kecil dan rendah, kuadran kanan atas kosong. Legenda sejajar dengan baris sumber di kolom kiri (proximity keliru). Kartu fakta tidak rata bawah dan gutter-nya beda dengan langkah. Atap lumbung terlihat seperti gumpalan polos. Slogan menyisakan baris yatim | Angka turun ke 98 px. Lumbung diperbesar, dinaikkan, dan dipasang di kolom 7 grid. Legenda dipindah ke atas label lumbung. Kartu rata bawah dengan gutter 24 px. Atap diberi 3 lapisan ilalang, puncak kayu, dan bayangan. Slogan dibagi seimbang |
 | 10 | Puncak atap nyaris menyentuh huruf "e" pada "Waste" (tangency). Garis tanah hanya tampak di satu sisi. Tanda hubung font sans terlihat renggang ("61 - 125") | Lumbung digeser. Garis tanah dihapus (cukup bayangan). Tanda hubung rentang angka dirapatkan |
 | 11 | Nama peserta dimasukkan | "Chandra Putra Permata Jaya \| Universitas Airlangga" muat satu baris di pojok kanan bawah |
+| 12 | Format nama diminta memakai tanda hubung. Kartu pangan lokal (fokus tema) hanya berupa teks | "Chandra Putra Permata Jaya - Universitas Airlangga" dengan tanda hubung tipis. Kartu lokal diberi 3 ikon garis hijau (jagung, singkong, talas) sesuai acuan "show, don't tell" dan karya pemenang poster FAO |
 
