@@ -9,7 +9,7 @@ Peserta: `[NAMA KAMU]` · Instansi: `[UNIVERSITAS/INSTANSI KAMU]`
 
 1. **Kemungkinan larangan AI.** Ringkasan ketentuan lomba di [ajanglomba.com](https://www.ajanglomba.com/2026/09/lomba-infografi-video-seameo-recfon-2026.html) menyebut karya harus **100% orisinal buatan manusia dan dilarang memakai AI**. Saya tidak bisa membuka juknis resminya, jadi silakan cek sendiri. Kalau aturan itu benar, **PNG di folder `output/` jangan dikirim sebagai karya lomba**. Pakai dokumen ini dan wireframe-nya sebagai riset dan brief, lalu kerjakan desainnya sendiri di Figma, Illustrator, atau Canva. Juga cek apakah brief dan riset dengan bantuan AI boleh dipakai.
 2. **Teks wajib dari panitia.** Naskah panitia menetapkan format Bagian 1–5 sebagai wajib: judul utama, data dan fakta, 4 langkah, ajakan dengan slogan wajib, serta footer (3 logo, kredit sumber, nama di pojok kanan bawah). Desain final memakai **judul resmi sebagai headline**. Angle konsep masuk sebagai *pesan utama* dan visual. Slogan wajib ditulis **persis** seperti naskah.
-3. **Logo resmi belum ada di desain.** Situs resmi Kemendikdasmen, SEAMEO, dan SEAMEO RECFON diblokir dari lingkungan kerja saya. Jadi desain memakai *slot* logo bergaris putus-putus. Unduh file resminya dari link di juknis. Letakkan tanpa mengubah bentuk, warna, atau proporsinya (lihat bagian 6.6).
+3. **Logo resmi sudah terpasang.** Ketiga logo diambil dari file yang kamu kirim, lalu dipisahkan per bentuk logo (bukan potongan kotak). Tidak ada piksel yang digambar ulang, diwarnai ulang, atau diregangkan. Pastikan file itu memang sama dengan versi di link juknis (lihat bagian 6.6).
 4. **Cara data diverifikasi.** Situs resmi (BPS, Bapanas, UNEP, FAO, SIPSN) tidak bisa dibuka langsung dari lingkungan saya. Setiap angka saya cek lewat cuplikan halaman resminya di mesin pencari, lalu dicocokkan dengan minimal satu sumber lain bila memungkinkan. Tanda ✅ berarti sudah terkonfirmasi di halaman resmi dan sumber lain. Tanda ⚠️ berarti masih bersumber sekunder atau tahun datanya perlu dicek. **Buka setiap URL sekali sebelum mengirim karya.**
 
 ---
@@ -363,7 +363,7 @@ Margin kiri-kanan 60 px · grid 12 kolom, gutter 24 px · lebar konten 960 px.
 
 ```
 y=36   ┌──────────────────────────────────────────────────────────────┐
-       │ [Logo Kemendikdasmen][Logo SEAMEO][Logo SEAMEO RECFON]  HARI │ ← Bagian 5a: 3 logo (tinggi 60 px)
+       │ [Logo Kemendikdasmen][Logo SEAMEO][Logo SEAMEO RECFON]  HARI │ ← Bagian 5a: 3 logo (tinggi 72 px)
        │                                              PANGAN SEDUNIA  │
 y=112  ├──────────────────────────────────────────────────────────────┤ garis 2 px
 y=128  │ Food Crisis,                                                 │ ← Bagian 1: judul resmi
@@ -454,7 +454,7 @@ paper background, top-down view, even spacing, no text, no shadows.
 | Apakah desain terlalu penuh? | Padat karena lima bagian wajib panitia, tapi terkendali. Hanya satu angka dominan, tiga angka fakta, langkah ≤ 9 kata, dan whitespace di kanan judul. Kalau ingin lebih lega, hapus baris "susut/sisa" pada legenda dan kalimat emisi di fakta Dunia. |
 | Apakah data mudah dipahami? | **Ya.** Satuan selalu ditulis (juta ton/tahun, %, juta orang). Rentang ditulis apa adanya. Tebal aliran dijelaskan dengan legenda "tebal aliran = volume". |
 | Apakah nama peserta dan instansi di kanan bawah? | **Ya.** Rata kanan di pojok kanan bawah, format satu baris "Nama \| Instansi". Sudah diuji dengan nama dan instansi panjang: teks otomatis terlipat ke dua baris dan tetap di dalam margin. |
-| Apakah logo wajib sudah diperhitungkan? | **Ya.** Tiga slot logo di area atas kiri, tinggi 60 px, lebar mengikuti proporsi asli file. File resmi harus dimasukkan (6.6). |
+| Apakah logo wajib sudah diperhitungkan? | **Ya.** Logo Kemendikdasmen, SEAMEO, dan SEAMEO RECFON terpasang di kiri atas dengan tinggi 72 px. Lebarnya mengikuti proporsi asli file. |
 | Apakah kontras warna cukup? | **Ya.** Semua teks lolos WCAG AA (≥ 4,5:1). Teks terkecil (sumber) 4,9:1. Aliran data di atas kertas ≥ 3:1. |
 | Apakah desain tetap terbaca di smartphone? | Judul, pesan, semua angka, dan judul langkah terbaca di lebar 390 px. Teks isi 16–19 px. Sumber berukuran fine print (bisa dizoom). |
 | Apakah ada informasi yang tidak memiliki sumber? | **Tidak ada angka tanpa sumber.** Kalimat ajakan dan 4 langkah bersifat anjuran, diadaptasi dari naskah panitia. |
@@ -469,15 +469,17 @@ node scripts/render.mjs --nama "Nama Lengkap" --instansi "Universitas Contoh"
 node scripts/render.mjs --mode wireframe
 ```
 
-### 6.6 Memasukkan logo resmi
+### 6.6 Logo resmi
 
 1. Unduh file logo dari **link di juknis** (bukan dari hasil pencarian gambar).
 2. Simpan sebagai PNG transparan (atau SVG yang diekspor ke PNG) dengan nama berikut:
    - `design/logos/kemendikdasmen.png`
    - `design/logos/seameo.png`
    - `design/logos/seameo-recfon.png`
-3. Render ulang. Logo otomatis dipasang dengan **tinggi 60 px dan lebar sesuai proporsi asli** (`height: 60px; width: auto`). Bentuk, warna, dan proporsinya tidak diubah.
-4. Jika mengerjakan di Figma atau Canva: tempatkan logo di area kiri atas (x = 60, y = 36, tinggi 60 px, jarak antarlogo 18 px), kunci proporsi (tahan Shift), dan jangan beri efek, outline, atau warna baru.
+3. Render ulang. Logo otomatis dipasang dengan **tinggi 72 px dan lebar sesuai proporsi asli** (`height: 60px; width: auto`). Bentuk, warna, dan proporsinya tidak diubah.
+4. Jika mengerjakan di Figma atau Canva: tempatkan logo di area kiri atas (x = 60, y = 31, tinggi 72 px, jarak antarlogo 22 px), kunci proporsi (tahan Shift), dan jangan beri efek, outline, atau warna baru.
+
+Saat ini folder `design/logos/` sudah berisi tiga file yang dipisahkan dari gambar kiriman kamu. Ketiganya berlatar transparan dengan tinggi ±243–281 px, jadi di desain hanya diperkecil dan tidak pecah.
 
 ---
 
@@ -498,3 +500,4 @@ node scripts/render.mjs --mode wireframe
 | 5 | Label zona di wireframe menutupi konten sehingga sulit dipakai sebagai acuan kerja manual | Konten diredupkan (38%) dalam mode wireframe, jadi zona, grid, dan koordinat terbaca jelas |
 | 6 | Pemeriksaan ulang menyeluruh (data, naskah wajib, kontras, overflow, nama panjang, ponsel 390 px) | Tidak ada temuan baru |
 | 7 | Tanda pisah panjang (– dan —) terlihat kurang bagus di desain | Semua rentang angka memakai tanda hubung pendek (-). Di angka besar "23-48" diberi jarak kecil agar tidak menempel. Tanda — di baris kredit diganti koma |
+| 8 | Logo resmi dari peserta berupa satu gambar gabungan. Tulisan "Kemendikdasmen" menyentuh area roda SEAMEO, jadi tidak bisa dipotong kotak | Logo dipisah berdasarkan komponen piksel masing-masing. Hasilnya dipasang tanpa diubah dengan tinggi 72 px (dari 60 px) agar teks kecil di logo lebih terbaca |

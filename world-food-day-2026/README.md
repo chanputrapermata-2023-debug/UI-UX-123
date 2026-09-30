@@ -20,7 +20,7 @@ Tema: **Food Crisis, Food Waste** · Format: feed Instagram 4:5 (1080 × 1350 px
 ## Sebelum dikirim
 
 - [ ] **Cek juknis soal AI.** Ringkasan ketentuan publik menyebut karya harus buatan manusia dan dilarang memakai AI. Kalau benar, jangan kirim PNG ini. Kerjakan ulang desainnya sendiri memakai `KONSEP-LENGKAP.md` dan wireframe sebagai brief.
-- [ ] Masukkan 3 logo resmi dari link juknis ke `design/logos/` (lihat README di folder itu).
+- [x] 3 logo resmi sudah terpasang (dari file kiriman peserta). Cocokkan sekali lagi dengan versi di link juknis.
 - [ ] Ganti `[NAMA KAMU]` dan `[UNIVERSITAS/INSTANSI KAMU]`.
 - [ ] Buka URL sumber di `KONSEP-LENGKAP.md` (Tahap 1), terutama angka PoU 7,89% di tabel BPS.
 
