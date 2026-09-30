@@ -316,17 +316,19 @@ Prinsip: kalimat pendek, kata sehari-hari, tanpa jargon ("food loss & waste" han
 
 ### Konsep C (final): copy deck lengkap
 
+> Di desain, semua rentang angka memakai tanda hubung pendek (-), bukan tanda pisah panjang (–).
+
 | Bagian | Teks di desain |
 |---|---|
 | Kicker | HARI PANGAN SEDUNIA · 16 OKTOBER 2026 |
 | Judul (Bagian 1, wajib) | **Food Crisis, No Food Waste** |
 | Sub judul (wajib) | Krisis Pangan dan Pangan yang Terbuang |
 | Pesan utama | *Lumbung pangan kita bocor. Lubang terbesarnya ada di piring kita sendiri.* |
-| Fakta 1 (angka kunci) | **23–48 juta ton per tahun**: pangan yang susut & terbuang di Indonesia, setara porsi makan 61–125 juta orang. *(Bappenas, 2021 · rata-rata 2000–2019)* |
-| Label visual | Produksi · Pascapanen & penyimpanan · Pengolahan · Distribusi & pasar · **Konsumsi 5–19 juta ton/tahun** |
+| Fakta 1 (angka kunci) | **23-48 juta ton per tahun**: pangan yang susut & terbuang di Indonesia, setara porsi makan 61-125 juta orang. *(Bappenas, 2021 · rata-rata 2000-2019)* |
+| Label visual | Produksi · Pascapanen & penyimpanan · Pengolahan · Distribusi & pasar · **Konsumsi 5-19 juta ton/tahun** |
 | Legenda | ● susut (food loss) ● sisa (food waste) · tebal aliran = volume |
 | Fakta 2a (Indonesia) | **7,89%** penduduk makan di bawah kebutuhan energi minimum harian (2025). *(BPS & Bapanas · PoU 2025)* |
-| Fakta 2b (Dunia) | **645 juta orang** menghadapi kelaparan (2025). Pangan yang susut & terbuang ikut menyumbang 8–10% emisi gas rumah kaca. *(FAO dkk. · SOFI 2026, UNEP · 2024)* |
+| Fakta 2b (Dunia) | **645 juta orang** menghadapi kelaparan (2025). Pangan yang susut & terbuang ikut menyumbang 8-10% emisi gas rumah kaca. *(FAO dkk. · SOFI 2026, UNEP · 2024)* |
 | Fakta 3 (lokal) | **77 jenis** sumber karbohidrat lokal. Kenyang tak harus nasi: ada singkong, jagung, sagu, talas. *(Badan Pangan Nasional)* |
 | Judul solusi (Bagian 3) | 4 LANGKAH MENAMBAL KEBOCORAN · *di rumah, sekolah, kampus & kantor* |
 | Langkah 1 | **Belanja terencana.** Buat daftar mingguan, beli sesuai porsi keluarga. |
@@ -335,7 +337,7 @@ Prinsip: kalimat pendek, kata sehari-hari, tanpa jargon ("food loss & waste" han
 | Langkah 4 | **Olah sisa jadi baru.** Sisa sayur jadi kaldu, sisa organik jadi kompos. |
 | Ajakan (Bagian 4) | *Ambil secukupnya. Piring yang tidak berlebihan adalah bentuk sayang pada sesama.* |
 | Slogan wajib (verbatim) | **"Stop sampah pangan, atasi krisis pangan, perkuat ketahanan pangan bersama SEAMEO RECFON!"** |
-| Kredit (Bagian 5, wajib) | Kredit sumber data: Materi Edukasi Pangan SEAMEO RECFON — Peringatan Hari Pangan Sedunia 2026. Data pendukung: Bappenas (2021); BPS & Bapanas (2025); FAO dkk. (2026); UNEP (2024); Badan Pangan Nasional. |
+| Kredit (Bagian 5, wajib) | Kredit sumber data: Materi Edukasi Pangan SEAMEO RECFON, Peringatan Hari Pangan Sedunia 2026. Data pendukung: Bappenas (2021); BPS & Bapanas (2025); FAO dkk. (2026); UNEP (2024); Badan Pangan Nasional. |
 | Kanan bawah (wajib) | **[NAMA KAMU] \| [UNIVERSITAS/INSTANSI KAMU]** |
 
 Keempat langkah diringkas dari naskah panitia (Smart Planning, Store Properly/FIFO, Go Local, Zero-Waste Cooking). Kalimat ajakan diadaptasi dari contoh ajakan di naskah.
@@ -495,3 +497,4 @@ node scripts/render.mjs --mode wireframe
 | 4 | Dokumen belum sinkron dengan desain (copy deck, palet, storyboard, checklist) | Semua bagian diselaraskan. Checklist ditambah butir kontras dan uji nama panjang |
 | 5 | Label zona di wireframe menutupi konten sehingga sulit dipakai sebagai acuan kerja manual | Konten diredupkan (38%) dalam mode wireframe, jadi zona, grid, dan koordinat terbaca jelas |
 | 6 | Pemeriksaan ulang menyeluruh (data, naskah wajib, kontras, overflow, nama panjang, ponsel 390 px) | Tidak ada temuan baru |
+| 7 | Tanda pisah panjang (– dan —) terlihat kurang bagus di desain | Semua rentang angka memakai tanda hubung pendek (-). Di angka besar "23-48" diberi jarak kecil agar tidak menempel. Tanda — di baris kredit diganti koma |

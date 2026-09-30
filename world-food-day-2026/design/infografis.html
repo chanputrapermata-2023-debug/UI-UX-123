@@ -97,6 +97,7 @@
     font-size: 118px; line-height: .9; letter-spacing: -.03em; color: var(--ink);
     display: flex; align-items: flex-end; gap: 12px;
   }
+  .bignum .dash { display: inline-block; margin: 0 .05em 0 .03em; transform: translateY(-.02em); }
   .bignum .u {
     font: 800 25px/1.05 var(--sans); letter-spacing: -.01em; padding-bottom: 12px; color: var(--ink);
   }
@@ -222,9 +223,9 @@
 <p class="abs lead" data-zone="Pesan utama">Lumbung pangan kita bocor. Lubang terbesarnya ada di <em>piring kita sendiri.</em></p>
 
 <div class="abs bignum" data-zone="2 · Fakta 1 (angka kunci)">
-  <div class="n">23–48 <span class="u">juta ton<br>per tahun</span></div>
-  <p class="c">pangan yang susut &amp; terbuang di Indonesia, <strong>setara porsi makan 61–125 juta orang.</strong></p>
-  <p class="src">Bappenas, Kajian Food Loss &amp; Waste di Indonesia (2021) · rata-rata 2000–2019</p>
+  <div class="n"><span>23<span class="dash">-</span>48</span> <span class="u">juta ton<br>per tahun</span></div>
+  <p class="c">pangan yang susut &amp; terbuang di Indonesia, <strong>setara porsi makan 61-125 juta orang.</strong></p>
+  <p class="src">Bappenas, Kajian Food Loss &amp; Waste di Indonesia (2021) · rata-rata 2000-2019</p>
 </div>
 
 <!-- Ilustrasi utama: lebar aliran ~ nilai tengah volume per tahap (Bappenas 2021) -->
@@ -319,7 +320,7 @@
       <ellipse cx="340" cy="349" rx="3.4" ry="2"/>
     </g>
     <text class="lbl-big" x="362" y="296">Konsumsi</text>
-    <text class="lbl-num" x="362" y="326">5–19</text>
+    <text class="lbl-num" x="362" y="326">5-19</text>
     <text class="lbl-sub" x="362" y="344">juta ton/tahun</text>
   </g>
 
@@ -345,7 +346,7 @@
   <div class="fact">
     <div class="tag">Dunia · Krisis &amp; Iklim</div>
     <div class="n">645 <small>juta orang</small></div>
-    <p>menghadapi kelaparan (2025). Pangan yang susut &amp; terbuang ikut menyumbang <strong>8–10% emisi gas rumah kaca.</strong></p>
+    <p>menghadapi kelaparan (2025). Pangan yang susut &amp; terbuang ikut menyumbang <strong>8-10% emisi gas rumah kaca.</strong></p>
     <p class="src">FAO dkk. · SOFI 2026 &nbsp;|&nbsp; UNEP · 2024</p>
   </div>
   <div class="fact local">
@@ -397,7 +398,7 @@
 
 <!-- [BAGIAN 5b] Footer & kredensial -->
 <footer class="abs footer" data-zone="5 · Kredit sumber + nama (kanan bawah)">
-  <p class="credit"><b>Kredit sumber data:</b> Materi Edukasi Pangan SEAMEO RECFON — Peringatan Hari Pangan Sedunia 2026. Data pendukung: Bappenas (2021); BPS &amp; Bapanas (2025); FAO dkk. (2026); UNEP (2024); Badan Pangan Nasional.</p>
+  <p class="credit"><b>Kredit sumber data:</b> Materi Edukasi Pangan SEAMEO RECFON, Peringatan Hari Pangan Sedunia 2026. Data pendukung: Bappenas (2021); BPS &amp; Bapanas (2025); FAO dkk. (2026); UNEP (2024); Badan Pangan Nasional.</p>
   <p class="who" id="who"><span id="nama">[NAMA KAMU]</span> | <span id="instansi">[UNIVERSITAS/INSTANSI KAMU]</span></p>
 </footer>
 
