@@ -1,0 +1,12 @@
+{
+  "name": "world-food-day-2026-infografis",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "node scripts/render.mjs",
+    "render:wireframe": "node scripts/render.mjs --mode wireframe"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
