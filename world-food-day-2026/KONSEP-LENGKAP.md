@@ -351,9 +351,12 @@ Keempat langkah diringkas dari naskah panitia (Smart Planning, Store Properly/FI
 
 ## TAHAP 6 — DESAIN FINAL
 
+Kepatuhan juknis teknis: kanvas **1080 × 1350 px (rasio 4:5)** ✅ · format **PNG** ✅ · **300 DPI** (tertulis di metadata file) ✅.
+Catatan: DPI hanya keterangan untuk cetak. Ketajaman di layar ditentukan jumlah piksel. Karena itu file utama dibuat persis 1080 × 1350 px sesuai kanvas yang diminta, dan disertai cadangan 3× bila panitia meminta resolusi lebih besar.
+
 File:
-- `output/infografis-final-1080x1350.png`: ukuran feed Instagram 4:5
-- `output/infografis-final-2160x2700.png`: resolusi tinggi (2×), untuk diunggah atau dicetak
+- `output/Chandra-Putra-Permata-Jaya_Infografis-WFD2026_1080x1350.png`: ukuran feed Instagram 4:5
+- `output/Chandra-Putra-Permata-Jaya_Infografis-WFD2026_3240x4050_cadangan.png`: cadangan resolusi tinggi (3×), 300 DPI
 - `output/infografis-wireframe-1080x1350.png`: peta tata letak dengan grid 12 kolom dan koordinat tiap zona
 - `design/infografis.html`: sumber desain (bisa diedit dan dirender ulang)
 
@@ -530,4 +533,4 @@ Saat ini folder `design/logos/` sudah berisi tiga file yang dipisahkan dari gamb
 | 10 | Puncak atap nyaris menyentuh huruf "e" pada "Waste" (tangency). Garis tanah hanya tampak di satu sisi. Tanda hubung font sans terlihat renggang ("61 - 125") | Lumbung digeser. Garis tanah dihapus (cukup bayangan). Tanda hubung rentang angka dirapatkan |
 | 11 | Nama peserta dimasukkan | "Chandra Putra Permata Jaya \| Universitas Airlangga" muat satu baris di pojok kanan bawah |
 | 12 | Format nama diminta memakai tanda hubung. Kartu pangan lokal (fokus tema) hanya berupa teks | "Chandra Putra Permata Jaya - Universitas Airlangga" dengan tanda hubung tipis. Kartu lokal diberi 3 ikon garis hijau (jagung, singkong, talas) sesuai acuan "show, don't tell" dan karya pemenang poster FAO |
-
+| 13 | Juknis: kanvas 1080×1350 (4:5), PNG/JPG, minimal 300 DPI. PNG sebelumnya belum memuat metadata DPI, dan file 2× (2160×2700) tidak sesuai ukuran kanvas | Skrip render menulis 300 DPI ke setiap PNG. File utama diberi nama peserta dan dibuat persis 1080×1350 px. File 2× diganti cadangan 3× (3240×4050, 300 DPI) |
