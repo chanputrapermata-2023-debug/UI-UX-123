@@ -21,14 +21,14 @@ Tema: **Food Crisis, Food Waste** · Format: feed Instagram 4:5 (1080 × 1350 px
 
 - [ ] **Cek juknis soal AI.** Ringkasan ketentuan publik menyebut karya harus buatan manusia dan dilarang memakai AI. Kalau benar, jangan kirim PNG ini. Kerjakan ulang desainnya sendiri memakai `KONSEP-LENGKAP.md` dan wireframe sebagai brief.
 - [x] 3 logo resmi sudah terpasang (dari file kiriman peserta). Cocokkan sekali lagi dengan versi di link juknis.
-- [ ] Ganti `[NAMA KAMU]` dan `[UNIVERSITAS/INSTANSI KAMU]`.
+- [x] Nama & instansi: Chandra Putra Permata Jaya | Universitas Airlangga.
 - [ ] Buka URL sumber di `KONSEP-LENGKAP.md` (Tahap 1), terutama angka PoU 7,89% di tabel BPS.
 
 ## Render ulang
 
 ```bash
 npm install
-node scripts/render.mjs --nama "Nama Lengkap" --instansi "Universitas Contoh"
+node scripts/render.mjs --nama "Chandra Putra Permata Jaya" --instansi "Universitas Airlangga"
 node scripts/render.mjs --mode wireframe
 ```
 Jika Chromium untuk Playwright belum terpasang di komputer, jalankan dulu `npx playwright install chromium`.

@@ -90,26 +90,27 @@
     font-size: 33px; line-height: 1.16; color: var(--ink);
   }
   .lead em { font-style: italic; font-weight: 800; color: var(--rust); }
-  .bignum { left: var(--m); top: 526px; width: 480px; }
+  .bignum { left: var(--m); top: 540px; width: 480px; }
   .bignum .n {
     font-family: var(--serif); font-weight: 900;
     font-variation-settings: "opsz" 144, "SOFT" 0;
-    font-size: 118px; line-height: .9; letter-spacing: -.03em; color: var(--ink);
+    font-size: 98px; line-height: .9; letter-spacing: -.03em; color: var(--ink);
     display: flex; align-items: flex-end; gap: 12px;
   }
   .bignum .dash { display: inline-block; margin: 0 .05em 0 .03em; transform: translateY(-.02em); }
   .bignum .u {
-    font: 800 25px/1.05 var(--sans); letter-spacing: -.01em; padding-bottom: 12px; color: var(--ink);
+    font: 800 24px/1.05 var(--sans); letter-spacing: -.01em; padding-bottom: 8px; color: var(--ink);
   }
   .bignum .c {
     margin-top: 12px; font: 500 19px/1.38 var(--sans); color: var(--ink-2); width: 450px;
   }
   .bignum .c strong { color: var(--ink); font-weight: 800; }
+  .hy { margin: 0 -.09em; }   /* rapatkan tanda hubung rentang angka pada font sans */
   .src { font: 500 12.5px/1.35 var(--sans); color: var(--ink-3); letter-spacing: .01em; }
   .bignum .src { margin-top: 8px; }
 
   /* ---------- Hero kanan: ilustrasi lumbung (data-encoded) ---------- */
-  .hero-art { left: 548px; top: 352px; width: 472px; height: 372px; }
+  .hero-art { left: 552px; top: 290px; width: 468px; height: 426px; }
   .hero-art svg { display: block; overflow: visible; }
   .lbl { font: 700 15px var(--sans); fill: var(--ink-2); }
   .lbl-sub { font: 600 12.5px var(--sans); fill: var(--ink-3); }
@@ -118,10 +119,10 @@
 
   /* ---------- [BAGIAN 2] Data & fakta ---------- */
   .facts {
-    left: var(--m); right: var(--m); top: 744px; height: 206px;
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px;
+    left: var(--m); right: var(--m); top: 740px; height: 190px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
   }
-  .fact { border-top: 4px solid var(--ink); padding-top: 12px; }
+  .fact { border-top: 4px solid var(--ink); padding-top: 12px; display: flex; flex-direction: column; }
   .fact.id { border-color: var(--rust); }
   .fact.local { border-color: var(--leaf); }
   .tag {
@@ -137,11 +138,11 @@
   .fact .n small { font-size: 26px; font-weight: 800; letter-spacing: -.01em; }
   .fact p { margin-top: 7px; font: 500 17.5px/1.34 var(--sans); color: var(--ink-2); }
   .fact p strong { color: var(--ink); font-weight: 800; }
-  .fact p.src { margin-top: 6px; font: 500 12.5px/1.35 var(--sans); color: var(--ink-3); }
+  .fact p.src { margin-top: auto; padding-top: 6px; font: 500 12.5px/1.35 var(--sans); color: var(--ink-3); }
 
   /* ---------- [BAGIAN 3] Solusi / aksi nyata ---------- */
   .steps-head {
-    left: var(--m); right: var(--m); top: 962px;
+    left: var(--m); right: var(--m); top: 970px;
     display: flex; align-items: center; gap: 16px;
   }
   .steps-head h3 {
@@ -151,7 +152,7 @@
   .steps-head .hr { flex: 1; height: 1.5px; background: var(--line); }
   .steps-head .where { font: 600 14px/1 var(--sans); word-spacing: .12em; color: var(--ink-2); white-space: nowrap; }
   .steps {
-    left: var(--m); right: var(--m); top: 994px; height: 140px;
+    left: var(--m); right: var(--m); top: 1002px; height: 140px;
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
   }
   .step { position: relative; }
@@ -175,7 +176,7 @@
     font-size: 24px; line-height: 1.25; color: #EFE6D6;
   }
   .band .slogan {
-    margin-top: 10px; font: 800 20.5px/1.3 var(--sans); letter-spacing: -.005em; color: var(--grain);
+    margin-top: 10px; text-wrap: balance; max-width: 900px; font: 800 21.5px/1.3 var(--sans); letter-spacing: -.005em; color: var(--grain);
   }
 
   /* ---------- [BAGIAN 5b] Footer: kredit sumber + identitas peserta ---------- */
@@ -224,21 +225,22 @@
 
 <div class="abs bignum" data-zone="2 · Fakta 1 (angka kunci)">
   <div class="n"><span>23<span class="dash">-</span>48</span> <span class="u">juta ton<br>per tahun</span></div>
-  <p class="c">pangan yang susut &amp; terbuang di Indonesia, <strong>setara porsi makan 61-125 juta orang.</strong></p>
-  <p class="src">Bappenas, Kajian Food Loss &amp; Waste di Indonesia (2021) · rata-rata 2000-2019</p>
+  <p class="c">pangan yang susut &amp; terbuang di Indonesia, <strong>setara porsi makan 61<span class="hy">-</span>125 juta orang.</strong></p>
+  <p class="src">Bappenas, Kajian Food Loss &amp; Waste di Indonesia (2021) · rata-rata 2000<span class="hy">-</span>2019</p>
 </div>
 
 <!-- Ilustrasi utama: lebar aliran ~ nilai tengah volume per tahap (Bappenas 2021) -->
 <div class="abs hero-art" data-zone="Visual utama (lumbung bocor)">
-<svg width="472" height="372" viewBox="0 0 472 372" aria-label="Ilustrasi lumbung padi yang bocor di lima titik rantai pangan">
+<svg width="468" height="426" viewBox="0 0 440 400" aria-label="Ilustrasi lumbung padi yang bocor di lima titik rantai pangan">
   <defs>
     <pattern id="thatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
       <path d="M0 10 L10 0" stroke="#2A3B31" stroke-width="1.4"/>
     </pattern>
   </defs>
+  <g transform="translate(-26 30)">
 
   <!-- tanah -->
-  <path d="M0 352 H472" stroke="var(--line)" stroke-width="2"/>
+    <ellipse cx="170" cy="352" rx="132" ry="8" fill="#E3D8C6"/>
 
   <!-- tiang + jelepeng (piringan penahan tikus) -->
   <g fill="var(--wood)">
@@ -263,10 +265,17 @@
   <path d="M58 250 C64 168 94 82 144 34 C160 18 170 12 178 12 C186 12 196 18 212 34 C262 82 292 168 298 250 Z"
         fill="url(#thatch)" opacity=".55"/>
   <!-- ikatan atap -->
-  <g fill="none" stroke="#3C4F43" stroke-width="3">
-    <path d="M104 110 Q178 124 252 110"/>
-    <path d="M78 186 Q178 204 278 186"/>
+  <g fill="none" stroke="#3A4D41" stroke-width="2.2" stroke-linecap="round">
+    <path d="M112 104 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0 q6.5 4 13 0"/>
+    <path d="M86 176 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0 q7.0 5 14 0"/>
+    <path d="M60 248 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0 q7.0 6 14 0"/>
   </g>
+  <g fill="none" stroke="#2C3D33" stroke-width="1.3" opacity=".9">
+    <path d="M150 60 Q146 84 140 104"/><path d="M206 60 Q210 84 216 104"/>
+    <path d="M118 120 Q110 150 104 176"/><path d="M238 120 Q246 150 252 176"/>
+    <path d="M92 192 Q84 222 78 248"/><path d="M264 192 Q272 222 278 248"/>
+  </g>
+  <path d="M168 18 L178 0 L188 18 Z" fill="var(--wood)"/>
   <!-- jendela: isi gabah terlihat -->
   <path d="M160 130 Q160 108 178 108 Q196 108 196 130 V160 H160 Z" fill="var(--grain)"/>
   <g fill="#B87D1A">
@@ -324,13 +333,12 @@
     <text class="lbl-sub" x="362" y="344">juta ton/tahun</text>
   </g>
 
+  </g>
+
   <!-- legenda -->
-  <g transform="translate(0,368)">
-    <circle cx="6" cy="-2" r="5" fill="var(--grain-deep)"/>
-    <text class="lbl-sub" x="16" y="2">susut (food loss)</text>
-    <circle cx="146" cy="-2" r="5" fill="var(--rust)"/>
-    <text class="lbl-sub" x="156" y="2">sisa (food waste)</text>
-    <text class="lbl-sub" x="472" y="2" text-anchor="end" style="font-style:italic">tebal aliran = volume</text>
+  <g transform="translate(440,56)" text-anchor="end">
+    <text class="lbl-sub" x="0" y="0"><tspan fill="var(--grain-deep)">●</tspan> susut (food loss)   <tspan fill="var(--rust)">●</tspan> sisa (food waste)</text>
+    <text class="lbl-sub" x="0" y="18" style="font-style:italic">tebal aliran = volume per tahap</text>
   </g>
 </svg>
 </div>
@@ -346,7 +354,7 @@
   <div class="fact">
     <div class="tag">Dunia · Krisis &amp; Iklim</div>
     <div class="n">645 <small>juta orang</small></div>
-    <p>menghadapi kelaparan (2025). Pangan yang susut &amp; terbuang ikut menyumbang <strong>8-10% emisi gas rumah kaca.</strong></p>
+    <p>mengalami kelaparan (2025). Susut &amp; sisa pangan = <strong>8<span class="hy">-</span>10% emisi gas rumah kaca.</strong></p>
     <p class="src">FAO dkk. · SOFI 2026 &nbsp;|&nbsp; UNEP · 2024</p>
   </div>
   <div class="fact local">
@@ -393,7 +401,7 @@
 <!-- [BAGIAN 4] Ajakan & slogan resmi -->
 <section class="abs band" data-zone="4 · Ajakan & slogan wajib">
   <p class="ajak">Ambil secukupnya. Piring yang tidak berlebihan adalah bentuk sayang pada sesama.</p>
-  <p class="slogan">“Stop sampah pangan, atasi krisis pangan, perkuat ketahanan pangan bersama <span style="white-space:nowrap">SEAMEO RECFON!”</span></p>
+  <p class="slogan">“Stop sampah pangan, atasi krisis pangan, perkuat ketahanan pangan bersama SEAMEO&nbsp;RECFON!”</p>
 </section>
 
 <!-- [BAGIAN 5b] Footer & kredensial -->

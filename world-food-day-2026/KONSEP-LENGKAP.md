@@ -1,7 +1,7 @@
 # Food Crisis, Food Waste — Konsep Infografis
 **SEAMEO RECFON World Food Day Contest 2026 · Kategori Desain Infografis**
 
-Peserta: `[NAMA KAMU]` · Instansi: `[UNIVERSITAS/INSTANSI KAMU]`
+Peserta: **Chandra Putra Permata Jaya** · Instansi: **Universitas Airlangga**
 
 ---
 
@@ -326,9 +326,9 @@ Prinsip: kalimat pendek, kata sehari-hari, tanpa jargon ("food loss & waste" han
 | Pesan utama | *Lumbung pangan kita bocor. Lubang terbesarnya ada di piring kita sendiri.* |
 | Fakta 1 (angka kunci) | **23-48 juta ton per tahun**: pangan yang susut & terbuang di Indonesia, setara porsi makan 61-125 juta orang. *(Bappenas, 2021 · rata-rata 2000-2019)* |
 | Label visual | Produksi · Pascapanen & penyimpanan · Pengolahan · Distribusi & pasar · **Konsumsi 5-19 juta ton/tahun** |
-| Legenda | ● susut (food loss) ● sisa (food waste) · tebal aliran = volume |
+| Legenda (kanan atas lumbung) | ● susut (food loss) ● sisa (food waste) / tebal aliran = volume per tahap |
 | Fakta 2a (Indonesia) | **7,89%** penduduk makan di bawah kebutuhan energi minimum harian (2025). *(BPS & Bapanas · PoU 2025)* |
-| Fakta 2b (Dunia) | **645 juta orang** menghadapi kelaparan (2025). Pangan yang susut & terbuang ikut menyumbang 8-10% emisi gas rumah kaca. *(FAO dkk. · SOFI 2026, UNEP · 2024)* |
+| Fakta 2b (Dunia) | **645 juta orang** mengalami kelaparan (2025). Susut & sisa pangan = 8-10% emisi gas rumah kaca. *(FAO dkk. · SOFI 2026, UNEP · 2024)* |
 | Fakta 3 (lokal) | **77 jenis** sumber karbohidrat lokal. Kenyang tak harus nasi: ada singkong, jagung, sagu, talas. *(Badan Pangan Nasional)* |
 | Judul solusi (Bagian 3) | 4 LANGKAH MENAMBAL KEBOCORAN · *di rumah, sekolah, kampus & kantor* |
 | Langkah 1 | **Belanja terencana.** Buat daftar mingguan, beli sesuai porsi keluarga. |
@@ -338,7 +338,7 @@ Prinsip: kalimat pendek, kata sehari-hari, tanpa jargon ("food loss & waste" han
 | Ajakan (Bagian 4) | *Ambil secukupnya. Piring yang tidak berlebihan adalah bentuk sayang pada sesama.* |
 | Slogan wajib (verbatim) | **"Stop sampah pangan, atasi krisis pangan, perkuat ketahanan pangan bersama SEAMEO RECFON!"** |
 | Kredit (Bagian 5, wajib) | Kredit sumber data: Materi Edukasi Pangan SEAMEO RECFON, Peringatan Hari Pangan Sedunia 2026. Data pendukung: Bappenas (2021); BPS & Bapanas (2025); FAO dkk. (2026); UNEP (2024); Badan Pangan Nasional. |
-| Kanan bawah (wajib) | **[NAMA KAMU] \| [UNIVERSITAS/INSTANSI KAMU]** |
+| Kanan bawah (wajib) | **Chandra Putra Permata Jaya \| Universitas Airlangga** |
 
 Keempat langkah diringkas dari naskah panitia (Smart Planning, Store Properly/FIFO, Go Local, Zero-Waste Cooking). Kalimat ajakan diadaptasi dari contoh ajakan di naskah.
 
@@ -369,23 +369,23 @@ y=112  ├───────────────────────�
 y=128  │ Food Crisis,                                                 │ ← Bagian 1: judul resmi
        │ No Food Waste            (104 px, 2 baris)                   │
 y=334  │ Krisis Pangan dan Pangan yang Terbuang                       │
-y=352  │                                   ┌────────────────────────┐ │
+y=290  │                                   ┌────────────────────────┐ │
 y=400  │ Lumbung pangan kita bocor.        │   LUMBUNG BOCOR        │ │ ← pesan utama (kiri)
        │ Lubang terbesarnya ada di         │   5 aliran = 5 tahap   │ │    visual utama (kanan)
        │ piring kita sendiri.              │   konsumsi → piring    │ │
-y=526  │ 23–48 juta ton / tahun            │   (472 × 372)          │ │ ← Bagian 2: Fakta 1
+y=540  │ 23-48 juta ton / tahun (98 px)            │   (468 × 426, x=552)   │ │ ← Bagian 2: Fakta 1
        │ setara porsi makan 61–125 jt org  │                        │ │
        │ sumber                            │ legenda                │ │
-y=744  ├──────────────────┬────────────────────┬───────────────────┤ │
+y=740  ├──────────────────┬────────────────────┬───────────────────┤ │
        │ INDONESIA 7,89%  │ DUNIA 645 juta     │ LOKAL 77 jenis     │ │ ← Bagian 2: Fakta 2 & 3
-y=962  │ 4 LANGKAH MENAMBAL KEBOCORAN ──────── di rumah, sekolah, kampus… │
-y=994  │ 01 Belanja │ 02 Simpan   │ 03 Pangan   │ 04 Olah sisa       │ ← Bagian 3: solusi
+y=970  │ 4 LANGKAH MENAMBAL KEBOCORAN ──────── di rumah, sekolah, kampus… │
+y=1002 │ 01 Belanja │ 02 Simpan   │ 03 Pangan   │ 04 Olah sisa       │ ← Bagian 3: solusi
        │ terencana  │ dgn benar   │ lokal       │ jadi baru          │
 y=1150 ├██████████████████████████████████████████████████████████████┤
        │ Ambil secukupnya… (ajakan)                                   │ ← Bagian 4: ajakan
        │ "Stop sampah pangan, … bersama SEAMEO RECFON!"               │    + slogan wajib
 y=1282 ├──────────────────────────────────────────────────────────────┤
-y=1294 │ Kredit sumber data…              [NAMA KAMU] | [INSTANSI]    │ ← Bagian 5b: kanan bawah
+y=1294 │ Kredit sumber data…  Chandra Putra Permata Jaya | Univ. Airlangga │ ← Bagian 5b: kanan bawah
 y=1334 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -414,6 +414,21 @@ Jalur baca: Z terbalik. Judul besar → pesan miring di kiri → mata tertarik k
   - Ukuran terkecil: sumber 11,5–12,5 px (fine print). Semua teks isi ≥ 16 px.
 - **Ilustrasi:** Lumbung Sasak disederhanakan: atap melengkung seperti helm (siluet gelap dengan tekstur ilalang diagonal 55%), jendela kuning berisi gabah, lantai kayu, 4 tiang dengan jelepeng (piringan penahan tikus). Lubang berbentuk sobekan warna kertas. Aliran berupa garis tebal dengan ujung bulat dan beberapa butir yang jatuh.
 - **Ikon:** Garis 1,7 px, ujung bulat, 40 × 40 px, warna tinta. Nomor langkah memakai serif hijau.
+
+### 6.2b Catatan DKV (prinsip yang diterapkan)
+
+| Prinsip | Penerapan di desain |
+|---|---|
+| **Hierarki** | Urutan ukuran: judul resmi (104 px) → lumbung (visual terbesar) → angka 23-48 (98 px) → angka fakta (50 px) → judul langkah (20 px) → isi (16-19 px). Tidak ada elemen yang bersaing dengan judul wajib. |
+| **Titik fokus** | Satu titik fokus: aliran merah dari lantai lumbung ke piring. Hanya elemen ini yang memakai merah bata dalam bentuk besar di area gambar. |
+| **Keseimbangan** | Asimetris: massa tipografi berat di kiri atas diimbangi massa gelap lumbung di kanan tengah. Ruang kosong di kanan judul sengaja dibiarkan sebagai ruang napas. |
+| **Grid & alignment** | Grid 12 kolom (margin 60, gutter 24). Kolom teks hero = kolom 1-6, lumbung mulai kolom 7 (x = 552). Kartu fakta 3 × 4 kolom dan langkah 4 × 3 kolom memakai gutter yang sama. Baris sumber di ketiga kartu rata bawah. |
+| **Proximity** | Legenda ditempatkan menempel di atas label lumbung (bukan sejajar baris sumber di kolom kiri), supaya terbaca sebagai bagian dari ilustrasi. |
+| **Tangency dihindari** | Puncak atap diberi jarak dari huruf "e" pada "Waste". Tidak ada elemen yang saling bersinggungan tipis. |
+| **Kesatuan (unity)** | Dua font, lima warna dengan arti tetap (merah = masalah, hijau = solusi, gabah = susut), satu gaya ikon garis, satu gaya ilustrasi flat. |
+| **Ilustrasi** | Lumbung Sasak dengan tiga lapisan ilalang bertepi bergelombang, puncak kayu, jelepeng pada tiang, bayangan pijakan. Tebal aliran berkode data. |
+| **Tipografi mikro** | Rentang angka memakai tanda hubung pendek yang dirapatkan. Slogan dibagi dua baris yang seimbang tanpa baris yatim. Nama tetap satu baris bila muat. |
+| **Keterbacaan** | Semua teks lolos kontras WCAG AA. Diuji pada lebar 390 px (ukuran ponsel). |
 
 ### 6.3 Prompt / brief ilustrasi
 
@@ -501,3 +516,7 @@ Saat ini folder `design/logos/` sudah berisi tiga file yang dipisahkan dari gamb
 | 6 | Pemeriksaan ulang menyeluruh (data, naskah wajib, kontras, overflow, nama panjang, ponsel 390 px) | Tidak ada temuan baru |
 | 7 | Tanda pisah panjang (– dan —) terlihat kurang bagus di desain | Semua rentang angka memakai tanda hubung pendek (-). Di angka besar "23-48" diberi jarak kecil agar tidak menempel. Tanda — di baris kredit diganti koma |
 | 8 | Logo resmi dari peserta berupa satu gambar gabungan. Tulisan "Kemendikdasmen" menyentuh area roda SEAMEO, jadi tidak bisa dipotong kotak | Logo dipisah berdasarkan komponen piksel masing-masing. Hasilnya dipasang tanpa diubah dengan tinggi 72 px (dari 60 px) agar teks kecil di logo lebih terbaca |
+| 9 | Audit DKV: angka 23-48 (118 px) mengalahkan judul wajib (104 px). Lumbung terlalu kecil dan rendah, kuadran kanan atas kosong. Legenda sejajar dengan baris sumber di kolom kiri (proximity keliru). Kartu fakta tidak rata bawah dan gutter-nya beda dengan langkah. Atap lumbung terlihat seperti gumpalan polos. Slogan menyisakan baris yatim | Angka turun ke 98 px. Lumbung diperbesar, dinaikkan, dan dipasang di kolom 7 grid. Legenda dipindah ke atas label lumbung. Kartu rata bawah dengan gutter 24 px. Atap diberi 3 lapisan ilalang, puncak kayu, dan bayangan. Slogan dibagi seimbang |
+| 10 | Puncak atap nyaris menyentuh huruf "e" pada "Waste" (tangency). Garis tanah hanya tampak di satu sisi. Tanda hubung font sans terlihat renggang ("61 - 125") | Lumbung digeser. Garis tanah dihapus (cukup bayangan). Tanda hubung rentang angka dirapatkan |
+| 11 | Nama peserta dimasukkan | "Chandra Putra Permata Jaya \| Universitas Airlangga" muat satu baris di pojok kanan bawah |
+
